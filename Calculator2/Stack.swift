@@ -7,3 +7,30 @@
 //
 
 import Foundation
+
+class Stack {
+    
+    private var doubleStack = [Double]()
+    
+    func pop() -> Double? {
+        return doubleStack.removeLast()
+    }
+    
+    func push(number: Double) {
+        doubleStack.append(number)
+    }
+    
+    func log() {
+        print(doubleStack)
+    }
+    
+    func count() -> Int {
+        return doubleStack.count
+    }
+    
+    func clearStack() {
+        doubleStack.removeAll()
+    }
+    
+    
+}

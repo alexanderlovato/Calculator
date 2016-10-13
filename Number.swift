@@ -8,8 +8,16 @@
 
 import Foundation
 
-struct Numbers {
+class Number {
     
-    var result = "0"
+    var result: Double
+    var currentOperation: String?
+    var currentlyTypingNumber: Bool
+    
+    init(result: Double, currentOperation: String?, currentlyTypingNumber: Bool) {
+        self.result = result
+        self.currentOperation = currentOperation
+        self.currentlyTypingNumber = currentlyTypingNumber
+    }
     
 }
