@@ -19,6 +19,7 @@ class CalculatorViewController: UIViewController {
         case plusMinus = "+/-"
         case percent = "%"
         case equals = "="
+        case decimal = "."
     }
     
     @IBOutlet weak var resultTextLabel: UILabel!
@@ -72,6 +73,9 @@ class CalculatorViewController: UIViewController {
         case Operations.addition.rawValue:
             doNumberStuff(operation: "+")
         
+        case Operations.decimal.rawValue:
+            convertToDecimalNumber(number: resultTextLabel.text!)
+        
         case Operations.equals.rawValue:
             NumberController.sharedController.enter(currentNumber: resultLabelValue)
             NumberController.sharedController.setOperator(operatorString: NumberController.sharedController.number.operation)
@@ -112,6 +116,11 @@ class CalculatorViewController: UIViewController {
             NumberController.sharedController.number.operation = operation
             NumberController.sharedController.enter(currentNumber: NumberController.sharedController.number.resultNumber)
         }
+    }
+    
+    func convertToDecimalNumber(number: String) {
+        let decimalNumber = number + "."
+        resultTextLabel.text = decimalNumber
     }
     
     func positiveOrNegative(currentNumber: Double) {

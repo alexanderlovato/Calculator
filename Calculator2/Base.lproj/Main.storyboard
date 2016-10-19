@@ -210,6 +210,9 @@
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <state key="normal" title="."/>
+                                                        <connections>
+                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hDO-OF-z5R"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6h-Dp-QIg">
                                                         <color key="backgroundColor" red="0.6796837376" green="0.6796837376" blue="0.6796837376" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
