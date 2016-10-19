@@ -12,41 +12,22 @@ class NumberController {
     
     static let sharedController = NumberController()
     
-    var number: Number?
+    var number = Number()
+    
     var stack = Stack()
-    
-    var result: Double {
-        get {
-            guard let number = number else { return 0 }
-            return number.result
-        }
-        set {
-            guard let number = number else { return }
-            number.result = newValue
-        }
-    }
-
-    var operation: String {
-        get {
-            guard let number = number,
-                let currentOperator = number.currentOperation else { return "" }
-            return currentOperator
-        }
-        set {
-            guard let number = number else { return }
-            number.currentOperation = newValue
-        }
-    }
-    
-    var currentlyTypingNumber: Bool {
-        guard let number = number else { return false }
         
-        return number.currentlyTypingNumber
+    var currentlyTypingNumber: Bool {
+        get {
+            return number.currentlyTypingNumber
+        } set {
+            number.currentlyTypingNumber = newValue
+        }
     }
     
     
     func setOperator(operatorString: String) {
         
+        let operation = number.operation
         
         if stack.count() >= 2 {
             
@@ -56,19 +37,30 @@ class NumberController {
             switch operation {
                 
                 case "+":
-                    result = double2 + double1
+                    number.resultNumber = double2 + double1
                 case "-":
-                    result = double2 - double1
+                    number.resultNumber = double2 - double1
                 case "x":
-                    result = double2 * double1
+                    number.resultNumber = double2 * double1
                 case "÷":
-                    result = double2 / double1
+                    number.resultNumber = double2 / double1
             default:
                 stack.push(number: double1)
                 stack.push(number: double2)
             }
             
         }
+    }
+    
+    func percentage(currentNumber: Double) -> Double {
+        
+        let firstNumber = stack.pop()!
+        
+        let decimalNumber = firstNumber / 100
+        let percentnumber = decimalNumber * currentNumber
+        stack.push(number: firstNumber)
+        
+        return percentnumber
     }
     
     func enter(currentNumber: Double) {
@@ -81,7 +73,7 @@ class NumberController {
         
         stack.clearStack()
         stack.log()
-        result = 0
+        number.resultNumber = 0
     }
     
 }

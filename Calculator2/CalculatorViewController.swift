@@ -10,21 +10,77 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+    enum Operations: String {
+        case addition = "+"
+        case subtraction = "-"
+        case multiplication = "x"
+        case division = "÷"
+        case delete = "DEL"
+        case plusMinus = "+/-"
+        case percent = "%"
+        case equals = "="
+    }
+    
     @IBOutlet weak var resultTextLabel: UILabel!
+    var firstOperator = true
+    var firstOperatorString = String()
     
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
         return Double(value) ?? 0
     }
     
-    var results = NumberController.sharedController.result
     var currentlyTypingNumber = NumberController.sharedController.currentlyTypingNumber
-    var currentOp = NumberController.sharedController.operation
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    @IBAction func operationAction(_ sender: UIButton) {
+        let title = sender.currentTitle
+        
+        guard let currentTitle = title else { return }
+        
+        switch currentTitle {
+        
+        case Operations.delete.rawValue:
+            NumberController.sharedController.number.operation = ""
+            NumberController.sharedController.delete()
+            resultTextLabel.text = "0"
+            NumberController.sharedController.number.resultNumber = resultLabelValue
+            currentlyTypingNumber = false
+        
+        case Operations.plusMinus.rawValue:
+            positiveOrNegative(currentNumber: resultLabelValue)
+        
+        case Operations.percent.rawValue:
+            let percentValue = NumberController.sharedController.percentage(currentNumber: resultLabelValue)
+            resultTextLabel.text = removeTrailingZero(number: percentValue)
+        
+        case Operations.division.rawValue:
+            doNumberStuff(operation: "÷")
+        
+        case Operations.multiplication.rawValue:
+            doNumberStuff(operation: "x")
+        
+        case Operations.subtraction.rawValue:
+            doNumberStuff(operation: "-")
+        
+        case Operations.addition.rawValue:
+            doNumberStuff(operation: "+")
+        
+        case Operations.equals.rawValue:
+            NumberController.sharedController.enter(currentNumber: resultLabelValue)
+            NumberController.sharedController.setOperator(operatorString: NumberController.sharedController.number.operation)
+            resultTextLabel.text = removeTrailingZero(number: NumberController.sharedController.number.resultNumber)
+            currentlyTypingNumber = false
+            firstOperator = true
+        default:
+            print("Error")
+        }
     }
     
     @IBAction func buttonNumberInput(_ sender: UIButton) {
@@ -39,61 +95,36 @@ class CalculatorViewController: UIViewController {
             resultTextLabel.text = buttonNumber
             currentlyTypingNumber = true
         }
-
     }
     
-    @IBAction func divisionButtonTapped(_ sender: UIButton) {
+    func doNumberStuff(operation: String) {
         
-        currentOp = sender.currentTitle!
-        NumberController.sharedController.enter(currentNumber: resultLabelValue)
-        currentlyTypingNumber = false
+        if firstOperator {
+            firstOperatorString = operation
+            NumberController.sharedController.number.operation = operation
+            NumberController.sharedController.enter(currentNumber: resultLabelValue)
+            currentlyTypingNumber = false
+            firstOperator = false
+        } else {
+            NumberController.sharedController.enter(currentNumber: resultLabelValue)
+            NumberController.sharedController.setOperator(operatorString: firstOperatorString)
+            currentlyTypingNumber = false
+            NumberController.sharedController.number.operation = operation
+            NumberController.sharedController.enter(currentNumber: NumberController.sharedController.number.resultNumber)
+        }
     }
     
-    @IBAction func multiplicationButtonTapped(_ sender: UIButton) {
+    func positiveOrNegative(currentNumber: Double) {
         
-        currentOp = sender.currentTitle!
-        NumberController.sharedController.enter(currentNumber: resultLabelValue)
-        currentlyTypingNumber = false
+            var resultValue = currentNumber
+            resultValue = resultValue * -1
+            resultTextLabel.text = removeTrailingZero(number: resultValue)
+            currentlyTypingNumber = false
     }
     
-    @IBAction func subtractionButtonTapped(_ sender: UIButton) {
-        
-        currentOp = sender.currentTitle!
-        NumberController.sharedController.enter(currentNumber: resultLabelValue)
-        currentlyTypingNumber = false
+    func removeTrailingZero(number: Double) -> String {
+        let tempNumber = String(format: "%g", number)
+        return tempNumber
     }
     
-    @IBAction func additionButtonTapped(_ sender: UIButton) {
-        
-        currentOp = sender.currentTitle!
-        NumberController.sharedController.enter(currentNumber: resultLabelValue)
-        currentlyTypingNumber = false
-    }
-    
-    @IBAction func equalsButtonTapped(_ sender: UIButton) {
-        
-        NumberController.sharedController.setOperator(operatorString: currentOp)
-        resultTextLabel.text = "\(results)"
-        currentlyTypingNumber = false
-        
-    }
-    
-    @IBAction func deleteButtonTapped(_ sender: UIButton) {
-        
-        NumberController.sharedController.delete()
-        resultTextLabel.text = "0"
-        results = Double(resultTextLabel.text!) ?? 0
-        currentlyTypingNumber = false
-    }
-    
-    @IBAction func negateButtonPressed(_ sender: UIButton) {
-        let resultValue = abs(resultLabelValue)
-        resultTextLabel.text = "\(resultValue)"
-        currentlyTypingNumber = false
-        
-    }
-    
-    
-    
-
 }

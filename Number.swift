@@ -10,14 +10,33 @@ import Foundation
 
 class Number {
     
-    var result: Double
+    var result: Double?
     var currentOperation: String?
     var currentlyTypingNumber: Bool
     
-    init(result: Double, currentOperation: String?, currentlyTypingNumber: Bool) {
+    init(result: Double = 0, currentOperation: String = "", currentlyTypingNumber: Bool = false) {
         self.result = result
         self.currentOperation = currentOperation
         self.currentlyTypingNumber = currentlyTypingNumber
+    }
+    
+    var resultNumber: Double {
+        get {
+            guard let result = result else { return 0 }
+            return result
+        } set {
+            result = newValue
+        }
+    }
+    
+    var operation: String {
+        get {
+            guard let currentOperation = currentOperation else { return "" }
+            return currentOperation
+        } set {
+            currentOperation = newValue
+            
+        }
     }
     
 }

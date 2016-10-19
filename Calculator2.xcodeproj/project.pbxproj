@@ -524,6 +524,7 @@
 				FA5FEC421DAC65A5009218B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA5FEC431DAC65A5009218B9 /* Build configuration list for PBXNativeTarget "Calculator2Tests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +533,7 @@
 				FA5FEC451DAC65A5009218B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA5FEC461DAC65A5009218B9 /* Build configuration list for PBXNativeTarget "Calculator2UITests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +542,7 @@
 				FA5FEC481DAC65A5009218B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
