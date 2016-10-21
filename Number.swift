@@ -10,16 +10,19 @@ import Foundation
 
 class Number {
     
+    // MARK: - Internal Properties
     var result: Double?
     var currentOperation: String?
     var currentlyTypingNumber: Bool
     
+    // MARK: - Initializers
     init(result: Double = 0, currentOperation: String = "", currentlyTypingNumber: Bool = false) {
         self.result = result
         self.currentOperation = currentOperation
         self.currentlyTypingNumber = currentlyTypingNumber
     }
     
+    // MARK: - Computed Properties
     var resultNumber: Double {
         get {
             guard let result = result else { return 0 }

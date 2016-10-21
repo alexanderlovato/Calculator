@@ -10,12 +10,14 @@ import Foundation
 
 class NumberController {
     
+    // MARK: - Shared Instance
     static let sharedController = NumberController()
     
+    // MARK: - Class Instances
     var number = Number()
-    
     var stack = Stack()
-        
+    
+    // MARK: - Computed Properties
     var currentlyTypingNumber: Bool {
         get {
             return number.currentlyTypingNumber
@@ -24,10 +26,12 @@ class NumberController {
         }
     }
     
+    // MARK: - Controller Functions
     
-    func setOperator(operatorString: String) {
+    ///Run operation by passing in an operator string.
+    func runOperation(operatorString: String) {
         
-        let operation = number.operation
+        let operation = operatorString
         
         if stack.count() >= 2 {
             
@@ -48,10 +52,10 @@ class NumberController {
                 stack.push(number: double1)
                 stack.push(number: double2)
             }
-            
         }
     }
     
+    ///Converts a passed in number into a percentage and returns the value
     func percentage(currentNumber: Double) -> Double {
         
         let firstNumber = stack.pop()!
@@ -63,12 +67,14 @@ class NumberController {
         return percentnumber
     }
     
+    ///Add a passed in number to the stack and prints the current stack
     func enter(currentNumber: Double) {
         
         stack.push(number: currentNumber)
         stack.log()
     }
     
+    ///Delete all objects from the stack
     func delete() {
         
         stack.clearStack()

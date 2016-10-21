@@ -24,7 +24,6 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var resultTextLabel: UILabel!
     var firstOperator = true
-    var firstOperatorString = String()
     
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
@@ -78,10 +77,11 @@ class CalculatorViewController: UIViewController {
         
         case Operations.equals.rawValue:
             NumberController.sharedController.enter(currentNumber: resultLabelValue)
-            NumberController.sharedController.setOperator(operatorString: NumberController.sharedController.number.operation)
+            NumberController.sharedController.runOperation(operatorString: NumberController.sharedController.number.operation)
             resultTextLabel.text = removeTrailingZero(number: NumberController.sharedController.number.resultNumber)
             currentlyTypingNumber = false
             firstOperator = true
+            
         default:
             print("Error")
         }
@@ -104,14 +104,13 @@ class CalculatorViewController: UIViewController {
     func doNumberStuff(operation: String) {
         
         if firstOperator {
-            firstOperatorString = operation
             NumberController.sharedController.number.operation = operation
             NumberController.sharedController.enter(currentNumber: resultLabelValue)
             currentlyTypingNumber = false
             firstOperator = false
         } else {
             NumberController.sharedController.enter(currentNumber: resultLabelValue)
-            NumberController.sharedController.setOperator(operatorString: firstOperatorString)
+            NumberController.sharedController.runOperation(operatorString: NumberController.sharedController.number.operation)
             currentlyTypingNumber = false
             NumberController.sharedController.number.operation = operation
             NumberController.sharedController.enter(currentNumber: NumberController.sharedController.number.resultNumber)
