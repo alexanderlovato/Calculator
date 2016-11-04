@@ -15,7 +15,7 @@ class NumberController {
     
     // MARK: - Class Instances
     var number = Number()
-    var stack = Stack()
+    var stack = [Any]()
     
     // MARK: - Computed Properties
     var currentlyTypingNumber: Bool {
@@ -29,56 +29,76 @@ class NumberController {
     // MARK: - Controller Functions
     
     ///Run operation by passing in an operator string.
-    func runOperation(operatorString: String) {
-        
-        let operation = operatorString
-        
-        if stack.count() >= 2 {
+    func runOperation() -> Double {
+        for _ in stack {
+            //guard let item = item as? String else { continue }
             
-            let double1 = stack.pop()!
-            let double2 = stack.pop()!
-        
-            switch operation {
-                
-                case "+":
-                    number.resultNumber = double2 + double1
-                case "-":
-                    number.resultNumber = double2 - double1
-                case "x":
-                    number.resultNumber = double2 * double1
-                case "÷":
-                    number.resultNumber = double2 / double1
-            default:
-                stack.push(number: double1)
-                stack.push(number: double2)
+            for (index, item) in stack.enumerated() {
+                guard let item = item as? String else { continue }
+                if item == "*" {
+                    let first = stack[index - 1] as! Double //6
+                    let second = stack[index + 1] as! Double //2
+                    stack[index - 1] = first * second //replace 6 with 12
+                    stack.remove(at: index) //delete *
+                    stack.remove(at: index) //delete 2
+                    break
+                } else if item == "/" {
+                    let first = stack[index - 1] as! Double
+                    let second = stack[index + 1] as! Double
+                    stack[index - 1] = first / second
+                    stack.remove(at: index)
+                    stack.remove(at: index)
+                    break
+                }
             }
         }
+        
+        for _ in stack {
+            //guard let item = item as? String else { continue }
+            for (index, item) in stack.enumerated() {
+                guard let item = item as? String else { continue }
+                if item == "+" {
+                    let first = stack[index - 1] as! Double
+                    let second = stack[index + 1] as! Double
+                    stack[index - 1] = first + second
+                    stack.remove(at: index)
+                    stack.remove(at: index)
+                    break
+                } else if item == "-" {
+                    let first = stack[index - 1] as! Double
+                    let second = stack[index + 1] as! Double
+                    stack[index - 1] = first - second
+                    stack.remove(at: index)
+                    stack.remove(at: index)
+                    break
+                }
+            }
+        }
+        let returnNumber = stack.removeLast() as! Double
+        return returnNumber
+        
     }
     
     ///Converts a passed in number into a percentage and returns the value
     func percentage(currentNumber: Double) -> Double {
         
-        let firstNumber = stack.pop()!
-        
+        let firstNumber = stack.removeLast() as! Double
         let decimalNumber = firstNumber / 100
         let percentnumber = decimalNumber * currentNumber
-        stack.push(number: firstNumber)
-        
+        stack.append(firstNumber)
         return percentnumber
     }
     
     ///Add a passed in number to the stack and prints the current stack
-    func enter(currentNumber: Double) {
-        
-        stack.push(number: currentNumber)
-        stack.log()
+    func enter(addToStack: Any) {
+        stack.append(addToStack)
+        print(stack)
     }
     
     ///Delete all objects from the stack
     func delete() {
-        
-        stack.clearStack()
-        stack.log()
+        stack.removeAll()
+        print(stack)
         number.resultNumber = 0
     }
     

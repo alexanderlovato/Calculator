@@ -24,7 +24,7 @@ class CalculatorViewController: UIViewController {
     
     @IBOutlet weak var resultTextLabel: UILabel!
     var firstOperator = true
-    
+    var secondDeletePress = false
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
         return Double(value) ?? 0
@@ -47,11 +47,17 @@ class CalculatorViewController: UIViewController {
         switch currentTitle {
         
         case Operations.delete.rawValue:
-            NumberController.sharedController.number.operation = ""
-            NumberController.sharedController.delete()
-            resultTextLabel.text = "0"
-            NumberController.sharedController.number.resultNumber = resultLabelValue
-            currentlyTypingNumber = false
+            
+            if secondDeletePress {
+                NumberController.sharedController.delete()
+                resultTextLabel.text = "0"
+                NumberController.sharedController.number.resultNumber = resultLabelValue
+                currentlyTypingNumber = false
+                secondDeletePress = false
+            } else {
+                resultTextLabel.text = "0"
+                secondDeletePress = true
+            }
         
         case Operations.plusMinus.rawValue:
             positiveOrNegative(currentNumber: resultLabelValue)
@@ -61,27 +67,33 @@ class CalculatorViewController: UIViewController {
             resultTextLabel.text = removeTrailingZero(number: percentValue)
         
         case Operations.division.rawValue:
-            doNumberStuff(operation: "÷")
-        
+            NumberController.sharedController.enter(addToStack: resultLabelValue)
+            NumberController.sharedController.enter(addToStack: "÷")
+            currentlyTypingNumber = false
+            
         case Operations.multiplication.rawValue:
-            doNumberStuff(operation: "x")
+            NumberController.sharedController.enter(addToStack: resultLabelValue)
+            NumberController.sharedController.enter(addToStack: "*")
+            currentlyTypingNumber = false
         
         case Operations.subtraction.rawValue:
-            doNumberStuff(operation: "-")
+            NumberController.sharedController.enter(addToStack: resultLabelValue)
+            NumberController.sharedController.enter(addToStack: "-")
+            currentlyTypingNumber = false
         
         case Operations.addition.rawValue:
-            doNumberStuff(operation: "+")
+            NumberController.sharedController.enter(addToStack: resultLabelValue)
+            NumberController.sharedController.enter(addToStack: "+")
+            currentlyTypingNumber = false
         
         case Operations.decimal.rawValue:
             convertToDecimalNumber(number: resultTextLabel.text!)
         
         case Operations.equals.rawValue:
-            NumberController.sharedController.enter(currentNumber: resultLabelValue)
-            NumberController.sharedController.runOperation(operatorString: NumberController.sharedController.number.operation)
-            resultTextLabel.text = removeTrailingZero(number: NumberController.sharedController.number.resultNumber)
+            NumberController.sharedController.enter(addToStack: resultLabelValue)
+            resultTextLabel.text = removeTrailingZero(number: NumberController.sharedController.runOperation())
             currentlyTypingNumber = false
             firstOperator = true
-            
         default:
             print("Error")
         }
@@ -101,21 +113,6 @@ class CalculatorViewController: UIViewController {
         }
     }
     
-    func doNumberStuff(operation: String) {
-        
-        if firstOperator {
-            NumberController.sharedController.number.operation = operation
-            NumberController.sharedController.enter(currentNumber: resultLabelValue)
-            currentlyTypingNumber = false
-            firstOperator = false
-        } else {
-            NumberController.sharedController.enter(currentNumber: resultLabelValue)
-            NumberController.sharedController.runOperation(operatorString: NumberController.sharedController.number.operation)
-            currentlyTypingNumber = false
-            NumberController.sharedController.number.operation = operation
-            NumberController.sharedController.enter(currentNumber: NumberController.sharedController.number.resultNumber)
-        }
-    }
     
     func convertToDecimalNumber(number: String) {
         let decimalNumber = number + "."
@@ -134,5 +131,6 @@ class CalculatorViewController: UIViewController {
         let tempNumber = String(format: "%g", number)
         return tempNumber
     }
+    
     
 }

@@ -17,6 +17,8 @@
 		FA5FEC4E1DAC7E71009218B9 /* CalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */; };
 		FA5FEC501DAC9A11009218B9 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */; };
 		FA5FEC521DAD8C84009218B9 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC511DAD8C84009218B9 /* Stack.swift */; };
+		FAD5D6481DCBFC64005DA6A3 /* MultiTaskingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D6471DCBFC64005DA6A3 /* MultiTaskingCollectionViewController.swift */; };
+		FAD5D64A1DCC27D1005DA6A3 /* CalculatorCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5D6491DCC27D1005DA6A3 /* CalculatorCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorController.swift; sourceTree = "<group>"; };
 		FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FA5FEC511DAD8C84009218B9 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		FAD5D6471DCBFC64005DA6A3 /* MultiTaskingCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiTaskingCollectionViewController.swift; sourceTree = "<group>"; };
+		FAD5D6491DCC27D1005DA6A3 /* CalculatorCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 				FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */,
 				FA5FEC1B1DAC65A5009218B9 /* AppDelegate.swift */,
 				FA5FEC1F1DAC65A5009218B9 /* Main.storyboard */,
+				FAD5D6471DCBFC64005DA6A3 /* MultiTaskingCollectionViewController.swift */,
+				FAD5D6491DCC27D1005DA6A3 /* CalculatorCollectionViewFlowLayout.swift */,
 				FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */,
 				FA5FEC221DAC65A5009218B9 /* Assets.xcassets */,
 				FA5FEC241DAC65A5009218B9 /* LaunchScreen.storyboard */,
@@ -197,7 +203,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Nonsense;
 				TargetAttributes = {
 					FA5FEC171DAC65A5009218B9 = {
@@ -275,6 +281,8 @@
 				FA5FEC521DAD8C84009218B9 /* Stack.swift in Sources */,
 				FA5FEC1C1DAC65A5009218B9 /* AppDelegate.swift in Sources */,
 				FA5FEC4C1DAC7D83009218B9 /* Number.swift in Sources */,
+				FAD5D64A1DCC27D1005DA6A3 /* CalculatorCollectionViewFlowLayout.swift in Sources */,
+				FAD5D6481DCBFC64005DA6A3 /* MultiTaskingCollectionViewController.swift in Sources */,
 				FA5FEC4E1DAC7E71009218B9 /* CalculatorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +356,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -397,6 +406,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

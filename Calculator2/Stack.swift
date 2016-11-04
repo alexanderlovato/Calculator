@@ -10,31 +10,31 @@ import Foundation
 
 class Stack {
     
-    private var doubleStack = [Double]()
+    private var calculationStack = [Double]()
     
     ///Remove the last object from the stack and return it
     func pop() -> Double? {
-        return doubleStack.removeLast()
+        return calculationStack.removeLast()
     }
     
-    ///Add numbers to the stack
+    ///Add numbers to the doubleStack
     func push(number: Double) {
-        doubleStack.append(number)
+        calculationStack.append(number)
     }
-    
+
     ///Print all number objects to the console
     func log() {
-        print(doubleStack)
+        print(calculationStack)
     }
     
-    ///Count everything in the stack
+    ///Count everything in the doubleStack
     func count() -> Int {
-        return doubleStack.count
+        return calculationStack.count
     }
     
-    ///Clear out all objects from the stack
+    ///Clear out all objects from both stacks
     func clearStack() {
-        doubleStack.removeAll()
+        calculationStack.removeAll()
     }
     
     
