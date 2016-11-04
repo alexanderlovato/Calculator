@@ -51,6 +51,11 @@ class MultiTaskingCollectionViewController: UICollectionViewController {
             scrollView.contentOffset.x -= scrollView.frame.origin.x
         }
     }
+    
+    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
     /*
     // MARK: - Navigation

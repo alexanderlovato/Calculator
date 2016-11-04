@@ -272,7 +272,7 @@
                     <navigationItem key="navigationItem" id="faZ-z6-w6c">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xCG-PA-Dwy">
                             <connections>
-                                <segue destination="bt4-GM-L9a" kind="presentation" id="pC5-3N-etm"/>
+                                <segue destination="4Q4-7P-SAS" kind="presentation" id="pC5-3N-etm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -288,7 +288,7 @@
         <scene sceneID="Wrb-NC-nLD">
             <objects>
                 <collectionViewController id="bt4-GM-L9a" customClass="MultiTaskingCollectionViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Aoz-QN-qqd">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Aoz-QN-qqd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -313,13 +313,20 @@
                             <outlet property="delegate" destination="bt4-GM-L9a" id="2CM-Qh-9kT"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="phF-P5-z8g">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="92g-gC-fU0">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="bt4-GM-L9a" id="2zs-8F-ole"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="screenshotsCollectionView" destination="Aoz-QN-qqd" id="3q7-Nb-YuY"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEx-CX-WcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1913" y="36"/>
+            <point key="canvasLocation" x="2852" y="35.532233883058474"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fKd-iU-GG6">
@@ -338,6 +345,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTk-yp-Kuc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="86" y="36"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lnF-ZQ-BuG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Q4-7P-SAS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UVD-UQ-hdL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bt4-GM-L9a" kind="relationship" relationship="rootViewController" id="SHg-k2-UZM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C93-EB-kqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912.8" y="35.532233883058474"/>
         </scene>
     </scenes>
 </document>

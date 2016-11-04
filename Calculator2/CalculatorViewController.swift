@@ -91,7 +91,7 @@ class CalculatorViewController: UIViewController {
         
         case Operations.equals.rawValue:
             NumberController.sharedController.enter(addToStack: resultLabelValue)
-            resultTextLabel.text = removeTrailingZero(number: NumberController.sharedController.runOperation())
+            resultTextLabel.text = removeTrailingZero(number: NumberController.sharedController.runOperation(stackToUse: NumberController.sharedController.stack))
             currentlyTypingNumber = false
             firstOperator = true
         default:
