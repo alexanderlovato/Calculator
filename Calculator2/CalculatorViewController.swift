@@ -23,6 +23,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBOutlet weak var resultTextLabel: UILabel!
+    var calculator: Calculator?
     var firstOperator = true
     var secondDeletePress = false
     var resultLabelValue: Double {
@@ -30,10 +31,12 @@ class CalculatorViewController: UIViewController {
         return Double(value) ?? 0
     }
     
-    var currentlyTypingNumber = NumberController.sharedController.currentlyTypingNumber
+    var currentlyTypingNumber = CalculatorController.sharedController.currentlyTypingNumber
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
         
@@ -41,17 +44,21 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func operationAction(_ sender: UIButton) {
         let title = sender.currentTitle
+        let controller = CalculatorController.sharedController
+        
         
         guard let currentTitle = title else { return }
+        
         
         switch currentTitle {
         
         case Operations.delete.rawValue:
             
             if secondDeletePress {
-                NumberController.sharedController.delete()
+                controller.saveToPersistentStorage()
+                controller.delete()
                 resultTextLabel.text = "0"
-                NumberController.sharedController.number.resultNumber = resultLabelValue
+                controller.calculator.result = resultLabelValue
                 currentlyTypingNumber = false
                 secondDeletePress = false
             } else {
@@ -63,35 +70,39 @@ class CalculatorViewController: UIViewController {
             positiveOrNegative(currentNumber: resultLabelValue)
         
         case Operations.percent.rawValue:
-            let percentValue = NumberController.sharedController.percentage(currentNumber: resultLabelValue)
+            let percentValue = controller.percentage(currentNumber: resultLabelValue)
             resultTextLabel.text = removeTrailingZero(number: percentValue)
         
         case Operations.division.rawValue:
-            NumberController.sharedController.enter(addToStack: resultLabelValue)
-            NumberController.sharedController.enter(addToStack: "÷")
+            controller.enter(addToStack: resultLabelValue)
+            controller.enter(addToStack: "÷")
             currentlyTypingNumber = false
             
         case Operations.multiplication.rawValue:
-            NumberController.sharedController.enter(addToStack: resultLabelValue)
-            NumberController.sharedController.enter(addToStack: "*")
+            controller.enter(addToStack: resultLabelValue)
+            controller.enter(addToStack: "*")
             currentlyTypingNumber = false
         
         case Operations.subtraction.rawValue:
-            NumberController.sharedController.enter(addToStack: resultLabelValue)
-            NumberController.sharedController.enter(addToStack: "-")
+            controller.enter(addToStack: resultLabelValue)
+            controller.enter(addToStack: "-")
             currentlyTypingNumber = false
         
         case Operations.addition.rawValue:
-            NumberController.sharedController.enter(addToStack: resultLabelValue)
-            NumberController.sharedController.enter(addToStack: "+")
+            controller.enter(addToStack: resultLabelValue)
+            controller.enter(addToStack: "+")
             currentlyTypingNumber = false
         
         case Operations.decimal.rawValue:
             convertToDecimalNumber(number: resultTextLabel.text!)
         
         case Operations.equals.rawValue:
-            NumberController.sharedController.enter(addToStack: resultLabelValue)
-            resultTextLabel.text = removeTrailingZero(number: NumberController.sharedController.runOperation(stackToUse: NumberController.sharedController.stack))
+            controller.enter(addToStack: resultLabelValue)
+            let stack = CalculatorController.sharedController.calculator.operationStack
+            let result = controller.runOperation(stackToUse: stack)
+            controller.delete()
+            controller.enter(addToStack: result)
+            resultTextLabel.text = removeTrailingZero(number: result)
             currentlyTypingNumber = false
             firstOperator = true
         default:
@@ -112,6 +123,14 @@ class CalculatorViewController: UIViewController {
             currentlyTypingNumber = true
         }
     }
+    
+    @IBAction func newTabButtonTapped(_ sender: UIBarButtonItem) {
+        
+        let calculator = Calculator(result: resultLabelValue, operationStack: CalculatorController.sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
+        CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
+        CalculatorController.sharedController.delete()
+    }
+    
     
     
     func convertToDecimalNumber(number: String) {
