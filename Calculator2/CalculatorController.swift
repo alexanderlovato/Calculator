@@ -71,7 +71,7 @@ class CalculatorController {
         for _ in operationStack {
             for (index, item) in operationStack.enumerated() {
                 guard let item = item as? String else { continue }
-                if item == "*" {
+                if item == "x" {
                     let first = operationStack[index - 1] as! Double
                     let second = operationStack[index + 1] as! Double
                     operationStack[index - 1] = first * second
@@ -141,6 +141,11 @@ class CalculatorController {
     ///Add a passed in number to the stack and prints the current stack
     func enter(addToStack: Any) {
         calculator.operationStack.append(addToStack)
+        print(calculator.operationStack)
+    }
+    
+    func mergeStacks(addToStack: [Any]) {
+        calculator.operationStack += addToStack
         print(calculator.operationStack)
     }
     

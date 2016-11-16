@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController {
+class CalculatorViewController: UIViewController, DestinationViewControllerDelegate {
     
     enum Operations: String {
         case addition = "+"
@@ -22,7 +22,10 @@ class CalculatorViewController: UIViewController {
         case decimal = "."
     }
     
+    
+    @IBOutlet weak var wallpaperImageView: UIImageView!
     @IBOutlet weak var resultTextLabel: UILabel!
+    let sharedController = CalculatorController.sharedController
     var calculator: Calculator?
     var firstOperator = true
     var secondDeletePress = false
@@ -34,18 +37,17 @@ class CalculatorViewController: UIViewController {
     var currentlyTypingNumber = CalculatorController.sharedController.currentlyTypingNumber
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-
         // Do any additional setup after loading the view.
+        
+//        let blurEffect = UIBlurEffect(style: .light)
+//        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurredEffectView.frame = wallpaperImageView!.bounds
+//        view.insertSubview(blurredEffectView, aboveSubview: wallpaperImageView)
         
     }
     
     @IBAction func operationAction(_ sender: UIButton) {
         let title = sender.currentTitle
-        let controller = CalculatorController.sharedController
-        
         
         guard let currentTitle = title else { return }
         
@@ -55,53 +57,57 @@ class CalculatorViewController: UIViewController {
         case Operations.delete.rawValue:
             
             if secondDeletePress {
-                controller.saveToPersistentStorage()
-                controller.delete()
+                let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
+                if sharedController.calculator.operationStack.count > 0 {
+                    sharedController.saveCalculatorTab(calculatorTab: calculator)
+                }
+                sharedController.delete()
                 resultTextLabel.text = "0"
-                controller.calculator.result = resultLabelValue
+                sharedController.calculator.result = resultLabelValue
                 currentlyTypingNumber = false
                 secondDeletePress = false
             } else {
                 resultTextLabel.text = "0"
                 secondDeletePress = true
+                currentlyTypingNumber = false
             }
         
         case Operations.plusMinus.rawValue:
             positiveOrNegative(currentNumber: resultLabelValue)
         
         case Operations.percent.rawValue:
-            let percentValue = controller.percentage(currentNumber: resultLabelValue)
+            let percentValue = sharedController.percentage(currentNumber: resultLabelValue)
             resultTextLabel.text = removeTrailingZero(number: percentValue)
         
         case Operations.division.rawValue:
-            controller.enter(addToStack: resultLabelValue)
-            controller.enter(addToStack: "÷")
+            sharedController.enter(addToStack: resultLabelValue)
+            sharedController.enter(addToStack: "÷")
             currentlyTypingNumber = false
             
         case Operations.multiplication.rawValue:
-            controller.enter(addToStack: resultLabelValue)
-            controller.enter(addToStack: "*")
+            sharedController.enter(addToStack: resultLabelValue)
+            sharedController.enter(addToStack: "x")
             currentlyTypingNumber = false
         
         case Operations.subtraction.rawValue:
-            controller.enter(addToStack: resultLabelValue)
-            controller.enter(addToStack: "-")
+            sharedController.enter(addToStack: resultLabelValue)
+            sharedController.enter(addToStack: "-")
             currentlyTypingNumber = false
         
         case Operations.addition.rawValue:
-            controller.enter(addToStack: resultLabelValue)
-            controller.enter(addToStack: "+")
+            sharedController.enter(addToStack: resultLabelValue)
+            sharedController.enter(addToStack: "+")
             currentlyTypingNumber = false
         
         case Operations.decimal.rawValue:
             convertToDecimalNumber(number: resultTextLabel.text!)
         
         case Operations.equals.rawValue:
-            controller.enter(addToStack: resultLabelValue)
-            let stack = CalculatorController.sharedController.calculator.operationStack
-            let result = controller.runOperation(stackToUse: stack)
-            controller.delete()
-            controller.enter(addToStack: result)
+            sharedController.enter(addToStack: resultLabelValue)
+            let stack = sharedController.calculator.operationStack
+            let result = sharedController.runOperation(stackToUse: stack)
+            sharedController.delete()
+            sharedController.enter(addToStack: result)
             resultTextLabel.text = removeTrailingZero(number: result)
             currentlyTypingNumber = false
             firstOperator = true
@@ -126,9 +132,9 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func newTabButtonTapped(_ sender: UIBarButtonItem) {
         
-        let calculator = Calculator(result: resultLabelValue, operationStack: CalculatorController.sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
-        CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
-        CalculatorController.sharedController.delete()
+        let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
+        sharedController.saveCalculatorTab(calculatorTab: calculator)
+        sharedController.delete()
     }
     
     
@@ -151,5 +157,52 @@ class CalculatorViewController: UIViewController {
         return tempNumber
     }
     
+    func passNumberBack(data: [Any]) {
+        let lastObject = "\(data.last!)"
+        var dataStack = data
+        
+        switch lastObject {
+            
+        //Check if the last object from the selected History table is an operator
+        case "+", "-", "x", "÷":
+            let currentStack = sharedController.calculator.operationStack.last as? String ?? ""
+            
+            //Then check if the last object of the operationStack is an operator
+            if currentStack == "+" || currentStack == "-" || currentStack == "x" || currentStack == "÷" {
+                sharedController.mergeStacks(addToStack: data)
+                currentlyTypingNumber = false
+                resultTextLabel.text = "0"
+            } else if sharedController.calculator.operationStack.count == 0 {
+                
+                //Since neither stacks end with an operator: Remove last number from selected histroy stack, merge that stack with the operatorStack, then set the resultTextLabel to the last removed object of history stack
+                sharedController.mergeStacks(addToStack: dataStack)
+                resultTextLabel.text = "0"
+                currentlyTypingNumber = false
+            } else {
+                sharedController.enter(addToStack: resultLabelValue)
+                resultTextLabel.text = "0"
+                currentlyTypingNumber = false
+                sharedController.mergeStacks(addToStack: dataStack)
+                
+            }
+            
+        default:
+            //If none of the above scenarios match then execute this block of code
+            let dataNumber = removeTrailingZero(number: dataStack.removeLast() as! Double)
+            resultTextLabel.text = dataNumber
+            currentlyTypingNumber = true
+            
+            }
+        }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toHistoryTable" {
+            let navigation = segue.destination as! UINavigationController
+            let destinationViewController = navigation.topViewController as! CalculationHistoryViewController
+            destinationViewController.delegate = self
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        }
+    }
+
 }

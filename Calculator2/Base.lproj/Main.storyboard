@@ -96,7 +96,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="y3m-bl-WAP">
                                                 <rect key="frame" x="0.0" y="81" width="414" height="81"/>
                                                 <subviews>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hh1-of-Him">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hh1-of-Him">
                                                         <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -108,7 +108,7 @@
                                                             <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="79c-xe-dsN"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-2G-ATH">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-2G-ATH">
                                                         <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -120,7 +120,7 @@
                                                             <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="veX-8y-x0q"/>
                                                         </connections>
                                                     </button>
-                                                    <button alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPX-3z-WPR">
+                                                    <button alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPX-3z-WPR">
                                                         <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -149,7 +149,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CCK-Ef-FeJ">
                                                 <rect key="frame" x="0.0" y="162" width="414" height="81"/>
                                                 <subviews>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5B-9S-Wbd">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5B-9S-Wbd">
                                                         <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -161,7 +161,7 @@
                                                             <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LJP-hc-9Mu"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXM-XS-RxD">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXM-XS-RxD">
                                                         <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -173,7 +173,7 @@
                                                             <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rFG-fI-jtc"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oto-g6-BG1">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oto-g6-BG1">
                                                         <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -202,7 +202,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cJl-2D-DB6">
                                                 <rect key="frame" x="0.0" y="243" width="414" height="81"/>
                                                 <subviews>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPW-kd-aRY">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPW-kd-aRY">
                                                         <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -214,7 +214,7 @@
                                                             <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZjI-Cu-J7E"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PO6-8G-vrU">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PO6-8G-vrU">
                                                         <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -226,7 +226,7 @@
                                                             <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dhe-bG-k3F"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sD8-k0-zcj">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sD8-k0-zcj">
                                                         <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -255,7 +255,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hmo-gC-hA2">
                                                 <rect key="frame" x="0.0" y="324" width="414" height="81"/>
                                                 <subviews>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n10-oI-S4Q">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n10-oI-S4Q">
                                                         <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -267,11 +267,11 @@
                                                             <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8DN-AJ-Kns"/>
                                                         </connections>
                                                     </button>
-                                                    <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PoQ-td-aXe">
+                                                    <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PoQ-td-aXe">
                                                         <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
-                                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOh-7I-LGw">
+                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOh-7I-LGw">
                                                         <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="81"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="40"/>
@@ -318,18 +318,19 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="XC6-mN-SmZ">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="newTabButtonTapped:" destination="BYZ-38-t0r" id="Ljc-8v-Pw5"/>
+                                <action selector="newTabButtonTapped:" destination="BYZ-38-t0r" id="abv-mb-mC6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="History" id="xCG-PA-Dwy">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="fBg-DO-ULA" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="OUG-oG-hon"/>
+                                <segue destination="fBg-DO-ULA" kind="presentation" identifier="toHistoryTable" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="OUG-oG-hon"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="resultTextLabel" destination="tGl-K2-E3n" id="mvv-hm-7ga"/>
+                        <outlet property="wallpaperImageView" destination="7hW-en-OTU" id="syU-v4-JJX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -436,7 +437,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tia-ap-XO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928" y="34"/>
+            <point key="canvasLocation" x="1886" y="33"/>
         </scene>
     </scenes>
     <resources>

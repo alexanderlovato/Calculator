@@ -10,19 +10,16 @@ import UIKit
 
 class CalculationHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var delegate: DestinationViewControllerDelegate?
     
+    func passDataBackwards(anyData: [Any]) {
+        delegate?.passNumberBack(data: anyData)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    func mergeResult() {
-        let table = UITableView()
-        let indexPath = table.indexPathForSelectedRow
-        CalculatorController.sharedController.enter(addToStack: indexPath!)
-        self.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,20 +47,21 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let calculator = tableView.indexPathForSelectedRow?.row
+        let stackIndex = CalculatorController.sharedController.calculators[calculator!]
+        let returnData = stackIndex.operationStack
+        passDataBackwards(anyData: returnData)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+protocol DestinationViewControllerDelegate {
+    func passNumberBack(data: [Any])
 }
