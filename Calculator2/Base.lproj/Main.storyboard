@@ -28,15 +28,52 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="tGl-K2-E3n">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="267"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="227"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="267" id="Hqa-A9-deL"/>
+                                            <constraint firstAttribute="height" constant="227" id="Hqa-A9-deL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="120"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g74-LI-Lgh">
+                                        <rect key="frame" x="0.0" y="227" width="414" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGx-bF-nVk">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="138" id="GIr-aO-Tha"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="22"/>
+                                                <state key="normal" title="Save Result">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="newTabButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Tj-AX-KjG"/>
+                                                </connections>
+                                            </button>
+                                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCY-nO-Yqk">
+                                                <rect key="frame" x="138" y="0.0" width="172.66666666666669" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFt-fH-jDg" userLabel="Backspace">
+                                                <rect key="frame" x="310.66666666666674" y="0.0" width="103.33333333333331" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="103.33" id="RgU-Lx-RsF"/>
+                                                </constraints>
+                                                <state key="normal" image="Backspace"/>
+                                                <connections>
+                                                    <action selector="backspaceButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVz-k0-4cn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="O1t-yb-da2"/>
+                                        </constraints>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ItO-cD-IWZ">
                                         <rect key="frame" x="0.0" y="267" width="414" height="405"/>
                                         <subviews>
@@ -48,7 +85,7 @@
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="40"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="DEL">
+                                                        <state key="normal" title="C">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
@@ -315,16 +352,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="faZ-z6-w6c">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="XC6-mN-SmZ">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="newTabButtonTapped:" destination="BYZ-38-t0r" id="abv-mb-mC6"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="History" id="xCG-PA-Dwy">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="fBg-DO-ULA" kind="presentation" identifier="toHistoryTable" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="OUG-oG-hon"/>
+                                <segue destination="fBg-DO-ULA" kind="presentation" identifier="toHistoryTable" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="LST-vp-NpS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -348,8 +379,35 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CyT-4Z-pje">
+                                    <rect key="frame" x="0.0" y="65" width="414" height="30"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWy-ul-ZX4">
+                                            <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYX-LO-EVE">
+                                            <rect key="frame" x="138" y="0.0" width="138" height="30"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                            <state key="normal" title="Clear History">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="clearHistoryButtonTapped:" destination="fMi-31-sh8" eventType="touchUpInside" id="o7P-QL-Jj3"/>
+                                            </connections>
+                                        </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7i7-o7-PQ1">
+                                            <rect key="frame" x="276" y="0.0" width="138" height="30"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="fBQ-sJ-BHr"/>
+                                    </constraints>
+                                </stackView>
                                 <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DhI-NL-1k8">
-                                    <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                    <rect key="frame" x="0.0" y="94" width="414" height="642"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <prototypes>
                                         <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalculatorCell" textLabel="ODB-ox-85f" style="IBUITableViewCellStyleDefault" id="J7D-rq-AJy">
@@ -382,8 +440,14 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="DhI-NL-1k8" firstAttribute="leading" secondItem="ctI-2U-0yF" secondAttribute="leading" id="89y-Xe-z9k"/>
+                                <constraint firstAttribute="trailing" secondItem="CyT-4Z-pje" secondAttribute="trailing" id="B6G-zI-6sL"/>
+                                <constraint firstItem="CyT-4Z-pje" firstAttribute="top" secondItem="ctI-2U-0yF" secondAttribute="top" constant="65" id="CSY-3m-PzH"/>
+                                <constraint firstItem="CyT-4Z-pje" firstAttribute="leading" secondItem="ctI-2U-0yF" secondAttribute="leading" id="CXZ-bn-LaH"/>
+                                <constraint firstAttribute="trailing" secondItem="CyT-4Z-pje" secondAttribute="trailing" id="WUe-n3-ddv"/>
+                                <constraint firstItem="DhI-NL-1k8" firstAttribute="top" secondItem="CyT-4Z-pje" secondAttribute="bottom" constant="-1" id="e6s-lj-MRf"/>
                                 <constraint firstAttribute="bottom" secondItem="DhI-NL-1k8" secondAttribute="bottom" id="fg4-y5-N7r"/>
-                                <constraint firstItem="DhI-NL-1k8" firstAttribute="top" secondItem="ctI-2U-0yF" secondAttribute="top" constant="64" id="gSX-B4-3J4"/>
+                                <constraint firstItem="DhI-NL-1k8" firstAttribute="top" secondItem="ctI-2U-0yF" secondAttribute="top" constant="94" id="gSX-B4-3J4"/>
+                                <constraint firstItem="CyT-4Z-pje" firstAttribute="leading" secondItem="ctI-2U-0yF" secondAttribute="leading" id="mot-Zw-JKJ"/>
                                 <constraint firstAttribute="trailing" secondItem="DhI-NL-1k8" secondAttribute="trailing" id="o3Q-Xt-qnI"/>
                             </constraints>
                         </view>
@@ -392,16 +456,19 @@
                         <blurEffect style="light"/>
                     </visualEffectView>
                     <navigationItem key="navigationItem" id="oEp-Ra-Jm2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="3hG-GG-ow4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3hG-GG-ow4">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="fMi-31-sh8" id="2ET-Mz-fHO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="historyTableView" destination="DhI-NL-1k8" id="QS5-OH-X2v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sva-V7-O6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2877" y="33"/>
+            <point key="canvasLocation" x="2876.811594202899" y="32.608695652173914"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fKd-iU-GG6">
@@ -441,6 +508,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Backspace" width="30" height="20"/>
         <image name="Stone_Wall-wallpaper-10422235" width="1440" height="1280"/>
     </resources>
 </document>

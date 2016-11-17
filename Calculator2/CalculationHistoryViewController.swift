@@ -12,12 +12,16 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     
     var delegate: DestinationViewControllerDelegate?
     
+    @IBOutlet weak var historyTableView: UITableView!
+    
+    
     func passDataBackwards(anyData: [Any]) {
         delegate?.passNumberBack(data: anyData)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -58,6 +62,12 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func clearHistoryButtonTapped(_ sender: UIButton) {
+        CalculatorController.sharedController.clearAllCalculators()
+        historyTableView.reloadData()
+    }
+    
     
 
 }

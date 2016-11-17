@@ -15,7 +15,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         case subtraction = "-"
         case multiplication = "x"
         case division = "÷"
-        case delete = "DEL"
+        case delete = "C"
         case plusMinus = "+/-"
         case percent = "%"
         case equals = "="
@@ -26,9 +26,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     @IBOutlet weak var wallpaperImageView: UIImageView!
     @IBOutlet weak var resultTextLabel: UILabel!
     let sharedController = CalculatorController.sharedController
-    var calculator: Calculator?
     var firstOperator = true
-    var secondDeletePress = false
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
         return Double(value) ?? 0
@@ -55,8 +53,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         switch currentTitle {
         
         case Operations.delete.rawValue:
-            
-            if secondDeletePress {
+
                 let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
                 if sharedController.calculator.operationStack.count > 0 {
                     sharedController.saveCalculatorTab(calculatorTab: calculator)
@@ -65,12 +62,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
                 resultTextLabel.text = "0"
                 sharedController.calculator.result = resultLabelValue
                 currentlyTypingNumber = false
-                secondDeletePress = false
-            } else {
-                resultTextLabel.text = "0"
-                secondDeletePress = true
-                currentlyTypingNumber = false
-            }
         
         case Operations.plusMinus.rawValue:
             positiveOrNegative(currentNumber: resultLabelValue)
@@ -116,6 +107,19 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         }
     }
     
+    @IBAction func backspaceButtonTapped(_ sender: UIButton) {
+        
+        if resultTextLabel.text == "" {
+            resultTextLabel.text = "0"
+            currentlyTypingNumber = false
+        } else {
+            guard let resultText = resultTextLabel.text else { return }
+            let truncated = resultText.substring(to: resultText.index(before: resultText.endIndex))
+            resultTextLabel.text! = truncated
+        }
+    }
+    
+    
     @IBAction func buttonNumberInput(_ sender: UIButton) {
         
         let resultLabelText = resultTextLabel.text!
@@ -130,11 +134,20 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         }
     }
     
-    @IBAction func newTabButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func newTabButtonTapped(_ sender: UIButton) {
         
-        let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
-        sharedController.saveCalculatorTab(calculatorTab: calculator)
-        sharedController.delete()
+        let stack = sharedController.calculator.operationStack
+        
+        if currentlyTypingNumber || stack.count == 0 {
+            var currentStack = sharedController.calculator.operationStack
+            currentStack.append(resultLabelValue)
+            let calculator = Calculator(result: resultLabelValue, operationStack: currentStack, currentlyTypingNumber: currentlyTypingNumber)
+            sharedController.saveCalculatorTab(calculatorTab: calculator)
+        } else {
+            
+            let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
+            sharedController.saveCalculatorTab(calculatorTab: calculator)
+        }
     }
     
     
@@ -187,13 +200,21 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             }
             
         default:
-            //If none of the above scenarios match then execute this block of code
-            let dataNumber = removeTrailingZero(number: dataStack.removeLast() as! Double)
-            resultTextLabel.text = dataNumber
-            currentlyTypingNumber = true
+            if data.count > 2 {
+                let labelNumber = removeTrailingZero(number: dataStack.removeLast() as! Double)
+                sharedController.mergeStacks(addToStack: dataStack)
+                resultTextLabel.text = labelNumber
+                currentlyTypingNumber = true
+            } else {
+                //If none of the above scenarios match then execute this block of code
+                let labelNumber = removeTrailingZero(number: dataStack.removeLast() as! Double)
+                resultTextLabel.text = labelNumber
+                currentlyTypingNumber = true
             
             }
+            
         }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toHistoryTable" {

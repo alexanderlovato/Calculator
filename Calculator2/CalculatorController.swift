@@ -126,13 +126,14 @@ class CalculatorController {
             let decimalNumber = stackSum / 100
             let percentnumber = decimalNumber * currentNumber
             return percentnumber
+        } else if stack.count == 0 {
+            let decimalNumber = currentNumber / 100
+            return decimalNumber
         } else {
-            let holdOperator = stack.removeLast()
-            let firstNumber = stack.removeLast() as! Double
+            let _ = stack.removeLast()
+            let firstNumber = stack.last as! Double
             let decimalNumber = firstNumber / 100
             let percentnumber = decimalNumber * currentNumber
-            enter(addToStack: firstNumber)
-            enter(addToStack: holdOperator)
             return percentnumber
         }
         
@@ -163,6 +164,11 @@ class CalculatorController {
             calculators.remove(at: calculatorIndex)
             saveToPersistentStorage()
         }
+    }
+    
+    func clearAllCalculators() {
+        calculators.removeAll()
+        saveToPersistentStorage()
     }
     
     func deleteCalculatorTab(calculatorTab: Calculator) {
