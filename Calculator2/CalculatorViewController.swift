@@ -54,14 +54,14 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         
         case Operations.delete.rawValue:
 
-                let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
-                if sharedController.calculator.operationStack.count > 0 {
-                    sharedController.saveCalculatorTab(calculatorTab: calculator)
-                }
-                sharedController.delete()
-                resultTextLabel.text = "0"
-                sharedController.calculator.result = resultLabelValue
-                currentlyTypingNumber = false
+            let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
+            if sharedController.calculator.operationStack.count > 0 {
+                sharedController.saveCalculatorTab(calculatorTab: calculator)
+            }
+            sharedController.delete()
+            resultTextLabel.text = "0"
+            sharedController.calculator.result = resultLabelValue
+            currentlyTypingNumber = false
         
         case Operations.plusMinus.rawValue:
             positiveOrNegative(currentNumber: resultLabelValue)
