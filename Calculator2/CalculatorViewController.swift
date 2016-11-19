@@ -32,6 +32,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         return Double(value) ?? 0
     }
     
+    
     var currentlyTypingNumber = CalculatorController.sharedController.currentlyTypingNumber
     
     override func viewDidLoad() {
@@ -41,6 +42,8 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
 //        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
 //        blurredEffectView.frame = wallpaperImageView!.bounds
 //        view.insertSubview(blurredEffectView, aboveSubview: wallpaperImageView)
+        
+        resultTextLabel.adjustsFontSizeToFitWidth = true
         
     }
     
@@ -122,12 +125,12 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     
     @IBAction func buttonNumberInput(_ sender: UIButton) {
         
+        
         let resultLabelText = resultTextLabel.text!
         let buttonNumber = sender.currentTitle ?? ""
         
         if currentlyTypingNumber {
             resultTextLabel.text = resultLabelText + buttonNumber
-            
         } else {
             resultTextLabel.text = buttonNumber
             currentlyTypingNumber = true
