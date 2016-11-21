@@ -38,7 +38,8 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalculatorCell", for: indexPath)
         let calculator = CalculatorController.sharedController.calculators[indexPath.row]
-        let minimalDescription = calculator.operationStack.map{ String(describing: $0) }.joined(separator: " ")
+        var minimalDescription = calculator.operationStack.map{ String(describing: $0) }.joined(separator: " ")
+        minimalDescription = minimalDescription.replacingOccurrences(of: ".0", with: "")
         cell.textLabel?.text = minimalDescription
         return cell
     }
