@@ -16,6 +16,16 @@
 		FA5FEC4C1DAC7D83009218B9 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */; };
 		FA5FEC4E1DAC7E71009218B9 /* CalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */; };
 		FA5FEC501DAC9A11009218B9 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */; };
+		FAC33E1B1DE0BA8600D517AB /* ButtonFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */; };
+		FAC33E1D1DE0DF5B00D517AB /* ScoreFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E1C1DE0DF5B00D517AB /* ScoreFormatter.swift */; };
+		FAC33E1F1DE5237500D517AB /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E1E1DE5237500D517AB /* NavigationViewController.swift */; };
+		FAC33E211DE5248000D517AB /* CardToDetailViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E201DE5248000D517AB /* CardToDetailViewAnimator.swift */; };
+		FAC33E231DE524CF00D517AB /* DetailToCardViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E221DE524CF00D517AB /* DetailToCardViewAnimator.swift */; };
+		FAC33E251DE5252900D517AB /* NavigationTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E241DE5252900D517AB /* NavigationTransitionViewController.swift */; };
+		FAC33E271DE5259700D517AB /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E261DE5259700D517AB /* CardCollectionViewController.swift */; };
+		FAC33E2B1DE527A200D517AB /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E2A1DE527A200D517AB /* CardCollectionViewCell.swift */; };
+		FAC33E2D1DE5280500D517AB /* TransparentNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E2C1DE5280500D517AB /* TransparentNavigationBar.swift */; };
+		FAC33E2F1DE5284900D517AB /* CardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E2E1DE5284900D517AB /* CardLayout.swift */; };
 		FAD5D64C1DD42362005DA6A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +62,16 @@
 		FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calculator.swift; path = ../Calculator.swift; sourceTree = "<group>"; };
 		FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorController.swift; sourceTree = "<group>"; };
 		FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFontSize.swift; sourceTree = "<group>"; };
+		FAC33E1C1DE0DF5B00D517AB /* ScoreFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreFormatter.swift; sourceTree = "<group>"; };
+		FAC33E1E1DE5237500D517AB /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		FAC33E201DE5248000D517AB /* CardToDetailViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardToDetailViewAnimator.swift; sourceTree = "<group>"; };
+		FAC33E221DE524CF00D517AB /* DetailToCardViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailToCardViewAnimator.swift; sourceTree = "<group>"; };
+		FAC33E241DE5252900D517AB /* NavigationTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTransitionViewController.swift; sourceTree = "<group>"; };
+		FAC33E261DE5259700D517AB /* CardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
+		FAC33E2A1DE527A200D517AB /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAC33E2C1DE5280500D517AB /* TransparentNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentNavigationBar.swift; sourceTree = "<group>"; };
+		FAC33E2E1DE5284900D517AB /* CardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLayout.swift; sourceTree = "<group>"; };
 		FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,10 +125,11 @@
 			children = (
 				FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */,
 				FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */,
-				FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */,
-				FA131EEF1DD7A253000904F7 /* CalculationHistoryViewController.swift */,
+				FAC33E281DE5270600D517AB /* View Controllers */,
 				FA5FEC1B1DAC65A5009218B9 /* AppDelegate.swift */,
+				FAC33E1C1DE0DF5B00D517AB /* ScoreFormatter.swift */,
 				FA5FEC1F1DAC65A5009218B9 /* Main.storyboard */,
+				FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */,
 				FA5FEC241DAC65A5009218B9 /* LaunchScreen.storyboard */,
 				FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */,
 				FA5FEC271DAC65A5009218B9 /* Info.plist */,
@@ -132,6 +153,39 @@
 				FA5FEC3D1DAC65A5009218B9 /* Info.plist */,
 			);
 			path = Calculator2UITests;
+			sourceTree = "<group>";
+		};
+		FAC33E281DE5270600D517AB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */,
+				FA131EEF1DD7A253000904F7 /* CalculationHistoryViewController.swift */,
+				FAC33E261DE5259700D517AB /* CardCollectionViewController.swift */,
+				FAC33E291DE5277200D517AB /* Multitasking Card Collection */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FAC33E291DE5277200D517AB /* Multitasking Card Collection */ = {
+			isa = PBXGroup;
+			children = (
+				FAC33E241DE5252900D517AB /* NavigationTransitionViewController.swift */,
+				FAC33E2A1DE527A200D517AB /* CardCollectionViewCell.swift */,
+				FAC33E2C1DE5280500D517AB /* TransparentNavigationBar.swift */,
+				FAC33E2E1DE5284900D517AB /* CardLayout.swift */,
+				FAC33E1E1DE5237500D517AB /* NavigationViewController.swift */,
+				FAC33E301DE52AC300D517AB /* Animation */,
+			);
+			name = "Multitasking Card Collection";
+			sourceTree = "<group>";
+		};
+		FAC33E301DE52AC300D517AB /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				FAC33E201DE5248000D517AB /* CardToDetailViewAnimator.swift */,
+				FAC33E221DE524CF00D517AB /* DetailToCardViewAnimator.swift */,
+			);
+			name = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,11 +325,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC33E1F1DE5237500D517AB /* NavigationViewController.swift in Sources */,
 				FA5FEC501DAC9A11009218B9 /* CalculatorViewController.swift in Sources */,
 				FA5FEC1C1DAC65A5009218B9 /* AppDelegate.swift in Sources */,
+				FAC33E211DE5248000D517AB /* CardToDetailViewAnimator.swift in Sources */,
+				FAC33E1D1DE0DF5B00D517AB /* ScoreFormatter.swift in Sources */,
 				FA131EF01DD7A253000904F7 /* CalculationHistoryViewController.swift in Sources */,
+				FAC33E271DE5259700D517AB /* CardCollectionViewController.swift in Sources */,
+				FAC33E2B1DE527A200D517AB /* CardCollectionViewCell.swift in Sources */,
+				FAC33E2D1DE5280500D517AB /* TransparentNavigationBar.swift in Sources */,
+				FAC33E1B1DE0BA8600D517AB /* ButtonFontSize.swift in Sources */,
+				FAC33E2F1DE5284900D517AB /* CardLayout.swift in Sources */,
 				FA5FEC4C1DAC7D83009218B9 /* Calculator.swift in Sources */,
+				FAC33E251DE5252900D517AB /* NavigationTransitionViewController.swift in Sources */,
 				FA5FEC4E1DAC7E71009218B9 /* CalculatorController.swift in Sources */,
+				FAC33E231DE524CF00D517AB /* DetailToCardViewAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

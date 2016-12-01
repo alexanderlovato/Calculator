@@ -25,11 +25,16 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     
     @IBOutlet weak var wallpaperImageView: UIImageView!
     @IBOutlet weak var resultTextLabel: UILabel!
+    @IBOutlet weak var entireExpressionLabel: UILabel!
     let sharedController = CalculatorController.sharedController
-    var firstOperator = true
+    var finishedEquation = false
+    
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
-        return Double(value) ?? 0
+        let returnValue = ScoreFormatter.unformattedNumberString(value)
+        guard let returnDouble = returnValue else { return 0 }
+        return Double(returnDouble) ?? 0
+        
     }
     
     var currentlyTypingNumber = CalculatorController.sharedController.currentlyTypingNumber
@@ -42,6 +47,8 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
 //        blurredEffectView.frame = wallpaperImageView!.bounds
 //        view.insertSubview(blurredEffectView, aboveSubview: wallpaperImageView)
         
+        resultTextLabel.adjustsFontSizeToFitWidth = true
+        
     }
     
     @IBAction func operationAction(_ sender: UIButton) {
@@ -53,15 +60,11 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         switch currentTitle {
         
         case Operations.delete.rawValue:
-
-            let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
-            if sharedController.calculator.operationStack.count > 0 {
-                sharedController.saveCalculatorTab(calculatorTab: calculator)
-            }
             sharedController.delete()
             resultTextLabel.text = "0"
             sharedController.calculator.result = resultLabelValue
             currentlyTypingNumber = false
+            finishedEquation = false
         
         case Operations.plusMinus.rawValue:
             positiveOrNegative(currentNumber: resultLabelValue)
@@ -74,21 +77,25 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             sharedController.enter(addToStack: resultLabelValue)
             sharedController.enter(addToStack: "÷")
             currentlyTypingNumber = false
+            finishedEquation = false
             
         case Operations.multiplication.rawValue:
             sharedController.enter(addToStack: resultLabelValue)
             sharedController.enter(addToStack: "x")
             currentlyTypingNumber = false
+            finishedEquation = false
         
         case Operations.subtraction.rawValue:
             sharedController.enter(addToStack: resultLabelValue)
             sharedController.enter(addToStack: "-")
             currentlyTypingNumber = false
+            finishedEquation = false
         
         case Operations.addition.rawValue:
             sharedController.enter(addToStack: resultLabelValue)
             sharedController.enter(addToStack: "+")
             currentlyTypingNumber = false
+            finishedEquation = false
         
         case Operations.decimal.rawValue:
             convertToDecimalNumber(number: resultTextLabel.text!)
@@ -98,10 +105,17 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             let stack = sharedController.calculator.operationStack
             let result = sharedController.runOperation(stackToUse: stack)
             sharedController.delete()
-            sharedController.enter(addToStack: result)
-            resultTextLabel.text = removeTrailingZero(number: result)
+            
+            if finishedEquation == false {
+                sharedController.enter(addToStack: result)
+                let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
+                sharedController.saveCalculatorTab(calculatorTab: calculator)
+                sharedController.delete()
+            }
+            let labelResult = removeTrailingZero(number: result)
+            resultTextLabel.text = ScoreFormatter.formattedScore(labelResult)
             currentlyTypingNumber = false
-            firstOperator = true
+            finishedEquation = true
         default:
             print("Error")
         }
@@ -122,19 +136,23 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     
     @IBAction func buttonNumberInput(_ sender: UIButton) {
         
-        let resultLabelText = resultTextLabel.text!
-        let buttonNumber = sender.currentTitle ?? ""
+        
+        let buttonNumber = sender.titleLabel?.text
+        let unformattedNumber = ScoreFormatter.unformattedNumberString(resultTextLabel.text!)
         
         if currentlyTypingNumber {
-            resultTextLabel.text = resultLabelText + buttonNumber
+            let formattedNumber = unformattedNumber! + buttonNumber!
             
+            resultTextLabel.text = ScoreFormatter.formattedScore(formattedNumber)
+            entireExpressionLabel.text = ScoreFormatter.formattedScore(formattedNumber)
         } else {
-            resultTextLabel.text = buttonNumber
+            resultTextLabel.text = ScoreFormatter.formattedScore(buttonNumber)
+            entireExpressionLabel.text = ScoreFormatter.formattedScore(buttonNumber)
             currentlyTypingNumber = true
         }
     }
     
-    @IBAction func newTabButtonTapped(_ sender: UIButton) {
+    @IBAction func saveResultButtonTapped(_ sender: UIButton) {
         
         let stack = sharedController.calculator.operationStack
         
@@ -150,6 +168,12 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         }
     }
     
+    @IBAction func multitaskingButtonTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    
+    
     
     
     func convertToDecimalNumber(number: String) {
@@ -158,11 +182,10 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     }
     
     func positiveOrNegative(currentNumber: Double) {
-        
-            var resultValue = currentNumber
-            resultValue = resultValue * -1
-            resultTextLabel.text = removeTrailingZero(number: resultValue)
-            currentlyTypingNumber = false
+        var resultValue = currentNumber
+        resultValue = resultValue * -1
+        resultTextLabel.text = removeTrailingZero(number: resultValue)
+         currentlyTypingNumber = false
     }
     
     func removeTrailingZero(number: Double) -> String {
@@ -215,6 +238,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             
         }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toHistoryTable" {

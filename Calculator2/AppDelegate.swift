@@ -12,8 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let transitionController = NavigationTransitionController()
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        UINavigationBar.appearance().tintColor = UIColor.black
+        // setup navigation delegate
+        let rootNavigationController = self.window!.rootViewController as! UINavigationController
+        rootNavigationController.delegate = transitionController
 
-
+    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

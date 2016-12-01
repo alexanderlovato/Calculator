@@ -30,6 +30,7 @@ class CalculatorController {
     // MARK: - Computed Properties
     var currentlyTypingNumber: Bool {
         get {
+            
             return calculator.currentlyTypingNumber
         } set {
             calculator.currentlyTypingNumber = newValue
@@ -48,11 +49,9 @@ class CalculatorController {
     // READ
     
     func loadFromPersistentStorage() {
-        let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [Dictionary<String, AnyObject>]
+        guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [[String : Any]] else {return}
         
-        if let calculatorDictionaries = calculatorDictionariesFromDefaults {
-            self.calculators = calculatorDictionaries.map({Calculator(dictionary: $0)!})
-        }
+            self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
     }
     
     
@@ -66,51 +65,58 @@ class CalculatorController {
     
     ///Calculates a stack of Doubles and operator Strings with operator precedence.
     func runOperation(stackToUse: [Any]) -> Double {
+                
+        let operationStack = stackToUse
+        var operationString = operationStack.map{ String(describing: $0) }.joined(separator: " ")
+        operationString = operationString.replacingOccurrences(of: "÷", with: "/")
+        operationString = operationString.replacingOccurrences(of: "x", with: "*")
+        let expression = NSExpression(format: operationString, argumentArray: [])
+        let value = expression.expressionValue(with: nil, context: nil) as! NSNumber
+        return value.doubleValue
         
-        var operationStack = stackToUse
-        for _ in operationStack {
-            for (index, item) in operationStack.enumerated() {
-                guard let item = item as? String else { continue }
-                if item == "x" {
-                    let first = operationStack[index - 1] as! Double
-                    let second = operationStack[index + 1] as! Double
-                    operationStack[index - 1] = first * second
-                    operationStack.remove(at: index)
-                    operationStack.remove(at: index)
-                    break
-                } else if item == "÷" {
-                    let first = operationStack[index - 1] as! Double
-                    let second = operationStack[index + 1] as! Double
-                    operationStack[index - 1] = first / second
-                    operationStack.remove(at: index)
-                    operationStack.remove(at: index)
-                    break
-                }
-            }
-        }
-        
-        for _ in operationStack {
-            for (index, item) in operationStack.enumerated() {
-                guard let item = item as? String else { continue }
-                if item == "+" {
-                    let first = operationStack[index - 1] as! Double
-                    let second = operationStack[index + 1] as! Double
-                    operationStack[index - 1] = first + second
-                    operationStack.remove(at: index)
-                    operationStack.remove(at: index)
-                    break
-                } else if item == "-" {
-                    let first = operationStack[index - 1] as! Double
-                    let second = operationStack[index + 1] as! Double
-                    operationStack[index - 1] = first - second
-                    operationStack.remove(at: index)
-                    operationStack.remove(at: index)
-                    break
-                }
-            }
-        }
-        let returnNumber = operationStack.removeLast() as! Double
-        return returnNumber
+//        for _ in operationStack {
+//            for (index, item) in operationStack.enumerated() {
+//                guard let item = item as? String else { continue }
+//                if item == "x" {
+//                    let first = operationStack[index - 1] as! Double
+//                    let second = operationStack[index + 1] as! Double
+//                    operationStack[index - 1] = first * second
+//                    operationStack.remove(at: index)
+//                    operationStack.remove(at: index)
+//                    break
+//                } else if item == "÷" {
+//                    let first = operationStack[index - 1] as! Double
+//                    let second = operationStack[index + 1] as! Double
+//                    operationStack[index - 1] = first / second
+//                    operationStack.remove(at: index)
+//                    operationStack.remove(at: index)
+//                    break
+//                }
+//            }
+//        }
+//        
+//        for _ in operationStack {
+//            for (index, item) in operationStack.enumerated() {
+//                guard let item = item as? String else { continue }
+//                if item == "+" {
+//                    let first = operationStack[index - 1] as! Double
+//                    let second = operationStack[index + 1] as! Double
+//                    operationStack[index - 1] = first + second
+//                    operationStack.remove(at: index)
+//                    operationStack.remove(at: index)
+//                    break
+//                } else if item == "-" {
+//                    let first = operationStack[index - 1] as! Double
+//                    let second = operationStack[index + 1] as! Double
+//                    operationStack[index - 1] = first - second
+//                    operationStack.remove(at: index)
+//                    operationStack.remove(at: index)
+//                    break
+//                }
+//            }
+//        }
+//        let returnNumber = operationStack.removeLast() as! Double
+//        return value
         
     }
     
@@ -143,6 +149,10 @@ class CalculatorController {
     func enter(addToStack: Any) {
         calculator.operationStack.append(addToStack)
         print(calculator.operationStack)
+    }
+    
+    func pushToStringStack(addToStack: String) {
+        calculator.entireOperationString.append(addToStack)
     }
     
     func mergeStacks(addToStack: [Any]) {
