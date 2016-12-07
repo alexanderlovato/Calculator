@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController, DestinationViewControllerDelegate {
+class CalculatorViewController: UIViewController, DestinationViewControllerDelegate, CardCollectionTransitionDelegate {
     
     enum Operations: String {
         case addition = "+"
@@ -40,15 +40,28 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     var currentlyTypingNumber = CalculatorController.sharedController.currentlyTypingNumber
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
         
 //        let blurEffect = UIBlurEffect(style: .light)
 //        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
 //        blurredEffectView.frame = wallpaperImageView!.bounds
 //        view.insertSubview(blurredEffectView, aboveSubview: wallpaperImageView)
         
-        resultTextLabel.adjustsFontSizeToFitWidth = true
-        
+    }
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
+    ///Back Bar Button Item used to return back to CardCollectionViewController
+    @IBAction func customBack(_ sender: Any) {
+        sharedController.calculator.screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
+        sharedController.saveToPersistentStorage()
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func operationAction(_ sender: UIButton) {
@@ -108,9 +121,12 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             
             if finishedEquation == false {
                 sharedController.enter(addToStack: result)
-                let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
-                sharedController.saveCalculatorTab(calculatorTab: calculator)
-                sharedController.delete()
+                
+                //TODO - Need to create an new way to save calculation history
+                
+//                let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
+//                sharedController.saveCalculatorTab(calculatorTab: calculator)
+//                sharedController.delete()
             }
             let labelResult = removeTrailingZero(number: result)
             resultTextLabel.text = ScoreFormatter.formattedScore(labelResult)
@@ -154,28 +170,24 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     
     @IBAction func saveResultButtonTapped(_ sender: UIButton) {
         
-        let stack = sharedController.calculator.operationStack
+        //TODO - Need to create a new place to store History
         
-        if currentlyTypingNumber || stack.count == 0 {
-            var currentStack = sharedController.calculator.operationStack
-            currentStack.append(resultLabelValue)
-            let calculator = Calculator(result: resultLabelValue, operationStack: currentStack, currentlyTypingNumber: currentlyTypingNumber)
-            sharedController.saveCalculatorTab(calculatorTab: calculator)
-        } else {
-            
-            let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
-            sharedController.saveCalculatorTab(calculatorTab: calculator)
-        }
+//        let stack = sharedController.calculator.operationStack
+//        
+//        if currentlyTypingNumber || stack.count == 0 {
+//            var currentStack = sharedController.calculator.operationStack
+//            currentStack.append(resultLabelValue)
+//            let calculator = Calculator(result: resultLabelValue, operationStack: currentStack, currentlyTypingNumber: currentlyTypingNumber)
+//            sharedController.saveCalculatorTab(calculatorTab: calculator)
+//        } else {
+//            
+//            let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
+//            sharedController.saveCalculatorTab(calculatorTab: calculator)
+//        }
     }
     
-    @IBAction func multitaskingButtonTapped(_ sender: UIBarButtonItem) {
-        
-    }
-    
-    
-    
-    
-    
+
+
     func convertToDecimalNumber(number: String) {
         let decimalNumber = number + "."
         resultTextLabel.text = decimalNumber
@@ -193,6 +205,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         return tempNumber
     }
     
+    ///Delegate function used to pass data back from CalculationHistoryViewController
     func passNumberBack(data: [Any]) {
         let lastObject = "\(data.last!)"
         var dataStack = data
@@ -237,6 +250,16 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             }
             
         }
+    }
+    
+    ///Delegate Function used to pass data back from CardCollectionViewController
+    func passDataToCalculatorView(calculator: Calculator) {
+        
+        sharedController.calculator.result = calculator.result
+        sharedController.calculator.currentlyTypingNumber = calculator.currentlyTypingNumber
+        sharedController.calculator.operationStack = calculator.operationStack
+        sharedController.calculator.entireOperationString = calculator.entireOperationString
+        sharedController.calculator.screenshotImage = calculator.screenshotImage
     }
     
     

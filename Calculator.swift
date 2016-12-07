@@ -17,22 +17,31 @@ class Calculator: Equatable {
     private let kOperationStack = "operationStack"
     private let kEntireOperationString = "entireOperationString"
     private let kCurrentlyTypingNumber = "currentlyTypingNumber"
-    private let kCalculatorScreenShot = "calculatorScreenShot"
+    private let kScreenshotData = "screenshotData"
     
     // MARK: - Internal Properties
     var result: Double?
     var operationStack: [Any]
     var entireOperationString: [String]
     var currentlyTypingNumber: Bool
-    var calculatorScreenShot: UIView?
+    var screenshotData: Data? = Data()
+    var screenshotImage: UIImage? {
+        get {
+            guard let screenshotData = self.screenshotData else { return nil }
+            return UIImage(data: screenshotData)
+        } set {
+            guard let newValue = newValue, let data = UIImagePNGRepresentation(newValue) else { return }
+            screenshotData = data
+        }
+    }
     
     // MARK: - Initializers
-    init(result: Double = 0, operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, calculatorScreenShot: UIView = UIView.init()) {
+    init(result: Double = 0, operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, screenshotData: Data? = UIImagePNGRepresentation(#imageLiteral(resourceName: "Carousel"))) {
         self.result = result
         self.operationStack = operationStack
         self.entireOperationString = entireOperationString
         self.currentlyTypingNumber = currentlyTypingNumber
-        self.calculatorScreenShot = calculatorScreenShot
+        self.screenshotData = screenshotData
     }
     
     init?(dictionary: [String : Any]) {
@@ -40,12 +49,12 @@ class Calculator: Equatable {
         let operationStack = dictionary[kOperationStack] as? [Any],
             let entireOperationString = dictionary[kEntireOperationString] as? [String],
                 let currentlyTypingNumber = dictionary[kCurrentlyTypingNumber] as? Bool,
-                    let calculatorScreenShot = dictionary[kCalculatorScreenShot] as? UIView else {
+                    let screenshotData = dictionary[kScreenshotData] as? Data else {
                 self.result = 0
                 self.operationStack = []
                 self.entireOperationString = []
                 self.currentlyTypingNumber = false
-                self.calculatorScreenShot = UIView.init()
+                self.screenshotData = UIImagePNGRepresentation(#imageLiteral(resourceName: "Carousel"))
                 return nil
         }
         
@@ -53,7 +62,7 @@ class Calculator: Equatable {
         self.operationStack = operationStack
         self.entireOperationString = entireOperationString
         self.currentlyTypingNumber = currentlyTypingNumber
-        self.calculatorScreenShot = calculatorScreenShot
+        self.screenshotData = screenshotData
     }
     
     func dictionaryCopy() -> [String : Any] {
@@ -62,7 +71,8 @@ class Calculator: Equatable {
             kOperationStack : self.operationStack,
             kEntireOperationString: self.entireOperationString,
             kCurrentlyTypingNumber : self.currentlyTypingNumber,
-            kCalculatorScreenShot : self.calculatorScreenShot!]
+            kScreenshotData : self.screenshotData!
+        ]
         return dictionary
     }
 }

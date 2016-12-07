@@ -17,6 +17,8 @@ protocol CardToDetailViewAnimating {
 
 class CardToDetailViewAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
+    // MARK: - UIViewControllerAnimatedTransitioning
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.35
     }
@@ -25,7 +27,7 @@ class CardToDetailViewAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
         guard fromViewController is CardCollectionViewController else { fatalError("\(String(describing: self))) should only be used to transition from card view") }
         let cardController = fromViewController as! CardCollectionViewController
-        let cardViewSnapshot = cardController.viewForTransition().snapshotView(afterScreenUpdates: false)
+        let cardViewSnapshot = cardController.viewForTransition().snapshotView(afterScreenUpdates: true)
         let cardFrame = cardController.beginFrameForTransition()
         cardViewSnapshot?.frame = cardFrame
         // add required view to context
@@ -44,10 +46,9 @@ class CardToDetailViewAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         }, completion: { _ in
             // finish animation and transition
             toViewController.view.alpha = 1
-            cardViewSnapshot?.removeFromSuperview()
+            cardViewSnapshot?.removeFromSuperview() //Recently added
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             
         })
     }
-
 }

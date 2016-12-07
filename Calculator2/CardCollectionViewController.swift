@@ -10,7 +10,9 @@ import UIKit
 
 
 class CardCollectionViewController: UICollectionViewController {
-
+    
+    var delegate: CardCollectionTransitionDelegate?
+    
     /// The pan gesture will be used for this scroll view so the collection view can page items smaller than it's width
     lazy var pagingScrollView: UIScrollView = { [unowned self] in
         let scrollView = UIScrollView()
@@ -34,9 +36,21 @@ class CardCollectionViewController: UICollectionViewController {
         }()
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        navigationItem.backBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Carosel_HalfSize"), style: .plain, target: nil, action: nil)
+        
+//        self.navigationController?.navigationBar.tintColor = UIColor.clear
+//        self.navigationController?.navigationBar.isTranslucent = false
+        
+        if CalculatorController.sharedController.calculators.count == 0 {
+            let calculator = Calculator(result: 0, operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: UIImagePNGRepresentation(#imageLiteral(resourceName: "Carousel")))
+            CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
+            collectionView?.reloadData()
+
+        }
+        
         
         // inset collection view left/right-most cards can be centered
         let flowLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
@@ -72,12 +86,34 @@ class CardCollectionViewController: UICollectionViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         backgroundGradientLayer.frame = self.view.bounds
+        
     }
     
     // MARK: - Status Bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
+    
+    // MARK: - Calculator View Delegate
+    func passBackCalculator(calculator: Calculator) {
+        delegate?.passDataToCalculatorView(calculator: calculator)
+    }
+    
+    // MARK: - Create New Calculator Bar Button
+    @IBAction func addCalculatorInstanceButtonTapped(_ sender: UIBarButtonItem) {
+        
+        //Create the calculator
+        let calculator = Calculator(result: 0, operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: UIImagePNGRepresentation(#imageLiteral(resourceName: "Carousel")))
+        CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
+        collectionView?.reloadData()
+        
+        //Select the new calcuator cell
+        let visibleCells = self.collectionView?.indexPathsForVisibleItems
+        let cardIndexPath = visibleCells?.last
+        let center = UICollectionViewScrollPosition.centeredVertically
+        self.collectionView?.selectItem(at: cardIndexPath, animated: true, scrollPosition: center)
+    }
+    
 }
 
 
@@ -85,7 +121,14 @@ class CardCollectionViewController: UICollectionViewController {
 
 extension CardCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = CalculatorViewController()
+        
+        //Below solution provided by Ben Norris
+        //TODO: - Find how to identify indexPath for cell and how to pass the data over
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController")
+        let cardIndex = CalculatorController.sharedController.calculators[indexPath.item]
+        passBackCalculator(calculator: cardIndex)
+        self.delegate = CalculatorViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -105,13 +148,10 @@ extension CardCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCellConst.reuseId, for: indexPath)
         
-        let calculator = CalculatorController.sharedController.calculators[indexPath.item]
+        let calculatorIndex = CalculatorController.sharedController.calculators[indexPath.item]
+        let viewSnapshot = calculatorIndex.screenshotImage
         
-        let screenShot = calculator.calculatorScreenShot
-        let calculatorScreenshot = UIView(frame: screenShot!.bounds)
-        
-        cell.addSubview(calculatorScreenshot)
-        
+        cell.addSubview(UIImageView(image: viewSnapshot!))
         return cell
     }
 }
@@ -132,7 +172,6 @@ extension CardCollectionViewController {
 
 
 // MARK: - Transition Delegate
-
 extension CardCollectionViewController: CardToDetailViewAnimating {
     // returns index path at center of screen (if there is one)
     private func centeredIndexPath() -> IndexPath? {
@@ -163,5 +202,13 @@ extension CardCollectionViewController: CardToDetailViewAnimating {
         frame.origin.y += self.topLayoutGuide.length + CardLayoutConst.maxYOffset
         return frame
     }
-
 }
+
+// MARK: - CalculatorViewController Navigation Delegate
+protocol CardCollectionTransitionDelegate {
+    func passDataToCalculatorView(calculator: Calculator)
+}
+
+
+
+

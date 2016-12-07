@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class CalculatorController {
     
@@ -51,7 +52,7 @@ class CalculatorController {
     func loadFromPersistentStorage() {
         guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [[String : Any]] else {return}
         
-            self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
+        self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
     }
     
     

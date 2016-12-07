@@ -25,5 +25,4 @@ class CardCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("\(#function) unimplemented")
     }
-    
 }

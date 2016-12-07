@@ -9,8 +9,8 @@
 import UIKit
 
 class NavigationViewController: UINavigationController {
-
-    var statusBarStyle = UIStatusBarStyle.lightContent
+    
+    var statusBarStyle = UIStatusBarStyle.default
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
@@ -43,15 +43,4 @@ class NavigationViewController: UINavigationController {
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

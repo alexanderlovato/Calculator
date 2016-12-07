@@ -16,6 +16,7 @@ struct CardLayoutConst {
 
 class CardLayout: UICollectionViewFlowLayout {
     
+    
     // MARK: - Init
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,5 +63,5 @@ class CardLayout: UICollectionViewFlowLayout {
         
         return modifiedLayoutAtts
     }
-
+    
 }

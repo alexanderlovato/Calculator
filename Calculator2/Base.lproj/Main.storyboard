@@ -12,7 +12,7 @@
         <!--Calculator View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalculatorViewController" id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -379,7 +379,7 @@
                         <barButtonItem key="leftBarButtonItem" image="Carosel_HalfSize" id="BL3-TP-pCR">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="multitaskingButtonTapped:" destination="BYZ-38-t0r" id="cMJ-bJ-zsJ"/>
+                                <action selector="customBack:" destination="BYZ-38-t0r" id="Ksi-1W-YtK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="History" id="xCG-PA-Dwy">
@@ -397,7 +397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959.4202898550725" y="34.239130434782609"/>
+            <point key="canvasLocation" x="948" y="36"/>
         </scene>
         <!--Calculation History View Controller-->
         <scene sceneID="bQx-r5-qs3">
@@ -506,12 +506,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sva-V7-O6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2876.811594202899" y="32.608695652173914"/>
+            <point key="canvasLocation" x="2684" y="36"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="fKd-iU-GG6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xgx-yk-swL" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Xgx-yk-swL" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OBh-oJ-awA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -535,35 +535,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="cEn-rw-eSD" customClass="CardLayout" customModule="Calculator2" customModuleProvider="target"/>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCollectionViewCellId" id="UaW-UI-FXX" customClass="CardCollectionViewCell" customModule="Calculator2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                                <connections>
-                                    <segue destination="Xgx-yk-swL" kind="custom" id="Vcg-AJ-xoG"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
+                        <cells/>
                         <connections>
                             <outlet property="dataSource" destination="hRX-Hd-qXj" id="zw0-jW-Shk"/>
                             <outlet property="delegate" destination="hRX-Hd-qXj" id="Lqi-JQ-Uec"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="ax4-pf-kvB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ahz-9e-Wnl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xo2-1K-OY4">
                             <connections>
-                                <segue destination="Xgx-yk-swL" kind="show" id="9VB-dc-f8U"/>
+                                <action selector="addCalculatorInstanceButtonTapped:" destination="hRX-Hd-qXj" id="RFO-eT-Znk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLv-td-aTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-765" y="33"/>
+            <point key="canvasLocation" x="-696" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tl5-7v-OQD">
@@ -581,14 +569,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tia-ap-XO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880" y="36"/>
+            <point key="canvasLocation" x="1762" y="36"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="SOK-2x-cQb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EdH-MU-3Wb" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m53-hr-Hy0" customClass="TransparentNavigationBar" customModule="Calculator2" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m53-hr-Hy0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -599,7 +587,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahA-Dj-ro6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1687" y="33"/>
+            <point key="canvasLocation" x="-1561" y="36"/>
         </scene>
     </scenes>
     <resources>
@@ -607,7 +595,4 @@
         <image name="Carosel_HalfSize" width="46" height="34"/>
         <image name="Stone_Wall-wallpaper-10422235" width="1440" height="1280"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="9VB-dc-f8U"/>
-    </inferredMetricsTieBreakers>
 </document>

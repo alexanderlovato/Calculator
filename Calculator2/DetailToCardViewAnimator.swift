@@ -10,6 +10,8 @@ import UIKit
 
 class DetailViewToCardAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
+    // MARK: - UIViewControllerAnimatedTransitioning
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
@@ -46,5 +48,4 @@ class DetailViewToCardAnimator: NSObject, UIViewControllerAnimatedTransitioning 
             
         })
     }
-
 }
