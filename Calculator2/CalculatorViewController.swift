@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController, DestinationViewControllerDelegate, CardCollectionTransitionDelegate {
+class CalculatorViewController: UIViewController, DestinationViewControllerDelegate {
     
     //MARK: - Enumerators
     enum Operations: String {
@@ -42,7 +42,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     
     //MARK: - Calculator singleton
     var calculator = Calculator()
-    var cardIndex = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,11 +69,10 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     
     ///Back Bar Button Item used to return back to CardCollectionViewController
     @IBAction func customBack(_ sender: Any) {
-        let calculatorIndex = CalculatorController.sharedController.calculators[cardIndex.row]
-        calculatorIndex.result = resultLabelValue
-        calculatorIndex.screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
-        calculatorIndex.currentlyTypingNumber = calculator.currentlyTypingNumber
-        calculatorIndex.operationStack = calculator.operationStack
+
+        calculator.result = resultLabelValue
+        sharedController.saveToPersistentStorage()
+
         _ = navigationController?.popViewController(animated: true)
     }
     
@@ -86,50 +84,59 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         
         switch currentTitle {
         
+        // Delete button (C)
         case Operations.delete.rawValue:
             calculator.delete()
             resultTextLabel.text = "0"
             calculator.currentlyTypingNumber = false
             finishedEquation = false
         
+        // Positive or Negative button (+/-)
         case Operations.plusMinus.rawValue:
             positiveOrNegative(currentNumber: resultLabelValue)
         
+        // Percent button (%)
         case Operations.percent.rawValue:
-            let percentValue = sharedController.percentage(currentNumber: resultLabelValue)
+            let percentValue = percentage(currentNumber: resultLabelValue)
             resultTextLabel.text = removeTrailingZero(number: percentValue)
         
+        // Division button (÷)
         case Operations.division.rawValue:
             calculator.enter(addToStack: resultLabelValue)
             calculator.enter(addToStack: "÷")
             calculator.currentlyTypingNumber = false
             finishedEquation = false
-            
+        
+        // Multiplication button (x)
         case Operations.multiplication.rawValue:
             calculator.enter(addToStack: resultLabelValue)
             calculator.enter(addToStack: "x")
             calculator.currentlyTypingNumber = false
             finishedEquation = false
         
+        // Subtraction button (-)
         case Operations.subtraction.rawValue:
             calculator.enter(addToStack: resultLabelValue)
             calculator.enter(addToStack: "-")
             calculator.currentlyTypingNumber = false
             finishedEquation = false
         
+        // Addition button (+)
         case Operations.addition.rawValue:
             calculator.enter(addToStack: resultLabelValue)
             calculator.enter(addToStack: "+")
             calculator.currentlyTypingNumber = false
             finishedEquation = false
         
+        // Decimal button (.)
         case Operations.decimal.rawValue:
             convertToDecimalNumber(number: resultTextLabel.text!)
         
+        // Equals button (=)
         case Operations.equals.rawValue:
             calculator.enter(addToStack: resultLabelValue)
             let stack = calculator.operationStack
-            let result = sharedController.runOperation(stackToUse: stack)
+            let result = runOperation(stackToUse: stack)
             calculator.delete()
             
             if finishedEquation == false {
@@ -150,6 +157,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         }
     }
     
+    //Backspace button
     @IBAction func backspaceButtonTapped(_ sender: UIButton) {
         if resultTextLabel.text == "" {
             resultTextLabel.text = "0"
@@ -179,8 +187,22 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         }
     }
     
+    //Calculate all objects with passed in array
+    func runOperation(stackToUse: [Any]) -> Double {
+        
+        let operationStack = stackToUse
+        var operationString = operationStack.map{ String(describing: $0) }.joined(separator: " ")
+        operationString = operationString.replacingOccurrences(of: "÷", with: "/")
+        operationString = operationString.replacingOccurrences(of: "x", with: "*")
+        let expression = NSExpression(format: operationString, argumentArray: [])
+        let value = expression.expressionValue(with: nil, context: nil) as! NSNumber
+        return value.doubleValue
+    }
+    
     
     //TODO: - Need to create a new place to store History
+    
+    //Save button action for saving an operation and a result
     @IBAction func saveResultButtonTapped(_ sender: UIButton) {
         
 //        let stack = sharedController.calculator.operationStack
@@ -198,6 +220,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     }
     
     //TODO: - Currently broken by the decimal formatting from ScoreFormatter
+    //Adds a decimal to the end of the number
     func convertToDecimalNumber(number: String) {
         let decimalNumber = number + "."
         resultTextLabel.text = decimalNumber
@@ -215,6 +238,30 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     func removeTrailingZero(number: Double) -> String {
         let tempNumber = String(format: "%g", number)
         return tempNumber
+    }
+    
+    ///Converts a passed in number into a percentage and returns the value
+    func percentage(currentNumber: Double) -> Double {
+        
+        var stack = calculator.operationStack
+        
+        if stack.count > 3 {
+            var tempStack = stack
+            _ = tempStack.removeLast()
+            let stackSum = runOperation(stackToUse: tempStack)
+            let decimalNumber = stackSum / 100
+            let percentnumber = decimalNumber * currentNumber
+            return percentnumber
+        } else if stack.count == 0 {
+            let decimalNumber = currentNumber / 100
+            return decimalNumber
+        } else {
+            let _ = stack.removeLast()
+            let firstNumber = stack.last as! Double
+            let decimalNumber = firstNumber / 100
+            let percentnumber = decimalNumber * currentNumber
+            return percentnumber
+        }
     }
     
     //MARK: - DestinationViewControllerDelegate function
@@ -261,18 +308,12 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         }
     }
     
-    //MARK: - CardCollectionTransitionDelegate function
-    ///Delegate Function used to pass data back from CardCollectionViewController
-    func passDataToCalculatorView(calculator: Calculator, index: IndexPath) {
-        //Update all values in calculator singleton
-        self.calculator = calculator
-        self.cardIndex = index
-    }
     
     //Update the textLabel values
     func updateWithCalculator() {
         guard let result = calculator.result else { return }
-        resultTextLabel.text = removeTrailingZero(number: result)
+        let displayResult = removeTrailingZero(number: result)
+        resultTextLabel.text = ScoreFormatter.formattedScore(displayResult)
         var minimalDescription = calculator.entireOperationString.map{ String(describing: $0) }.joined(separator: " ")
         minimalDescription = minimalDescription.replacingOccurrences(of: ".0", with: "")
         entireExpressionLabel.text = minimalDescription

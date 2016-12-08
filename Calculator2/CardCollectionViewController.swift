@@ -11,7 +11,7 @@ import UIKit
 
 class CardCollectionViewController: UICollectionViewController {
     
-    var delegate: CardCollectionTransitionDelegate?
+//    var delegate: CardCollectionTransitionDelegate?
     
     /// The pan gesture will be used for this scroll view so the collection view can page items smaller than it's width
     lazy var pagingScrollView: UIScrollView = { [unowned self] in
@@ -99,9 +99,9 @@ class CardCollectionViewController: UICollectionViewController {
     }
     
     // MARK: - Calculator View Delegate
-    func passBackCalculator(calculator: Calculator, index: IndexPath) {
-        delegate?.passDataToCalculatorView(calculator: calculator, index: index)
-    }
+//    func passBackCalculator(calculator: Calculator, index: IndexPath) {
+//        delegate?.passDataToCalculatorView(calculator: calculator, index: index)
+//    }
     
     // MARK: - Create New Calculator Bar Button
     @IBAction func addCalculatorInstanceButtonTapped(_ sender: UIBarButtonItem) {
@@ -127,13 +127,13 @@ extension CardCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         //Below solution provided by Ben Norris
-        //TODO: - Find how to identify indexPath for cell and how to pass the data over
+        //TODO: - Find out how to pass the data over
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
         let cardIndex = CalculatorController.sharedController.calculators[indexPath.item]
-        
-        passBackCalculator(calculator: cardIndex, index: indexPath)
-        self.delegate = CalculatorViewController()
+        vc.calculator = cardIndex
+//        passBackCalculator(calculator: cardIndex, index: indexPath)
+//        self.delegate = CalculatorViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -209,12 +209,6 @@ extension CardCollectionViewController: CardToDetailViewAnimating {
         return frame
     }
 }
-
-// MARK: - CalculatorViewController Navigation Delegate
-protocol CardCollectionTransitionDelegate {
-    func passDataToCalculatorView(calculator: Calculator, index: IndexPath)
-}
-
 
 
 
