@@ -51,7 +51,6 @@ class CardCollectionViewController: UICollectionViewController {
 
         }
         
-        
         // inset collection view left/right-most cards can be centered
         let flowLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
         let edgePadding = (self.collectionView!.bounds.size.width - flowLayout.itemSize.width)/2
@@ -80,6 +79,11 @@ class CardCollectionViewController: UICollectionViewController {
         self.collectionView!.isScrollEnabled = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        collectionView?.reloadData()
+    }
+    
     
     // MARK: - Layout
     
@@ -95,8 +99,8 @@ class CardCollectionViewController: UICollectionViewController {
     }
     
     // MARK: - Calculator View Delegate
-    func passBackCalculator(calculator: Calculator) {
-        delegate?.passDataToCalculatorView(calculator: calculator)
+    func passBackCalculator(calculator: Calculator, index: IndexPath) {
+        delegate?.passDataToCalculatorView(calculator: calculator, index: index)
     }
     
     // MARK: - Create New Calculator Bar Button
@@ -127,7 +131,8 @@ extension CardCollectionViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController")
         let cardIndex = CalculatorController.sharedController.calculators[indexPath.item]
-        passBackCalculator(calculator: cardIndex)
+        
+        passBackCalculator(calculator: cardIndex, index: indexPath)
         self.delegate = CalculatorViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -147,6 +152,7 @@ extension CardCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCellConst.reuseId, for: indexPath)
+        
         
         let calculatorIndex = CalculatorController.sharedController.calculators[indexPath.item]
         let viewSnapshot = calculatorIndex.screenshotImage
@@ -190,7 +196,7 @@ extension CardCollectionViewController: CardToDetailViewAnimating {
         }
     }
     func viewForTransition() -> UIView {
-        guard let cell = centeredCell() else { fatalError("this transition should never exist w/o starting cell") }
+        guard let cell = centeredCell() else { return UIView() }
         return cell
     }
     func beginFrameForTransition() -> CGRect {
@@ -206,7 +212,7 @@ extension CardCollectionViewController: CardToDetailViewAnimating {
 
 // MARK: - CalculatorViewController Navigation Delegate
 protocol CardCollectionTransitionDelegate {
-    func passDataToCalculatorView(calculator: Calculator)
+    func passDataToCalculatorView(calculator: Calculator, index: IndexPath)
 }
 
 

@@ -75,6 +75,28 @@ class Calculator: Equatable {
         ]
         return dictionary
     }
+    
+    func enter(addToStack: Any) {
+        operationStack.append(addToStack)
+        print(operationStack)
+    }
+    
+    func pushToStringStack(addToStack: String) {
+        entireOperationString.append(addToStack)
+    }
+    
+    func mergeStacks(addToStack: [Any]) {
+        operationStack += addToStack
+        print(operationStack)
+    }
+    
+    func delete() {
+        operationStack.removeAll()
+        print(operationStack)
+//        result = 0
+    }
+    
+    
 }
 
 func ==(lhs: Calculator, rhs: Calculator) -> Bool {

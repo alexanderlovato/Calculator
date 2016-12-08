@@ -10,6 +10,7 @@ import UIKit
 
 class CalculatorViewController: UIViewController, DestinationViewControllerDelegate, CardCollectionTransitionDelegate {
     
+    //MARK: - Enumerators
     enum Operations: String {
         case addition = "+"
         case subtraction = "-"
@@ -22,28 +23,35 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         case decimal = "."
     }
     
-    
+    //MARK: - Outlets
     @IBOutlet weak var wallpaperImageView: UIImageView!
     @IBOutlet weak var resultTextLabel: UILabel!
     @IBOutlet weak var entireExpressionLabel: UILabel!
-    let sharedController = CalculatorController.sharedController
-    var finishedEquation = false
     
+    //MARK: - Shared Controller
+    let sharedController = CalculatorController.sharedController
+    
+    //MARK: - Properties
+    var finishedEquation = false
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
         let returnValue = ScoreFormatter.unformattedNumberString(value)
         guard let returnDouble = returnValue else { return 0 }
         return Double(returnDouble) ?? 0
-        
     }
     
-    var currentlyTypingNumber = CalculatorController.sharedController.currentlyTypingNumber
+    //MARK: - Calculator singleton
+    var calculator = Calculator()
+    var cardIndex = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         self.navigationController?.navigationBar.barTintColor = UIColor.white
+        
+        updateWithCalculator()
+        
+        //The below code is a placeholder for bluring the background. Not sure if I want to use this or if I want to make this into a toggle function
         
 //        let blurEffect = UIBlurEffect(style: .light)
 //        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
@@ -53,30 +61,35 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     }
     
     
+    //MARK: - Status Bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
     
+    //MARK: - Storyboard Actions
+    
     ///Back Bar Button Item used to return back to CardCollectionViewController
     @IBAction func customBack(_ sender: Any) {
-        sharedController.calculator.screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
-        sharedController.saveToPersistentStorage()
+        let calculatorIndex = CalculatorController.sharedController.calculators[cardIndex.row]
+        calculatorIndex.result = resultLabelValue
+        calculatorIndex.screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
+        calculatorIndex.currentlyTypingNumber = calculator.currentlyTypingNumber
+        calculatorIndex.operationStack = calculator.operationStack
         _ = navigationController?.popViewController(animated: true)
     }
+    
     
     @IBAction func operationAction(_ sender: UIButton) {
         let title = sender.currentTitle
         
         guard let currentTitle = title else { return }
         
-        
         switch currentTitle {
         
         case Operations.delete.rawValue:
-            sharedController.delete()
+            calculator.delete()
             resultTextLabel.text = "0"
-            sharedController.calculator.result = resultLabelValue
-            currentlyTypingNumber = false
+            calculator.currentlyTypingNumber = false
             finishedEquation = false
         
         case Operations.plusMinus.rawValue:
@@ -87,50 +100,50 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             resultTextLabel.text = removeTrailingZero(number: percentValue)
         
         case Operations.division.rawValue:
-            sharedController.enter(addToStack: resultLabelValue)
-            sharedController.enter(addToStack: "÷")
-            currentlyTypingNumber = false
+            calculator.enter(addToStack: resultLabelValue)
+            calculator.enter(addToStack: "÷")
+            calculator.currentlyTypingNumber = false
             finishedEquation = false
             
         case Operations.multiplication.rawValue:
-            sharedController.enter(addToStack: resultLabelValue)
-            sharedController.enter(addToStack: "x")
-            currentlyTypingNumber = false
+            calculator.enter(addToStack: resultLabelValue)
+            calculator.enter(addToStack: "x")
+            calculator.currentlyTypingNumber = false
             finishedEquation = false
         
         case Operations.subtraction.rawValue:
-            sharedController.enter(addToStack: resultLabelValue)
-            sharedController.enter(addToStack: "-")
-            currentlyTypingNumber = false
+            calculator.enter(addToStack: resultLabelValue)
+            calculator.enter(addToStack: "-")
+            calculator.currentlyTypingNumber = false
             finishedEquation = false
         
         case Operations.addition.rawValue:
-            sharedController.enter(addToStack: resultLabelValue)
-            sharedController.enter(addToStack: "+")
-            currentlyTypingNumber = false
+            calculator.enter(addToStack: resultLabelValue)
+            calculator.enter(addToStack: "+")
+            calculator.currentlyTypingNumber = false
             finishedEquation = false
         
         case Operations.decimal.rawValue:
             convertToDecimalNumber(number: resultTextLabel.text!)
         
         case Operations.equals.rawValue:
-            sharedController.enter(addToStack: resultLabelValue)
-            let stack = sharedController.calculator.operationStack
+            calculator.enter(addToStack: resultLabelValue)
+            let stack = calculator.operationStack
             let result = sharedController.runOperation(stackToUse: stack)
-            sharedController.delete()
+            calculator.delete()
             
             if finishedEquation == false {
-                sharedController.enter(addToStack: result)
+                calculator.enter(addToStack: result)
                 
-                //TODO - Need to create an new way to save calculation history
+                //TODO: - Need to create an new way to save calculation history
                 
-//                let calculator = Calculator(result: resultLabelValue, operationStack: sharedController.calculator.operationStack, currentlyTypingNumber: currentlyTypingNumber)
+//                let calculator = self.calculator
 //                sharedController.saveCalculatorTab(calculatorTab: calculator)
-//                sharedController.delete()
+                calculator.delete()
             }
             let labelResult = removeTrailingZero(number: result)
             resultTextLabel.text = ScoreFormatter.formattedScore(labelResult)
-            currentlyTypingNumber = false
+            calculator.currentlyTypingNumber = false
             finishedEquation = true
         default:
             print("Error")
@@ -138,10 +151,9 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     }
     
     @IBAction func backspaceButtonTapped(_ sender: UIButton) {
-        
         if resultTextLabel.text == "" {
             resultTextLabel.text = "0"
-            currentlyTypingNumber = false
+            calculator.currentlyTypingNumber = false
         } else {
             guard let resultText = resultTextLabel.text else { return }
             let truncated = resultText.substring(to: resultText.index(before: resultText.endIndex))
@@ -149,14 +161,13 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         }
     }
     
-    
+    //Function for all number input from the number pad
     @IBAction func buttonNumberInput(_ sender: UIButton) {
-        
         
         let buttonNumber = sender.titleLabel?.text
         let unformattedNumber = ScoreFormatter.unformattedNumberString(resultTextLabel.text!)
         
-        if currentlyTypingNumber {
+        if calculator.currentlyTypingNumber {
             let formattedNumber = unformattedNumber! + buttonNumber!
             
             resultTextLabel.text = ScoreFormatter.formattedScore(formattedNumber)
@@ -164,13 +175,13 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         } else {
             resultTextLabel.text = ScoreFormatter.formattedScore(buttonNumber)
             entireExpressionLabel.text = ScoreFormatter.formattedScore(buttonNumber)
-            currentlyTypingNumber = true
+            calculator.currentlyTypingNumber = true
         }
     }
     
+    
+    //TODO: - Need to create a new place to store History
     @IBAction func saveResultButtonTapped(_ sender: UIButton) {
-        
-        //TODO - Need to create a new place to store History
         
 //        let stack = sharedController.calculator.operationStack
 //        
@@ -186,25 +197,27 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
 //        }
     }
     
-
-
+    //TODO: - Currently broken by the decimal formatting from ScoreFormatter
     func convertToDecimalNumber(number: String) {
         let decimalNumber = number + "."
         resultTextLabel.text = decimalNumber
     }
     
+    //Adds or removes a "-" from the current number to convert it from positive to negative
     func positiveOrNegative(currentNumber: Double) {
         var resultValue = currentNumber
         resultValue = resultValue * -1
         resultTextLabel.text = removeTrailingZero(number: resultValue)
-         currentlyTypingNumber = false
+         calculator.currentlyTypingNumber = false
     }
     
+    //Since the numbers are all Double types, this is meant to remove the trailing zero that's always present in Double number types
     func removeTrailingZero(number: Double) -> String {
         let tempNumber = String(format: "%g", number)
         return tempNumber
     }
     
+    //MARK: - DestinationViewControllerDelegate function
     ///Delegate function used to pass data back from CalculationHistoryViewController
     func passNumberBack(data: [Any]) {
         let lastObject = "\(data.last!)"
@@ -214,55 +227,59 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             
         //Check if the last object from the selected History table is an operator
         case "+", "-", "x", "÷":
-            let currentStack = sharedController.calculator.operationStack.last as? String ?? ""
+            let currentStack = calculator.operationStack.last as? String ?? ""
             
             //Then check if the last object of the operationStack is an operator
             if currentStack == "+" || currentStack == "-" || currentStack == "x" || currentStack == "÷" {
-                sharedController.mergeStacks(addToStack: data)
-                currentlyTypingNumber = false
+                calculator.mergeStacks(addToStack: data)
+                calculator.currentlyTypingNumber = false
                 resultTextLabel.text = "0"
-            } else if sharedController.calculator.operationStack.count == 0 {
-                
-                //Since neither stacks end with an operator: Remove last number from selected histroy stack, merge that stack with the operatorStack, then set the resultTextLabel to the last removed object of history stack
-                sharedController.mergeStacks(addToStack: dataStack)
-                resultTextLabel.text = "0"
-                currentlyTypingNumber = false
-            } else {
-                sharedController.enter(addToStack: resultLabelValue)
-                resultTextLabel.text = "0"
-                currentlyTypingNumber = false
-                sharedController.mergeStacks(addToStack: dataStack)
-                
-            }
             
+            } else if calculator.operationStack.count == 0 {
+                //Since neither stacks end with an operator: Remove last number from selected histroy stack, merge that stack with the operatorStack, then set the resultTextLabel to the last removed object of history stack
+                calculator.mergeStacks(addToStack: dataStack)
+                resultTextLabel.text = "0"
+                calculator.currentlyTypingNumber = false
+            } else {
+                calculator.enter(addToStack: resultLabelValue)
+                resultTextLabel.text = "0"
+                calculator.currentlyTypingNumber = false
+                calculator.mergeStacks(addToStack: dataStack)
+            }
         default:
             if data.count > 2 {
                 let labelNumber = removeTrailingZero(number: dataStack.removeLast() as! Double)
-                sharedController.mergeStacks(addToStack: dataStack)
+                calculator.mergeStacks(addToStack: dataStack)
                 resultTextLabel.text = labelNumber
-                currentlyTypingNumber = true
+                calculator.currentlyTypingNumber = true
             } else {
                 //If none of the above scenarios match then execute this block of code
                 let labelNumber = removeTrailingZero(number: dataStack.removeLast() as! Double)
                 resultTextLabel.text = labelNumber
-                currentlyTypingNumber = true
-            
+                calculator.currentlyTypingNumber = true
             }
-            
         }
     }
     
+    //MARK: - CardCollectionTransitionDelegate function
     ///Delegate Function used to pass data back from CardCollectionViewController
-    func passDataToCalculatorView(calculator: Calculator) {
-        
-        sharedController.calculator.result = calculator.result
-        sharedController.calculator.currentlyTypingNumber = calculator.currentlyTypingNumber
-        sharedController.calculator.operationStack = calculator.operationStack
-        sharedController.calculator.entireOperationString = calculator.entireOperationString
-        sharedController.calculator.screenshotImage = calculator.screenshotImage
+    func passDataToCalculatorView(calculator: Calculator, index: IndexPath) {
+        //Update all values in calculator singleton
+        self.calculator = calculator
+        self.cardIndex = index
     }
     
+    //Update the textLabel values
+    func updateWithCalculator() {
+        guard let result = calculator.result else { return }
+        resultTextLabel.text = removeTrailingZero(number: result)
+        var minimalDescription = calculator.entireOperationString.map{ String(describing: $0) }.joined(separator: " ")
+        minimalDescription = minimalDescription.replacingOccurrences(of: ".0", with: "")
+        entireExpressionLabel.text = minimalDescription
+    }
     
+    //MARK: - Navigation
+    ///Storyboard segue used for delcaring the delegate for protocol DestinationViewControllerDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toHistoryTable" {
             let navigation = segue.destination as! UINavigationController
@@ -272,5 +289,4 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         // Pass the selected object to the new view controller.
         }
     }
-
 }

@@ -29,14 +29,14 @@ class CalculatorController {
     }
     
     // MARK: - Computed Properties
-    var currentlyTypingNumber: Bool {
-        get {
-            
-            return calculator.currentlyTypingNumber
-        } set {
-            calculator.currentlyTypingNumber = newValue
-        }
-    }
+//    var currentlyTypingNumber: Bool {
+//        get {
+//            
+//            return calculator.currentlyTypingNumber
+//        } set {
+//            calculator.currentlyTypingNumber = newValue
+//        }
+//    }
     
     // MARK: - Controller Functions
     
@@ -47,23 +47,21 @@ class CalculatorController {
         self.saveToPersistentStorage()
     }
     
+    //MARK: - UserDefaults functions
     // READ
-    
     func loadFromPersistentStorage() {
         guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [[String : Any]] else {return}
-        
         self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
     }
     
-    
     // UPDATE
-    
     func saveToPersistentStorage() {
-        
         let calculatorDictionaries = self.calculators.map({$0.dictionaryCopy()})
         UserDefaults.standard.set(calculatorDictionaries, forKey: kCalcuators)
     }
     
+    
+    //MARK: - Class Methods
     ///Calculates a stack of Doubles and operator Strings with operator precedence.
     func runOperation(stackToUse: [Any]) -> Double {
                 
@@ -75,6 +73,8 @@ class CalculatorController {
         let value = expression.expressionValue(with: nil, context: nil) as! NSNumber
         return value.doubleValue
         
+        //Former logic for this function. 
+        //Haven't deleted it yet because not sure if this logic will become useful later
 //        for _ in operationStack {
 //            for (index, item) in operationStack.enumerated() {
 //                guard let item = item as? String else { continue }
@@ -118,7 +118,6 @@ class CalculatorController {
 //        }
 //        let returnNumber = operationStack.removeLast() as! Double
 //        return value
-        
     }
     
     ///Converts a passed in number into a percentage and returns the value
@@ -143,33 +142,9 @@ class CalculatorController {
             let percentnumber = decimalNumber * currentNumber
             return percentnumber
         }
-        
-    }
-    
-    ///Add a passed in number to the stack and prints the current stack
-    func enter(addToStack: Any) {
-        calculator.operationStack.append(addToStack)
-        print(calculator.operationStack)
-    }
-    
-    func pushToStringStack(addToStack: String) {
-        calculator.entireOperationString.append(addToStack)
-    }
-    
-    func mergeStacks(addToStack: [Any]) {
-        calculator.operationStack += addToStack
-        print(calculator.operationStack)
     }
     
     // DELETE
-    
-    ///Delete all objects from the stack
-    func delete() {
-        calculator.operationStack.removeAll()
-        print(calculator.operationStack)
-        calculator.result = 0
-    }
-    
     func removeCalculator(calculator: Calculator) {
         if let calculatorIndex = calculators.index(of: calculator) {
             calculators.remove(at: calculatorIndex)
