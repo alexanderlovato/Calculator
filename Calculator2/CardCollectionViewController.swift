@@ -151,13 +151,12 @@ extension CardCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCellConst.reuseId, for: indexPath)
-        
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCellConst.reuseId, for: indexPath) as! CardCollectionViewCell
         let calculatorIndex = CalculatorController.sharedController.calculators[indexPath.item]
         let viewSnapshot = calculatorIndex.screenshotImage
-        
-        cell.addSubview(UIImageView(image: viewSnapshot!))
+        let snapshot = UIImageView(image: viewSnapshot!)
+        snapshot.frame = snapshot.bounds
+        cell.addSubview(snapshot)
         return cell
     }
 }

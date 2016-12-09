@@ -24,7 +24,7 @@ class Calculator: Equatable {
     var operationStack: [Any]
     var entireOperationString: [String]
     var currentlyTypingNumber: Bool
-    var screenshotData: Data? = Data()
+    var screenshotData: Data?
     var screenshotImage: UIImage? {
         get {
             guard let screenshotData = self.screenshotData else { return nil }
@@ -36,7 +36,7 @@ class Calculator: Equatable {
     }
     
     // MARK: - Initializers
-    init(result: Double = 0, operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, screenshotData: Data? = UIImagePNGRepresentation(#imageLiteral(resourceName: "Carousel"))) {
+    init(result: Double = 0, operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, screenshotData: Data? = Data()) {
         self.result = result
         self.operationStack = operationStack
         self.entireOperationString = entireOperationString
@@ -54,7 +54,7 @@ class Calculator: Equatable {
                 self.operationStack = []
                 self.entireOperationString = []
                 self.currentlyTypingNumber = false
-                self.screenshotData = UIImagePNGRepresentation(#imageLiteral(resourceName: "Carousel"))
+                self.screenshotData = Data()
                 return nil
         }
         
@@ -65,6 +65,9 @@ class Calculator: Equatable {
         self.screenshotData = screenshotData
     }
     
+    // MARK: - Model Functions
+    
+    // Converts all model objects to a [String : Any] dictionary
     func dictionaryCopy() -> [String : Any] {
         let dictionary: [String : Any] = [
             kResult : self.result!,
@@ -76,29 +79,31 @@ class Calculator: Equatable {
         return dictionary
     }
     
+    // Appends number or operator to operationStack
     func enter(addToStack: Any) {
         operationStack.append(addToStack)
         print(operationStack)
     }
     
+    // Appends number or operator to entireOperationString
     func pushToStringStack(addToStack: String) {
         entireOperationString.append(addToStack)
     }
     
+    // Merges a stack of numbers and operators from History to operationStack (TBD)
     func mergeStacks(addToStack: [Any]) {
         operationStack += addToStack
         print(operationStack)
     }
     
+    // Remvoes all data from operation stack
     func delete() {
         operationStack.removeAll()
         print(operationStack)
-//        result = 0
     }
-    
-    
 }
 
+// MARK: - Equatable Protocol Function
 func ==(lhs: Calculator, rhs: Calculator) -> Bool {
     return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }

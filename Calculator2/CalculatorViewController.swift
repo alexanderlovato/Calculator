@@ -10,7 +10,7 @@ import UIKit
 
 class CalculatorViewController: UIViewController, DestinationViewControllerDelegate {
     
-    //MARK: - Enumerators
+    // MARK: - Enumerators
     enum Operations: String {
         case addition = "+"
         case subtraction = "-"
@@ -23,15 +23,15 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         case decimal = "."
     }
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var wallpaperImageView: UIImageView!
     @IBOutlet weak var resultTextLabel: UILabel!
     @IBOutlet weak var entireExpressionLabel: UILabel!
     
-    //MARK: - Shared Controller
+    // MARK: - Shared Controller
     let sharedController = CalculatorController.sharedController
     
-    //MARK: - Properties
+    // MARK: - Properties
     var finishedEquation = false
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
@@ -40,14 +40,12 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         return Double(returnDouble) ?? 0
     }
     
-    //MARK: - Calculator singleton
+    // MARK: - Calculator singleton
     var calculator = Calculator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.navigationBar.barTintColor = UIColor.white
-        
         updateWithCalculator()
         
         //The below code is a placeholder for bluring the background. Not sure if I want to use this or if I want to make this into a toggle function
@@ -59,27 +57,23 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         
     }
     
-    
-    //MARK: - Status Bar
+    // MARK: - Status Bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
     
-    //MARK: - Storyboard Actions
-    
-    ///Back Bar Button Item used to return back to CardCollectionViewController
+    // MARK: - Return to Card Collection
+    //Back Bar Button Item used to return back to CardCollectionViewController
     @IBAction func customBack(_ sender: Any) {
-
         calculator.result = resultLabelValue
+        calculator.screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
         sharedController.saveToPersistentStorage()
-
         _ = navigationController?.popViewController(animated: true)
     }
     
-    
+    // Action called when an operation button is selected
     @IBAction func operationAction(_ sender: UIButton) {
         let title = sender.currentTitle
-        
         guard let currentTitle = title else { return }
         
         switch currentTitle {

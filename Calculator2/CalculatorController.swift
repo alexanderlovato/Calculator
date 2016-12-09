@@ -22,45 +22,37 @@ class CalculatorController {
     // MARK: Internal Properties
     var calculators: [Calculator]
     
+    // MARK: - Initializers
     init() {
         calculators = []
-        
         self.loadFromPersistentStorage()
     }
-    
-    // MARK: - Computed Properties
-//    var currentlyTypingNumber: Bool {
-//        get {
-//            
-//            return calculator.currentlyTypingNumber
-//        } set {
-//            calculator.currentlyTypingNumber = newValue
-//        }
-//    }
     
     // MARK: - Controller Functions
     
     // CREATE
+    
+    // Appends a new Calculator instance to calculators and saves to UserDefaults
     func saveCalculatorTab(calculatorTab: Calculator) {
         calculators.append(calculatorTab)
-        
         self.saveToPersistentStorage()
     }
     
-    //MARK: - UserDefaults functions
     // READ
+    
+    // Loads stored objects from persistent storage
     func loadFromPersistentStorage() {
         guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [[String : Any]] else {return}
         self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
     }
     
     // UPDATE
+    
+    // Saves all objects in calculators array to persistent storage
     func saveToPersistentStorage() {
         let calculatorDictionaries = self.calculators.map({$0.dictionaryCopy()})
         UserDefaults.standard.set(calculatorDictionaries, forKey: kCalcuators)
     }
-    
-    //MARK: - Class Methods
     
     // DELETE
     
