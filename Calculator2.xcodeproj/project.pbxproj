@@ -164,7 +164,6 @@
 				FAC33E281DE5270600D517AB /* View Controllers */,
 				FA5FEC1B1DAC65A5009218B9 /* AppDelegate.swift */,
 				FA55393E1DF0FEC3006E7700 /* Storyboards */,
-				FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */,
 				FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */,
 				FA5FEC271DAC65A5009218B9 /* Info.plist */,
 			);
@@ -198,6 +197,7 @@
 				FAC33E2A1DE527A200D517AB /* CardCollectionViewCell.swift */,
 				FAC33E2C1DE5280500D517AB /* TransparentNavigationBar.swift */,
 				FAC33E2E1DE5284900D517AB /* CardLayout.swift */,
+				FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */,
 				FA55393D1DF0FE6D006E7700 /* Navigation Objects */,
 				FA55393C1DF0FE5A006E7700 /* Animator Objects */,
 			);

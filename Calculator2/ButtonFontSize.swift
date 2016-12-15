@@ -21,8 +21,6 @@ class ButtonFontSize: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         titleLabel?.adjustsFontSizeToFitWidth = true
-        
         titleLabel?.minimumScaleFactor = 0
     }
-
 }

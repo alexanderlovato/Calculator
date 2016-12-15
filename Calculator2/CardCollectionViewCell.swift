@@ -14,17 +14,19 @@ struct CardCollectionViewCellConst {
 
 class CardCollectionViewCell: UICollectionViewCell {
     
-    let viewSnapshot = UIImageView()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         // init setup
         
-        
-        
         self.contentView.backgroundColor = UIColor(hue: 63/360, saturation: 2/100, brightness: 96/100, alpha: 1)
-        self.layer.cornerRadius = 2
-        self.clipsToBounds = true
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
+//        let cardViewSnapshot = vc.view.snapshotView(afterScreenUpdates: false)
+//        cardViewSnapshot?.frame = self.bounds
+//        cardViewSnapshot?.clipsToBounds = true
+//        self.addSubview(cardViewSnapshot!)
+//        self.layer.cornerRadius = 2
+//        self.clipsToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {

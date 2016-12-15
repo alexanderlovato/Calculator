@@ -25,6 +25,7 @@ class DetailViewToCardAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         let cardViewSnapshot = fromViewController.view.snapshotView(afterScreenUpdates: false)
         // match corner radius to target views
         cardView.isHidden = true
+        // Allows snapshot size to match the size of the transitioning view
         cardViewSnapshot?.layer.cornerRadius = cardView.layer.cornerRadius
         cardViewSnapshot?.clipsToBounds = true
         cardViewSnapshot?.frame = fromViewController.view.bounds
@@ -45,7 +46,6 @@ class DetailViewToCardAnimator: NSObject, UIViewControllerAnimatedTransitioning 
             cardView.isHidden = false
             cardViewSnapshot?.removeFromSuperview()
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            
         })
     }
 }

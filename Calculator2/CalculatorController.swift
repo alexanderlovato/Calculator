@@ -15,10 +15,7 @@ class CalculatorController {
     
     // MARK: - Shared Instance
     static let sharedController = CalculatorController()
-    
-    // MARK: - Class Instances
-    var calculator = Calculator()
-    
+        
     // MARK: Internal Properties
     var calculators: [Calculator]
     

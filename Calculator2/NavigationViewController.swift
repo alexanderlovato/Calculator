@@ -42,5 +42,4 @@ class NavigationViewController: UINavigationController {
             self.setNeedsStatusBarAppearanceUpdate()
         }
     }
-    
 }

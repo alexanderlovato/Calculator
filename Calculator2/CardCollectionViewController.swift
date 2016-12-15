@@ -48,7 +48,6 @@ class CardCollectionViewController: UICollectionViewController {
             let calculator = Calculator(result: 0, operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: UIImagePNGRepresentation(#imageLiteral(resourceName: "Carousel")))
             CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
             collectionView?.reloadData()
-
         }
         
         // inset collection view left/right-most cards can be centered
@@ -84,7 +83,6 @@ class CardCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
     
-    
     // MARK: - Layout
     
     override func viewDidLayoutSubviews() {
@@ -97,11 +95,6 @@ class CardCollectionViewController: UICollectionViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
-    
-    // MARK: - Calculator View Delegate
-//    func passBackCalculator(calculator: Calculator, index: IndexPath) {
-//        delegate?.passDataToCalculatorView(calculator: calculator, index: index)
-//    }
     
     // MARK: - Create New Calculator Bar Button
     @IBAction func addCalculatorInstanceButtonTapped(_ sender: UIBarButtonItem) {
@@ -117,7 +110,6 @@ class CardCollectionViewController: UICollectionViewController {
         let center = UICollectionViewScrollPosition.centeredVertically
         self.collectionView?.selectItem(at: cardIndexPath, animated: true, scrollPosition: center)
     }
-    
 }
 
 
@@ -132,8 +124,6 @@ extension CardCollectionViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
         let cardIndex = CalculatorController.sharedController.calculators[indexPath.item]
         vc.calculator = cardIndex
-//        passBackCalculator(calculator: cardIndex, index: indexPath)
-//        self.delegate = CalculatorViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -160,7 +150,6 @@ extension CardCollectionViewController {
         return cell
     }
 }
-
 
 // MARK: - Scroll Delegate
 
