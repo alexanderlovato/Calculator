@@ -27,6 +27,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     @IBOutlet weak var resultTextLabel: UILabel!
     let sharedController = CalculatorController.sharedController
     var finishedEquation = false
+    var decimalPressed = false
     
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
@@ -64,6 +65,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             sharedController.calculator.result = resultLabelValue
             currentlyTypingNumber = false
             finishedEquation = false
+            decimalPressed = false
         
         case Operations.plusMinus.rawValue:
             positiveOrNegative(currentNumber: resultLabelValue)
@@ -77,24 +79,28 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             sharedController.enter(addToStack: "÷")
             currentlyTypingNumber = false
             finishedEquation = false
+            decimalPressed = false
             
         case Operations.multiplication.rawValue:
             sharedController.enter(addToStack: resultLabelValue)
             sharedController.enter(addToStack: "x")
             currentlyTypingNumber = false
             finishedEquation = false
+            decimalPressed = false
         
         case Operations.subtraction.rawValue:
             sharedController.enter(addToStack: resultLabelValue)
             sharedController.enter(addToStack: "-")
             currentlyTypingNumber = false
             finishedEquation = false
+            decimalPressed = false
         
         case Operations.addition.rawValue:
             sharedController.enter(addToStack: resultLabelValue)
             sharedController.enter(addToStack: "+")
             currentlyTypingNumber = false
             finishedEquation = false
+            decimalPressed = false
         
         case Operations.decimal.rawValue:
             convertToDecimalNumber(number: resultTextLabel.text!)
@@ -115,6 +121,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             resultTextLabel.text = ScoreFormatter.formattedScore(labelResult)
             currentlyTypingNumber = false
             finishedEquation = true
+            decimalPressed = false
         default:
             print("Error")
         }
@@ -137,12 +144,20 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         
         
         let buttonNumber = sender.titleLabel?.text
-        let unformattedNumber = ScoreFormatter.unformattedNumberString(resultTextLabel.text!)
+        let unformattedNumber = ScoreFormatter.unformattedNumberString(resultTextLabel.text ?? "0")
+        let labelNumber = resultTextLabel.text ?? "0"
         
         if currentlyTypingNumber {
-            let formattedNumber = unformattedNumber! + buttonNumber!
-            
-            resultTextLabel.text = ScoreFormatter.formattedScore(formattedNumber)
+            if decimalPressed {
+                let number = labelNumber + buttonNumber!
+                resultTextLabel.text = number
+            } else {
+                let formattedNumber = unformattedNumber! + buttonNumber!
+                resultTextLabel.text = ScoreFormatter.formattedScore(formattedNumber)
+            }
+        } else if decimalPressed {
+            resultTextLabel.text = labelNumber + buttonNumber!
+            currentlyTypingNumber = true
         } else {
             resultTextLabel.text = ScoreFormatter.formattedScore(buttonNumber)
             currentlyTypingNumber = true
@@ -166,10 +181,19 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     }
     
     
-    
     func convertToDecimalNumber(number: String) {
-        let decimalNumber = number + "."
-        resultTextLabel.text = decimalNumber
+        
+        if !decimalPressed {
+            if !currentlyTypingNumber {
+                resultTextLabel.text = "."
+                decimalPressed = true
+            } else {
+                let decimalNumber = number + "."
+                resultTextLabel.text = decimalNumber
+                decimalPressed = true
+            
+            }
+        }
     }
     
     func positiveOrNegative(currentNumber: Double) {

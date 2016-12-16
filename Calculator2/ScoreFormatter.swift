@@ -13,13 +13,14 @@ struct ScoreFormatter {
     static fileprivate var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-//        formatter.maximumFractionDigits = 3
+        formatter.maximumFractionDigits = 5
         return formatter
     }
     
     static fileprivate var noFormatFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
+        formatter.maximumFractionDigits = 5
         return formatter
     }
     
