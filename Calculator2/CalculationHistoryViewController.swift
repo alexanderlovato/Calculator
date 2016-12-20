@@ -32,13 +32,13 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CalculatorController.sharedController.calculators.count
+        return CalculatorController.sharedController.historyObjects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalculatorCell", for: indexPath)
-        let calculator = CalculatorController.sharedController.calculators[indexPath.row]
-        var minimalDescription = calculator.operationStack.map{ String(describing: $0) }.joined(separator: " ")
+        let history = CalculatorController.sharedController.historyObjects[indexPath.row]
+        var minimalDescription = history.histroyArray.map{ String(describing: $0) }.joined(separator: " ")
         minimalDescription = minimalDescription.replacingOccurrences(of: ".0", with: "")
         cell.textLabel?.text = minimalDescription
         return cell
@@ -46,16 +46,16 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let calculator = CalculatorController.sharedController.calculators[indexPath.row]
-            CalculatorController.sharedController.removeCalculator(calculator: calculator)
+            let history = CalculatorController.sharedController.historyObjects[indexPath.row]
+            CalculatorController.sharedController.removeCalculator(historyEntry: history)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let calculator = tableView.indexPathForSelectedRow?.row
-        let stackIndex = CalculatorController.sharedController.calculators[calculator!]
-        let returnData = stackIndex.operationStack
+        let entry = tableView.indexPathForSelectedRow?.row
+        let stackIndex = CalculatorController.sharedController.historyObjects[entry!]
+        let returnData = stackIndex.histroyArray
         passDataBackwards(anyData: returnData)
         self.dismiss(animated: true, completion: nil)
     }
@@ -65,12 +65,9 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     }
     
     @IBAction func clearHistoryButtonTapped(_ sender: UIButton) {
-        CalculatorController.sharedController.clearAllCalculators()
+        CalculatorController.sharedController.clearAllHistoryEntires()
         historyTableView.reloadData()
     }
-    
-    
-
 }
 
 protocol DestinationViewControllerDelegate {
