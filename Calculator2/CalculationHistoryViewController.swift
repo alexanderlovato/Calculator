@@ -32,12 +32,12 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CalculatorController.sharedController.historyObjects.count
+        return CalculatorController.sharedController.history.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalculatorCell", for: indexPath)
-        let history = CalculatorController.sharedController.historyObjects[indexPath.row]
+        let history = CalculatorController.sharedController.history[indexPath.row]
         var minimalDescription = history.histroyArray.map{ String(describing: $0) }.joined(separator: " ")
         minimalDescription = minimalDescription.replacingOccurrences(of: ".0", with: "")
         cell.textLabel?.text = minimalDescription
@@ -46,7 +46,7 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let history = CalculatorController.sharedController.historyObjects[indexPath.row]
+            let history = CalculatorController.sharedController.history[indexPath.row]
             CalculatorController.sharedController.removeCalculator(historyEntry: history)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -54,7 +54,7 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let entry = tableView.indexPathForSelectedRow?.row
-        let stackIndex = CalculatorController.sharedController.historyObjects[entry!]
+        let stackIndex = CalculatorController.sharedController.history[entry!]
         let returnData = stackIndex.histroyArray
         passDataBackwards(anyData: returnData)
         self.dismiss(animated: true, completion: nil)

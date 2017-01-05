@@ -13,26 +13,33 @@ class History: Equatable {
     
     // MARK: - Private Properties
     private let kHistoryArray = "historyArray"
+    private let kCalculators = "calculators"
     
     // MARK: - Internal Properties
     var histroyArray: [Any]
+    var calculators: [Calculator]
     
     // MARK: - Initializers
-    init(histroyArray: [Any] = []) {
+    init(histroyArray: [Any] = [], calculators: [Calculator] = []) {
         self.histroyArray = histroyArray
+        self.calculators = calculators
     }
     
     init?(dictionary: [String : Any]) {
-        guard let histroyArray = dictionary[kHistoryArray] as? [Any] else {
+        guard let histroyArray = dictionary[kHistoryArray] as? [Any],
+        let calculators = dictionary[kCalculators] as? [Calculator] else {
             self.histroyArray = []
+            self.calculators = []
             return nil
         }
         self.histroyArray = histroyArray
+        self.calculators = calculators
     }
     
     func dictionaryCopy() -> [String : Any] {
         let dictionary: [String : Any] = [
-            kHistoryArray : self.histroyArray]
+            kHistoryArray : self.histroyArray,
+            kCalculators : self.calculators]
         return dictionary
     }
 }

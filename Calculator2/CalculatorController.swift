@@ -12,17 +12,18 @@ class CalculatorController {
     
     private let kCalcuators = "calculators"
     private let kHistoryObjects = "historyObjects"
+    private let kEverything = "everything"
     
     // MARK: - Shared Instance
     static let sharedController = CalculatorController()
     
     // MARK: Internal Properties
     var calculators: [Calculator]
-    var historyObjects: [History]
+    var history: [History]
     
     init() {
         calculators = []
-        historyObjects = []
+        history = []
         self.loadFromPersistentStorage()
     }
     
@@ -37,7 +38,7 @@ class CalculatorController {
     }
     
     func saveHistortyEntry(historyEntry: History) {
-        historyObjects.append(historyEntry)
+        history.append(historyEntry)
         self.saveToHistoryStorage()
     }
     
@@ -45,36 +46,39 @@ class CalculatorController {
     
     // Loads stored objects from persistent storage
     func loadFromPersistentStorage() {
-        guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as?[[String : Any]],
-        let historyDictionariesFromDefaults = UserDefaults.standard.object(forKey: kHistoryObjects) as?[[String : Any]] else {return}
+        
+        guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kEverything) as?[[String : Any]] else {return}
         self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
-        self.historyObjects = historyDictionariesFromDefaults.map({History(dictionary: $0)!})
+        self.history = calculatorDictionariesFromDefaults.map({History(dictionary: $0)!})
     }
     
     // UPDATE
     
     // Saves all objects in calculators array to persistent storage
     func saveToPersistentStorage() {
+        
+        let historyDictionary = self.history.map({$0.dictionaryCopy()})
         let calculatorDictionaries = self.calculators.map({$0.dictionaryCopy()})
-        UserDefaults.standard.set(calculatorDictionaries, forKey: kCalcuators)
+        let combinedDictionary: [String : Any] = [kCalcuators : calculatorDictionaries, kHistoryObjects : historyDictionary]
+        UserDefaults.standard.set(combinedDictionary, forKey: kEverything)
     }
     
     func saveToHistoryStorage() {
-        let historyDictionary = self.historyObjects.map({$0.dictionaryCopy()})
+        let historyDictionary = self.history.map({$0.dictionaryCopy()})
         UserDefaults.standard.set(historyDictionary, forKey: kHistoryObjects)
     }
     
     // DELETE
     
     func removeCalculator(historyEntry: History) {
-        if let historyIndex = historyObjects.index(of: historyEntry) {
+        if let historyIndex = history.index(of: historyEntry) {
             calculators.remove(at: historyIndex)
             saveToHistoryStorage()
         }
     }
     
     func clearAllHistoryEntires() {
-        historyObjects.removeAll()
+        history.removeAll()
         saveToHistoryStorage()
     }
 }
