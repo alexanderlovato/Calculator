@@ -16,17 +16,17 @@ class History: Equatable {
     private let kCalculators = "calculators"
     
     // MARK: - Internal Properties
-    var histroyArray: [Any]
+    var histroyArray: [String]
     var calculators: [Calculator]
     
     // MARK: - Initializers
-    init(histroyArray: [Any] = [], calculators: [Calculator] = []) {
+    init(histroyArray: [String] = [], calculators: [Calculator] = []) {
         self.histroyArray = histroyArray
         self.calculators = calculators
     }
     
     init?(dictionary: [String : Any]) {
-        guard let histroyArray = dictionary[kHistoryArray] as? [Any],
+        guard let histroyArray = dictionary[kHistoryArray] as? [String],
         let calculators = dictionary[kCalculators] as? [Calculator] else {
             self.histroyArray = []
             self.calculators = []

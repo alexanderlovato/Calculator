@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Calculator" representedClassName="Calculator" syncable="YES" codeGenerationType="class">
+        <attribute name="currentlyTypingNumber" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="currentNumber" attributeType="String" defaultValueString="&quot;0&quot;" syncable="YES"/>
+        <attribute name="entireOperationString" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
+        <attribute name="result" attributeType="String" defaultValueString="&quot;0&quot;" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Calculator" positionX="-54" positionY="-198" width="128" height="103"/>
+    </elements>
+</model>

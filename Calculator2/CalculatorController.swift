@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class CalculatorController {
     
@@ -18,13 +19,14 @@ class CalculatorController {
     static let sharedController = CalculatorController()
     
     // MARK: Internal Properties
-    var calculators: [Calculator]
+    var calculators: [Calculator] {
+        let request: NSFetchRequest<Calculator> = Calculator.fetchRequest()
+        return (try? CoreDataStack.context.fetch(request)) ?? []
+    }
     var history: [History]
     
     init() {
-        calculators = []
         history = []
-        self.loadFromPersistentStorage()
     }
     
     // MARK: - Controller Functions
@@ -33,7 +35,6 @@ class CalculatorController {
     
     // Appends a new Calculator instance to calculators and saves to UserDefaults
     func saveCalculatorTab(calculatorTab: Calculator) {
-        calculators.append(calculatorTab)
         self.saveToPersistentStorage()
     }
     
@@ -45,22 +46,16 @@ class CalculatorController {
     // READ
     
     // Loads stored objects from persistent storage
-    func loadFromPersistentStorage() {
-        
-        guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kEverything) as?[[String : Any]] else {return}
-        self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
-        self.history = calculatorDictionariesFromDefaults.map({History(dictionary: $0)!})
-    }
     
     // UPDATE
     
     // Saves all objects in calculators array to persistent storage
     func saveToPersistentStorage() {
-        
-        let historyDictionary = self.history.map({$0.dictionaryCopy()})
-        let calculatorDictionaries = self.calculators.map({$0.dictionaryCopy()})
-        let combinedDictionary: [String : Any] = [kCalcuators : calculatorDictionaries, kHistoryObjects : historyDictionary]
-        UserDefaults.standard.set(combinedDictionary, forKey: kEverything)
+        do {
+            try CoreDataStack.context.save()
+        } catch {
+            NSLog("Error saving to core data: \(error)")
+        }
     }
     
     func saveToHistoryStorage() {
@@ -72,7 +67,7 @@ class CalculatorController {
     
     func removeCalculator(historyEntry: History) {
         if let historyIndex = history.index(of: historyEntry) {
-            calculators.remove(at: historyIndex)
+            history.remove(at: historyIndex)
             saveToHistoryStorage()
         }
     }

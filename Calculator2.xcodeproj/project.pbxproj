@@ -13,10 +13,12 @@
 		FA5FEC261DAC65A5009218B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5FEC241DAC65A5009218B9 /* LaunchScreen.storyboard */; };
 		FA5FEC311DAC65A5009218B9 /* Calculator2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC301DAC65A5009218B9 /* Calculator2Tests.swift */; };
 		FA5FEC3C1DAC65A5009218B9 /* Calculator2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC3B1DAC65A5009218B9 /* Calculator2UITests.swift */; };
-		FA5FEC4C1DAC7D83009218B9 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */; };
 		FA5FEC4E1DAC7E71009218B9 /* CalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */; };
 		FA5FEC501DAC9A11009218B9 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */; };
 		FA7633BB1E071A7B00D94E20 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7633BA1E071A7B00D94E20 /* History.swift */; };
+		FA7633C71E1E003900D94E20 /* Calculator2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA7633C51E1E003900D94E20 /* Calculator2.xcdatamodeld */; };
+		FA7633C91E1E0B4B00D94E20 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7633C81E1E0B4B00D94E20 /* CoreDataStack.swift */; };
+		FA7633CB1E1E0C1500D94E20 /* Calculator+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7633CA1E1E0C1500D94E20 /* Calculator+Convenience.swift */; };
 		FAC33E1B1DE0BA8600D517AB /* ButtonFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */; };
 		FAC33E1D1DE0DF5B00D517AB /* ScoreFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E1C1DE0DF5B00D517AB /* ScoreFormatter.swift */; };
 		FAD5D64C1DD42362005DA6A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */; };
@@ -52,10 +54,12 @@
 		FA5FEC371DAC65A5009218B9 /* Calculator2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calculator2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5FEC3B1DAC65A5009218B9 /* Calculator2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator2UITests.swift; sourceTree = "<group>"; };
 		FA5FEC3D1DAC65A5009218B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calculator.swift; path = ../Calculator.swift; sourceTree = "<group>"; };
 		FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorController.swift; sourceTree = "<group>"; };
 		FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FA7633BA1E071A7B00D94E20 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		FA7633C61E1E003900D94E20 /* Calculator2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Calculator2.xcdatamodel; sourceTree = "<group>"; };
+		FA7633C81E1E0B4B00D94E20 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FA7633CA1E1E0C1500D94E20 /* Calculator+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calculator+Convenience.swift"; sourceTree = "<group>"; };
 		FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFontSize.swift; sourceTree = "<group>"; };
 		FAC33E1C1DE0DF5B00D517AB /* ScoreFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreFormatter.swift; sourceTree = "<group>"; };
 		FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,7 +113,9 @@
 		FA5FEC1A1DAC65A5009218B9 /* Calculator2 */ = {
 			isa = PBXGroup;
 			children = (
-				FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */,
+				FA7633C81E1E0B4B00D94E20 /* CoreDataStack.swift */,
+				FA7633CA1E1E0C1500D94E20 /* Calculator+Convenience.swift */,
+				FA7633C51E1E003900D94E20 /* Calculator2.xcdatamodeld */,
 				FA7633BA1E071A7B00D94E20 /* History.swift */,
 				FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */,
 				FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */,
@@ -282,11 +288,13 @@
 			files = (
 				FA5FEC501DAC9A11009218B9 /* CalculatorViewController.swift in Sources */,
 				FA5FEC1C1DAC65A5009218B9 /* AppDelegate.swift in Sources */,
+				FA7633C71E1E003900D94E20 /* Calculator2.xcdatamodeld in Sources */,
 				FA7633BB1E071A7B00D94E20 /* History.swift in Sources */,
 				FAC33E1D1DE0DF5B00D517AB /* ScoreFormatter.swift in Sources */,
+				FA7633C91E1E0B4B00D94E20 /* CoreDataStack.swift in Sources */,
 				FA131EF01DD7A253000904F7 /* CalculationHistoryViewController.swift in Sources */,
 				FAC33E1B1DE0BA8600D517AB /* ButtonFontSize.swift in Sources */,
-				FA5FEC4C1DAC7D83009218B9 /* Calculator.swift in Sources */,
+				FA7633CB1E1E0C1500D94E20 /* Calculator+Convenience.swift in Sources */,
 				FA5FEC4E1DAC7E71009218B9 /* CalculatorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,10 +391,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRIP_STYLE = all;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -416,7 +425,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -427,9 +436,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRIP_STYLE = all;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -561,6 +571,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA7633C51E1E003900D94E20 /* Calculator2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA7633C61E1E003900D94E20 /* Calculator2.xcdatamodel */,
+			);
+			currentVersion = FA7633C61E1E003900D94E20 /* Calculator2.xcdatamodel */;
+			path = Calculator2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA5FEC101DAC65A5009218B9 /* Project object */;
 }
