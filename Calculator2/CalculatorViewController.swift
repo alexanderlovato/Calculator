@@ -133,7 +133,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         case Operations.decimal.rawValue:
             
             // Adds a decimal to the result text label
-            convertToDecimalNumber(number: resultTextLabel.text!)
+            convertToDecimalNumber(number: resultTextLabel.text ?? "0")
             
         // Equals button (=)
         case Operations.equals.rawValue:
@@ -198,7 +198,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // If the above check is false
         } else {
             // Unwrap and save the current number in the result text label
-            guard let resultText = resultTextLabel.text else { return }
+            let resultText = resultTextLabel.text ?? "0"
             // Delete the last number in the result text label then store that in "truncated"
             let truncated = resultText.substring(to: resultText.index(before: resultText.endIndex))
             // Set the result text label to show the "truncated" value
@@ -212,9 +212,9 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     @IBAction func buttonNumberInput(_ sender: UIButton) {
         
         // Capture the current number being pressed in "buttonNumber"
-        let buttonNumber = sender.titleLabel?.text
+        let buttonNumber = sender.titleLabel?.text ?? "0"
         // Unformat the current number in the result text label to not show any potential commas
-        let unformattedNumber = ScoreFormatter.unformattedNumberString(resultTextLabel.text ?? "0")
+        let unformattedNumber = ScoreFormatter.unformattedNumberString(resultTextLabel.text ?? "0") ?? "0"
         // Capture the currently formatted number in the result text label
         let labelNumber = resultTextLabel.text ?? "0"
         
@@ -223,14 +223,14 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // Then check if the decimal button has been pressed
             if decimalPressed {
                 // Add the tapped number after the decimal point to the result text label
-                let number = labelNumber + buttonNumber!
+                let number = labelNumber + buttonNumber
                 resultTextLabel.text = number
                 calculator.currentNumber = number
                 
                 // If the decimal button has not been tapped
             } else {
                 // Add the tapped number to the unformatted number
-                let formattedNumber = unformattedNumber! + buttonNumber!
+                let formattedNumber = unformattedNumber + buttonNumber
                 // Format the new number to show commas for every third number then display that to the result text label
                 resultTextLabel.text = ScoreFormatter.formattedScore(formattedNumber)
                 calculator.currentNumber = resultTextLabel.text
@@ -240,7 +240,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // This is in case a decimal number less than 1 is being tapped
         } else if decimalPressed {
             // Add the tapped number after the decimal point
-            resultTextLabel.text = labelNumber + buttonNumber!
+            resultTextLabel.text = labelNumber + buttonNumber
             calculator.currentNumber = resultTextLabel.text
             // Set currentlyTypingNumber to true since numbers are currently being entered
             calculator.currentlyTypingNumber = true
@@ -364,7 +364,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     //MARK: - DestinationViewControllerDelegate function
     ///Delegate function used to pass data back from CalculationHistoryViewController
     func passNumberBack(data: [Any]) {
-        let lastObject = "\(data.last!)"
+        let lastObject = "\(data.last ?? 0)"
         var dataStack = data
         
         switch lastObject {
@@ -381,7 +381,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
                 calculator.currentNumber = "0"
                 
             } else if calculator.operationStack.count == 0 {
-                //Since neither stacks end with an operator: Remove last number from selected histroy stack, merge that stack with the operatorStack, then set the resultTextLabel to the last removed object of history stack
+                //Since neither stacks end with an operator: Remove last number from selected histroy stack, merge that stack with the operationStack, then set the resultTextLabel to the last removed object of history stack
                 calculator.mergeStacks(addToStack: dataStack)
                 resultTextLabel.text = "0"
                 calculator.currentNumber = "0"

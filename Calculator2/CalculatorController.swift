@@ -48,6 +48,7 @@ class CalculatorController {
     // Loads stored objects from persistent storage
     func loadFromUserDefaults() {
         guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [[String : Any]] else { return }
+        // TODO: - Figure out how to not force unwrap the below closure
         self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
     }
     
