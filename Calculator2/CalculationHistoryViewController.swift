@@ -15,7 +15,7 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     @IBOutlet weak var historyTableView: UITableView!
     
     
-    func passDataBackwards(anyData: [Any]) {
+    func passDataBackwards(anyData: [String]) {
         delegate?.passNumberBack(data: anyData)
     }
 
@@ -70,5 +70,5 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
 }
 
 protocol DestinationViewControllerDelegate {
-    func passNumberBack(data: [Any])
+    func passNumberBack(data: [String])
 }
