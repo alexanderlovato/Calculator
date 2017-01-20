@@ -38,9 +38,7 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalculatorCell", for: indexPath)
         let history = CalculatorController.sharedController.history[indexPath.row]
-        var minimalDescription = history.histroyArray.map{ String(describing: $0) }.joined(separator: " ")
-        minimalDescription = minimalDescription.replacingOccurrences(of: ".0", with: "")
-        cell.textLabel?.text = minimalDescription
+        cell.textLabel?.text = history.historyStack!.replacingOccurrences(of: ".0", with: "")
         return cell
     }
     
@@ -55,7 +53,8 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let entry = tableView.indexPathForSelectedRow?.row
         let stackIndex = CalculatorController.sharedController.history[entry!]
-        let returnData = stackIndex.histroyArray
+        let returnString = stackIndex.historyStack
+        let returnData = returnString!.components(separatedBy: " ")
         passDataBackwards(anyData: returnData)
         self.dismiss(animated: true, completion: nil)
     }

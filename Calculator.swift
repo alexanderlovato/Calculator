@@ -13,14 +13,14 @@ class Calculator: Equatable {
     
     // MARK: - Private Properties
     
-    private let kResult = "result"
+    private let kCurrentNumber = "result"
     private let kOperationStack = "operationStack"
     private let kEntireOperationString = "entireOperationString"
     private let kCurrentlyTypingNumber = "currentlyTypingNumber"
     private let kScreenshotData = "screenshotData"
     
     // MARK: - Internal Properties
-    var result: Double?
+    var currentNumber: String?
     var operationStack: [Any]
     var entireOperationString: [String]
     var currentlyTypingNumber: Bool
@@ -36,8 +36,8 @@ class Calculator: Equatable {
     }
     
     // MARK: - Initializers
-    init(result: Double = 0, operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, screenshotData: Data? = Data()) {
-        self.result = result
+    init(result: String = "0", operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, screenshotData: Data? = Data()) {
+        self.currentNumber = result
         self.operationStack = operationStack
         self.entireOperationString = entireOperationString
         self.currentlyTypingNumber = currentlyTypingNumber
@@ -45,12 +45,12 @@ class Calculator: Equatable {
     }
     
     init?(dictionary: [String : Any]) {
-        guard let result = dictionary[kResult] as? Double,
+        guard let result = dictionary[kCurrentNumber] as? String,
             let operationStack = dictionary[kOperationStack] as? [Any],
             let entireOperationString = dictionary[kEntireOperationString] as? [String],
             let currentlyTypingNumber = dictionary[kCurrentlyTypingNumber] as? Bool,
             let screenshotData = dictionary[kScreenshotData] as? Data else {
-                self.result = 0
+                self.currentNumber = "0"
                 self.operationStack = []
                 self.entireOperationString = []
                 self.currentlyTypingNumber = false
@@ -58,7 +58,7 @@ class Calculator: Equatable {
                 return nil
         }
         
-        self.result = result
+        self.currentNumber = result
         self.operationStack = operationStack
         self.entireOperationString = entireOperationString
         self.currentlyTypingNumber = currentlyTypingNumber
@@ -70,7 +70,7 @@ class Calculator: Equatable {
     // Converts all model objects to a [String : Any] dictionary
     func dictionaryCopy() -> [String : Any] {
         let dictionary: [String : Any] = [
-            kResult : self.result!,
+            kCurrentNumber : self.currentNumber!,
             kOperationStack : self.operationStack,
             kEntireOperationString: self.entireOperationString,
             kCurrentlyTypingNumber : self.currentlyTypingNumber,

@@ -7,24 +7,25 @@
 //
 
 import Foundation
+import CoreData
 
 class CalculatorController {
     
     private let kCalcuators = "calculators"
-    private let kHistoryObjects = "historyObjects"
-    private let kEverything = "everything"
     
     // MARK: - Shared Instance
     static let sharedController = CalculatorController()
     
     // MARK: Internal Properties
     var calculators: [Calculator]
-    var history: [History]
     
+    var history: [History] {
+        let request: NSFetchRequest<History> = History.fetchRequest()
+        return (try? CoreDataStack.context.fetch(request)) ?? []
+    }
     init() {
         calculators = []
-        history = []
-        self.loadFromPersistentStorage()
+        self.loadFromUserDefaults()
     }
     
     // MARK: - Controller Functions
@@ -37,48 +38,52 @@ class CalculatorController {
         self.saveToPersistentStorage()
     }
     
+    // Saves History entry in Core Data
     func saveHistortyEntry(historyEntry: History) {
-        history.append(historyEntry)
         self.saveToHistoryStorage()
     }
     
     // READ
     
     // Loads stored objects from persistent storage
-    func loadFromPersistentStorage() {
-        
-        guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kEverything) as?[[String : Any]] else {return}
+    func loadFromUserDefaults() {
+        guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [[String : Any]] else { return }
         self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
-        self.history = calculatorDictionariesFromDefaults.map({History(dictionary: $0)!})
     }
     
     // UPDATE
     
     // Saves all objects in calculators array to persistent storage
     func saveToPersistentStorage() {
-        
-        let historyDictionary = self.history.map({$0.dictionaryCopy()})
         let calculatorDictionaries = self.calculators.map({$0.dictionaryCopy()})
-        let combinedDictionary: [String : Any] = [kCalcuators : calculatorDictionaries, kHistoryObjects : historyDictionary]
-        UserDefaults.standard.set(combinedDictionary, forKey: kEverything)
+        UserDefaults.standard.set(calculatorDictionaries, forKey: kCalcuators)
     }
     
+    // Saves Managed Object Context in the persistent store
     func saveToHistoryStorage() {
-        let historyDictionary = self.history.map({$0.dictionaryCopy()})
-        UserDefaults.standard.set(historyDictionary, forKey: kHistoryObjects)
+        do {
+            try CoreDataStack.context.save()
+        } catch {
+            NSLog("Error saving to core data: \(error)")
+        }
     }
     
     // DELETE
     
     func removeCalculator(historyEntry: History) {
-        if let historyIndex = history.index(of: historyEntry) {
-            calculators.remove(at: historyIndex)
+        historyEntry.managedObjectContext?.delete(historyEntry)
             saveToHistoryStorage()
-        }
     }
     
     func clearAllHistoryEntires() {
-        history.removeAll()
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try CoreDataStack.context.execute(request)
+        } catch {
+            NSLog("Error deleting data from entity: \(error)")
+        }
         saveToHistoryStorage()
     }
 }
