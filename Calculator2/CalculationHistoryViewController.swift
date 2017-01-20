@@ -15,17 +15,17 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     @IBOutlet weak var historyTableView: UITableView!
     
     
-    func passDataBackwards(anyData: [String]) {
+    func passDataBackwards(anyData: [Any]) {
         delegate?.passNumberBack(data: anyData)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,5 +70,5 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
 }
 
 protocol DestinationViewControllerDelegate {
-    func passNumberBack(data: [String])
+    func passNumberBack(data: [Any])
 }
