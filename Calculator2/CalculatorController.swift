@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class CalculatorController {
     
@@ -15,173 +16,75 @@ class CalculatorController {
     // MARK: - Shared Instance
     static let sharedController = CalculatorController()
     
-    // MARK: - Class Instances
-    var calculator = Calculator()
-    
     // MARK: Internal Properties
     var calculators: [Calculator]
     
+    var history: [History] {
+        let request: NSFetchRequest<History> = History.fetchRequest()
+        return (try? CoreDataStack.context.fetch(request)) ?? []
+    }
     init() {
         calculators = []
-        
-        self.loadFromPersistentStorage()
-    }
-    
-    // MARK: - Computed Properties
-    var currentlyTypingNumber: Bool {
-        get {
-            return calculator.currentlyTypingNumber
-        } set {
-            calculator.currentlyTypingNumber = newValue
-        }
+        self.loadFromUserDefaults()
     }
     
     // MARK: - Controller Functions
     
     // CREATE
+    
+    // Appends a new Calculator instance to calculators and saves to UserDefaults
     func saveCalculatorTab(calculatorTab: Calculator) {
         calculators.append(calculatorTab)
-        
         self.saveToPersistentStorage()
+    }
+    
+    // Saves History entry in Core Data
+    func saveHistortyEntry(historyEntry: History) {
+        self.saveToHistoryStorage()
     }
     
     // READ
     
-    func loadFromPersistentStorage() {
-        let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [Dictionary<String, AnyObject>]
-        
-        if let calculatorDictionaries = calculatorDictionariesFromDefaults {
-            self.calculators = calculatorDictionaries.map({Calculator(dictionary: $0)!})
-        }
+    // Loads stored objects from persistent storage
+    func loadFromUserDefaults() {
+        guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [[String : Any]] else { return }
+        // TODO: - Figure out how to not force unwrap the below closure
+        self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
     }
-    
     
     // UPDATE
     
+    // Saves all objects in calculators array to persistent storage
     func saveToPersistentStorage() {
-        
         let calculatorDictionaries = self.calculators.map({$0.dictionaryCopy()})
         UserDefaults.standard.set(calculatorDictionaries, forKey: kCalcuators)
     }
     
-    ///Calculates a stack of Doubles and operator Strings with operator precedence.
-    func runOperation(stackToUse: [Any]) -> Double {
-                
-        let operationStack = stackToUse
-        var operationString = operationStack.map{ String(describing: $0) }.joined(separator: " ")
-        operationString = operationString.replacingOccurrences(of: "÷", with: "/")
-        operationString = operationString.replacingOccurrences(of: "x", with: "*")
-        let expression = NSExpression(format: operationString, argumentArray: [])
-        let value = expression.expressionValue(with: nil, context: nil) as! NSNumber
-        return value.doubleValue
-        
-//        for _ in operationStack {
-//            for (index, item) in operationStack.enumerated() {
-//                guard let item = item as? String else { continue }
-//                if item == "x" {
-//                    let first = operationStack[index - 1] as! Double
-//                    let second = operationStack[index + 1] as! Double
-//                    operationStack[index - 1] = first * second
-//                    operationStack.remove(at: index)
-//                    operationStack.remove(at: index)
-//                    break
-//                } else if item == "÷" {
-//                    let first = operationStack[index - 1] as! Double
-//                    let second = operationStack[index + 1] as! Double
-//                    operationStack[index - 1] = first / second
-//                    operationStack.remove(at: index)
-//                    operationStack.remove(at: index)
-//                    break
-//                }
-//            }
-//        }
-//        
-//        for _ in operationStack {
-//            for (index, item) in operationStack.enumerated() {
-//                guard let item = item as? String else { continue }
-//                if item == "+" {
-//                    let first = operationStack[index - 1] as! Double
-//                    let second = operationStack[index + 1] as! Double
-//                    operationStack[index - 1] = first + second
-//                    operationStack.remove(at: index)
-//                    operationStack.remove(at: index)
-//                    break
-//                } else if item == "-" {
-//                    let first = operationStack[index - 1] as! Double
-//                    let second = operationStack[index + 1] as! Double
-//                    operationStack[index - 1] = first - second
-//                    operationStack.remove(at: index)
-//                    operationStack.remove(at: index)
-//                    break
-//                }
-//            }
-//        }
-//        let returnNumber = operationStack.removeLast() as! Double
-//        return value
-        
-    }
-    
-    ///Converts a passed in number into a percentage and returns the value
-    func percentage(currentNumber: Double) -> Double {
-        
-        var stack = calculator.operationStack
-        
-        if stack.count > 3 {
-            var tempStack = stack
-            _ = tempStack.removeLast()
-            let stackSum = runOperation(stackToUse: tempStack)
-            let decimalNumber = stackSum / 100
-            let percentnumber = decimalNumber * currentNumber
-            return percentnumber
-        } else if stack.count == 0 {
-            let decimalNumber = currentNumber / 100
-            return decimalNumber
-        } else {
-            let _ = stack.removeLast()
-            let firstNumber = stack.last as! Double
-            let decimalNumber = firstNumber / 100
-            let percentnumber = decimalNumber * currentNumber
-            return percentnumber
+    // Saves Managed Object Context in the persistent store
+    func saveToHistoryStorage() {
+        do {
+            try CoreDataStack.context.save()
+        } catch {
+            NSLog("Error saving to core data: \(error)")
         }
-        
-    }
-    
-    ///Add a passed in number to the stack and prints the current stack
-    func enter(addToStack: Any) {
-        calculator.operationStack.append(addToStack)
-        print(calculator.operationStack)
-    }
-    
-    func mergeStacks(addToStack: [Any]) {
-        calculator.operationStack += addToStack
-        print(calculator.operationStack)
     }
     
     // DELETE
     
-    ///Delete all objects from the stack
-    func delete() {
-        calculator.operationStack.removeAll()
-        print(calculator.operationStack)
-        calculator.result = 0
+    func removeCalculator(historyEntry: History) {
+        historyEntry.managedObjectContext?.delete(historyEntry)
+            saveToHistoryStorage()
     }
     
-    func removeCalculator(calculator: Calculator) {
-        if let calculatorIndex = calculators.index(of: calculator) {
-            calculators.remove(at: calculatorIndex)
-            saveToPersistentStorage()
+    func clearAllHistoryEntires() {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            try CoreDataStack.context.execute(request)
+        } catch {
+            NSLog("Error deleting data from entity: \(error)")
         }
+        saveToHistoryStorage()
     }
-    
-    func clearAllCalculators() {
-        calculators.removeAll()
-        saveToPersistentStorage()
-    }
-    
-    func deleteCalculatorTab(calculatorTab: Calculator) {
-        if let calculatorIndex = calculators.index(of: calculatorTab) {
-            calculators.remove(at: calculatorIndex)
-        }
-    }
-    
 }
