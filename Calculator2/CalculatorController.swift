@@ -73,7 +73,7 @@ class CalculatorController {
     
     func removeCalculator(historyEntry: History) {
         historyEntry.managedObjectContext?.delete(historyEntry)
-            saveToHistoryStorage()
+        saveToHistoryStorage()
     }
     
     func clearAllHistoryEntires() {
