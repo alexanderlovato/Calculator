@@ -17,6 +17,7 @@ class Calculator: Equatable {
     private let kOperationStack = "operationStack"
     private let kEntireOperationString = "entireOperationString"
     private let kCurrentlyTypingNumber = "currentlyTypingNumber"
+    private let kFinishedEquation = "finishedEquation"
     private let kScreenshotData = "screenshotData"
     
     // MARK: - Internal Properties
@@ -24,6 +25,7 @@ class Calculator: Equatable {
     var operationStack: [Any]
     var entireOperationString: [String]
     var currentlyTypingNumber: Bool
+    var finishedEquation: Bool
     var screenshotData: Data?
     var screenshotImage: UIImage? {
         get {
@@ -36,11 +38,12 @@ class Calculator: Equatable {
     }
     
     // MARK: - Initializers
-    init(result: String = "0", operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, screenshotData: Data? = Data()) {
+    init(result: String = "0", operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, finishedEquation: Bool = false, screenshotData: Data? = Data()) {
         self.currentNumber = result
         self.operationStack = operationStack
         self.entireOperationString = entireOperationString
         self.currentlyTypingNumber = currentlyTypingNumber
+        self.finishedEquation = finishedEquation
         self.screenshotData = screenshotData
     }
     
@@ -49,11 +52,13 @@ class Calculator: Equatable {
             let operationStack = dictionary[kOperationStack] as? [Any],
             let entireOperationString = dictionary[kEntireOperationString] as? [String],
             let currentlyTypingNumber = dictionary[kCurrentlyTypingNumber] as? Bool,
+            let finishedEquation = dictionary[kFinishedEquation] as? Bool,
             let screenshotData = dictionary[kScreenshotData] as? Data else {
                 self.currentNumber = "0"
                 self.operationStack = []
                 self.entireOperationString = []
                 self.currentlyTypingNumber = false
+                self.finishedEquation = false
                 self.screenshotData = Data()
                 return nil
         }
@@ -62,6 +67,7 @@ class Calculator: Equatable {
         self.operationStack = operationStack
         self.entireOperationString = entireOperationString
         self.currentlyTypingNumber = currentlyTypingNumber
+        self.finishedEquation = finishedEquation
         self.screenshotData = screenshotData
     }
     
@@ -74,6 +80,7 @@ class Calculator: Equatable {
             kOperationStack : self.operationStack,
             kEntireOperationString: self.entireOperationString,
             kCurrentlyTypingNumber : self.currentlyTypingNumber,
+            kFinishedEquation : self.finishedEquation,
             kScreenshotData : self.screenshotData!
         ]
         return dictionary

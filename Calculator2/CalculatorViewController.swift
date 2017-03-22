@@ -26,12 +26,13 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     // MARK: - Outlets
     @IBOutlet weak var wallpaperImageView: UIImageView!
     @IBOutlet weak var resultTextLabel: UILabel!
+    @IBOutlet weak var entireOperationTextLabel: UILabel!
+    
     
     // MARK: - Shared Controller
     let sharedController = CalculatorController.sharedController
     
     // MARK: - Properties
-    var finishedEquation = false
     var decimalPressed = false
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
@@ -41,7 +42,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     }
     
     // MARK: - Calculator singleton
-    var calculator = CalculatorController.sharedController.calculators.last ?? Calculator(result: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: Data())
+    var calculator = CalculatorController.sharedController.calculators.last ?? Calculator(result: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false, finishedEquation: false, screenshotData: Data())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,9 +78,11 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // Set the result text label to "0"
             resultTextLabel.text = "0"
             calculator.currentNumber = "0"
+            entireOperationTextLabel.text = ""
+            calculator.entireOperationString.removeAll()
             // Reset the below boolean variables to false
             calculator.currentlyTypingNumber = false
-            finishedEquation = false
+            calculator.finishedEquation = false
             decimalPressed = false
             
         // Positive or Negative button (+/-)
@@ -91,6 +94,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             let percentValue = percentage(currentNumber: resultLabelValue)
             resultTextLabel.text = removeTrailingZero(number: percentValue)
             calculator.currentNumber = resultTextLabel.text
+            updateEntireOperationLabel(number: resultTextLabel.text!)
             
             // The following notes applies to the "÷", "x", "-", and "+" operator cases:
             // Append the current number from the result text label to the operationStack
@@ -102,32 +106,36 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             calculator.enter(addToStack: resultLabelValue)
             calculator.enter(addToStack: "÷")
             calculator.currentlyTypingNumber = false
-            finishedEquation = false
+            calculator.finishedEquation = false
             decimalPressed = false
+            updateEntireOperationLabel(number: "÷")
             
         // Multiplication button (x)
         case Operations.multiplication.rawValue:
             calculator.enter(addToStack: resultLabelValue)
             calculator.enter(addToStack: "x")
             calculator.currentlyTypingNumber = false
-            finishedEquation = false
+            calculator.finishedEquation = false
             decimalPressed = false
+            updateEntireOperationLabel(number: "x")
             
         // Subtraction button (-)
         case Operations.subtraction.rawValue:
             calculator.enter(addToStack: resultLabelValue)
             calculator.enter(addToStack: "-")
             calculator.currentlyTypingNumber = false
-            finishedEquation = false
+            calculator.finishedEquation = false
             decimalPressed = false
+            updateEntireOperationLabel(number: "-")
             
         // Addition button (+)
         case Operations.addition.rawValue:
             calculator.enter(addToStack: resultLabelValue)
             calculator.enter(addToStack: "+")
             calculator.currentlyTypingNumber = false
-            finishedEquation = false
+            calculator.finishedEquation = false
             decimalPressed = false
+            updateEntireOperationLabel(number: "+")
             
         // Decimal button (.)
         case Operations.decimal.rawValue:
@@ -138,10 +146,14 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         // Equals button (=)
         case Operations.equals.rawValue:
             
-            // Append current number from ResultTextLabel in the OperationStack
+            calculator.currentlyTypingNumber = false
+            
+            updateEntireOperationLabel(number: "=")
+            
+            // Append current number from ResultTextLabel to the OperationStack
             calculator.enter(addToStack: resultLabelValue)
             
-            // Get the operation stack and put it in "stack"
+            // Get the operation stack and put it in the "stack" variable below
             let stack = calculator.operationStack
             
             // Call runOperation to get the sum of "stack", then store the sum in "result"
@@ -152,7 +164,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             
             // Check in case the equation has not finished.
             // This is to remedy a bug where duplicates of "result" were being appended to the historyObjects array every time the equals button was tapped
-            if finishedEquation == false {
+            if calculator.finishedEquation == false {
                 
                 // Temporarily add "result" back to operationStack
                 calculator.enter(addToStack: result)
@@ -172,11 +184,10 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             sharedController.saveToPersistentStorage()
             
             // Reset currentlyTypingNumber and decimalPressed back to false
-            calculator.currentlyTypingNumber = false
             decimalPressed = false
             
             // Since the equation has finished, set this to true
-            finishedEquation = true
+            calculator.finishedEquation = true
         default:
             
             // If none of these conditions have been meet when an operator has been tapped, print the below error.
@@ -201,9 +212,12 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             let resultText = resultTextLabel.text ?? "0"
             // Delete the last number in the result text label then store that in "truncated"
             let truncated = resultText.substring(to: resultText.index(before: resultText.endIndex))
+            // **Update entire operation label for backspace**
+            // What to do when equation is finished, when both labels are showing different numbers?
             // Set the result text label to show the "truncated" value
             resultTextLabel.text! = truncated
             calculator.currentNumber = truncated
+            removeFromEntireOperationLabel()
         }
         sharedController.saveToPersistentStorage()
     }
@@ -226,6 +240,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
                 let number = labelNumber + buttonNumber
                 resultTextLabel.text = number
                 calculator.currentNumber = number
+                updateEntireOperationLabel(number: number)
                 
                 // If the decimal button has not been tapped
             } else {
@@ -234,6 +249,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
                 // Format the new number to show commas for every third number then display that to the result text label
                 resultTextLabel.text = ScoreFormatter.formattedScore(formattedNumber)
                 calculator.currentNumber = resultTextLabel.text
+                updateEntireOperationLabel(number: resultTextLabel.text!)
             }
             
             // If a number is not currently being entered then check if the decimal button has been tapped
@@ -242,6 +258,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // Add the tapped number after the decimal point
             resultTextLabel.text = labelNumber + buttonNumber
             calculator.currentNumber = resultTextLabel.text
+            updateEntireOperationLabel(number: resultTextLabel.text!)
             // Set currentlyTypingNumber to true since numbers are currently being entered
             calculator.currentlyTypingNumber = true
             
@@ -250,6 +267,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // Add the formatted button to the result text label
             resultTextLabel.text = ScoreFormatter.formattedScore(buttonNumber)
             calculator.currentNumber = resultTextLabel.text
+            updateEntireOperationLabel(number: resultTextLabel.text!)
             // Set currentlyTypingNumber to true since numbers are currently being entered
             calculator.currentlyTypingNumber = true
         }
@@ -272,6 +290,44 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         let value = expression.expressionValue(with: nil, context: nil) as! NSNumber
         // Return value as a Double
         return value.doubleValue
+    }
+    
+    // TODO: - Need to finish function for every scenario
+    // Update entire operation text label for every character entered in calculator
+    // May only work to append to array and label. May need to create another function to remove from both
+    func updateEntireOperationLabel(number: String) {
+        
+        if calculator.currentlyTypingNumber == true {
+            _ = calculator.entireOperationString.popLast()
+            calculator.entireOperationString.append(number)
+            let operationString = calculator.entireOperationString.map{ String(describing: $0) }.joined(separator: " ")
+            entireOperationTextLabel.text = operationString
+        } else {
+            calculator.entireOperationString.append(number)
+            let operationString = calculator.entireOperationString.map{ String(describing: $0) }.joined(separator: " ")
+            entireOperationTextLabel.text = operationString
+        }
+        
+    }
+    
+    func removeFromEntireOperationLabel() {
+        
+        if resultTextLabel.text != "" {
+            let resultText = entireOperationTextLabel.text ?? "0"
+            // Delete the last number in the result text label then store that in "truncated"
+            let truncated = resultText.substring(to: resultText.index(before: resultText.endIndex))
+            entireOperationTextLabel.text = truncated
+            _ = calculator.entireOperationString.popLast()
+        }
+        
+        // Update labels when backspace is pressed
+        
+        // Consider what should happen when numbers are currently being entered 
+        
+        // Consider what should happen when numbers are NOT currently being entered
+        
+        // Consider what should happen when the operation has finished and both labels are showing different numbers
+        
     }
     
     // Save current operationStack to History
@@ -302,6 +358,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             if calculator.currentlyTypingNumber == false {
                 resultTextLabel.text = "."
                 calculator.currentNumber = "."
+                updateEntireOperationLabel(number: ".")
                 // set decimalPressed to true since a decimal has been entered
                 decimalPressed = true
                 
@@ -311,6 +368,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
                 let decimalNumber = number + "."
                 resultTextLabel.text = decimalNumber
                 calculator.currentNumber = decimalNumber
+                updateEntireOperationLabel(number: decimalNumber)
                 // set decimalPressed to true since a decimal has been entered
                 decimalPressed = true
             }
@@ -324,6 +382,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         resultValue = resultValue * -1
         resultTextLabel.text = removeTrailingZero(number: resultValue)
         calculator.currentNumber = resultTextLabel.text
+        updateEntireOperationLabel(number: resultTextLabel.text!)
         calculator.currentlyTypingNumber = false
     }
     
