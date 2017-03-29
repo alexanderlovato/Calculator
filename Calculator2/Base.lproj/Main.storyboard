@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Xgx-yk-swL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1SX-H5-LpE">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,380 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Calculator View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stone_Wall-wallpaper-10422235" translatesAutoresizingMaskIntoConstraints="NO" id="7hW-en-OTU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bMM-J4-8zu">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PPk-0x-ze4">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="RFi-fh-zFK"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="tGl-K2-E3n">
-                                        <rect key="frame" x="0.0" y="35" width="414" height="197"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="Hqa-A9-deL"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="100"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g74-LI-Lgh">
-                                        <rect key="frame" x="0.0" y="232" width="414" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGx-bF-nVk">
-                                                <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="138" id="GIr-aO-Tha"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="22"/>
-                                                <state key="normal" title="Save Result">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="newTabButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Tj-AX-KjG"/>
-                                                </connections>
-                                            </button>
-                                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCY-nO-Yqk">
-                                                <rect key="frame" x="138" y="0.0" width="172.66666666666669" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFt-fH-jDg" userLabel="Backspace">
-                                                <rect key="frame" x="310.66666666666674" y="0.0" width="103.33333333333331" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Backspace"/>
-                                                <connections>
-                                                    <action selector="backspaceButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVz-k0-4cn"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="O1t-yb-da2"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ItO-cD-IWZ">
-                                        <rect key="frame" x="0.0" y="272" width="414" height="400"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IjM-x4-ML2">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" alpha="0.94999999999999996" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3O-NH-Q1G" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="80"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="C">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ts8-qD-f5B"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEB-hv-cR2" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="+/-">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jF0-bZ-r19"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjK-xP-Saz" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="80"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="%">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tTW-83-vEf"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3na-3d-VBj" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="310.66666666666674" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="÷">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8fy-4A-bwG"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="y3m-bl-WAP">
-                                                <rect key="frame" x="0.0" y="80" width="414" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hh1-of-Him" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="7">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="79c-xe-dsN"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gS-2G-ATH" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="8">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="veX-8y-x0q"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPX-3z-WPR" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="9">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fhL-go-tHA"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2t-PY-yyt" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="310.66666666666674" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="x">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r16-b1-mnD"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CCK-Ef-FeJ">
-                                                <rect key="frame" x="0.0" y="160" width="414" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5B-9S-Wbd" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="4">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LJP-hc-9Mu"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXM-XS-RxD" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="5">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rFG-fI-jtc"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oto-g6-BG1" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="6">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Hi-VE-Xu6"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32x-f4-rvl" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="310.66666666666674" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="-">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WxN-Zn-2Tl"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cJl-2D-DB6">
-                                                <rect key="frame" x="0.0" y="240" width="414" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPW-kd-aRY" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="1">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZjI-Cu-J7E"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PO6-8G-vrU" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="2">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dhe-bG-k3F"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sD8-k0-zcj" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="3">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g2U-Zn-G9V"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7TQ-hP-PCZ" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="310.66666666666674" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="+">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Vx-uM-iFi"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hmo-gC-hA2">
-                                                <rect key="frame" x="0.0" y="320" width="414" height="80"/>
-                                                <subviews>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n10-oI-S4Q" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="0">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="buttonNumberInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8DN-AJ-Kns"/>
-                                                        </connections>
-                                                    </button>
-                                                    <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PoQ-td-aXe">
-                                                        <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOh-7I-LGw" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="207.00000000000003" y="0.0" width="103.66666666666671" height="80"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title=".">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hDO-OF-z5R"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" alpha="0.94999999999999996" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6h-Dp-QIg" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                        <rect key="frame" x="310.66666666666674" y="0.0" width="103.33333333333331" height="80"/>
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="=">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="operationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qmE-fS-W9X"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" priority="500" constant="400" id="lXE-49-Sp5"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="gFt-fH-jDg" firstAttribute="width" secondItem="3na-3d-VBj" secondAttribute="width" id="ikQ-EM-oyF"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="bMM-J4-8zu" secondAttribute="trailing" id="7EQ-Z4-SjI"/>
-                            <constraint firstItem="bMM-J4-8zu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8li-wZ-9WJ"/>
-                            <constraint firstItem="7hW-en-OTU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9CU-C1-LDo"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bMM-J4-8zu" secondAttribute="bottom" id="Ded-5x-G9I"/>
-                            <constraint firstItem="bMM-J4-8zu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="EzT-kh-3vr"/>
-                            <constraint firstItem="7hW-en-OTU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="Q9d-zf-8KK"/>
-                            <constraint firstItem="7hW-en-OTU" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Xs9-IN-GWl"/>
-                            <constraint firstAttribute="trailing" secondItem="7hW-en-OTU" secondAttribute="trailing" id="sL5-ub-O30"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="faZ-z6-w6c">
-                        <barButtonItem key="rightBarButtonItem" title="History" id="xCG-PA-Dwy">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="fBg-DO-ULA" kind="presentation" identifier="toHistoryTable" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="LST-vp-NpS"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="entireOperationTextLabel" destination="PPk-0x-ze4" id="PN7-8J-5xB"/>
-                        <outlet property="resultTextLabel" destination="tGl-K2-E3n" id="mvv-hm-7ga"/>
-                        <outlet property="wallpaperImageView" destination="7hW-en-OTU" id="syU-v4-JJX"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="959.4202898550725" y="34.239130434782609"/>
-        </scene>
         <!--Calculation History View Controller-->
         <scene sceneID="bQx-r5-qs3">
             <objects>
@@ -493,24 +119,6 @@
             <point key="canvasLocation" x="2876.811594202899" y="32.608695652173914"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="fKd-iU-GG6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xgx-yk-swL" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OBh-oJ-awA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="14V-pr-UUs"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vTk-yp-Kuc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="86" y="36"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="tl5-7v-OQD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fBg-DO-ULA" sceneMemberID="viewController">
@@ -527,6 +135,397 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tia-ap-XO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1880" y="36"/>
+        </scene>
+        <!--Calculator View Controller-->
+        <scene sceneID="CS7-bR-1oH">
+            <objects>
+                <viewController id="276-oY-jHz" customClass="CalculatorViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hbh-9e-C30"/>
+                        <viewControllerLayoutGuide type="bottom" id="1GA-yv-Hxx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kzR-SA-nPI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stone_Wall-wallpaper-10422235" translatesAutoresizingMaskIntoConstraints="NO" id="vTK-Il-Ch1">
+                                <rect key="frame" x="0.0" y="-44" width="414" height="780"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9hS-e7-gr3">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="9aM-1M-F0g">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="SWw-ud-nJv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="100"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwx-po-JTF">
+                                        <rect key="frame" x="0.0" y="276" width="414" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-gk-xeN">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="138" id="aKY-6q-0PE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="22"/>
+                                                <state key="normal" title="Save Result">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveResultButtonTapped:" destination="276-oY-jHz" eventType="touchUpInside" id="RAD-sU-F31"/>
+                                                </connections>
+                                            </button>
+                                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ve-1V-y7t">
+                                                <rect key="frame" x="138" y="0.0" width="173" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwd-ks-zRf" userLabel="Backspace">
+                                                <rect key="frame" x="311" y="0.0" width="103" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="Backspace"/>
+                                                <connections>
+                                                    <action selector="backspaceButtonTapped:" destination="276-oY-jHz" eventType="touchUpInside" id="PLn-Rz-agm"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="bHL-E3-7dk"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24l-gH-yaj">
+                                        <rect key="frame" x="0.0" y="316" width="414" height="400"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="oNw-Xe-U1j">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="XgF-Iu-aVc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                                        <subviews>
+                                                            <button opaque="NO" alpha="0.94999998807907104" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y18-tK-MfR" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="C">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="386-Rr-ehK"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04n-a6-H2S" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="104" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="+/-">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="6he-Gc-IIz"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfV-51-HCc" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="208" y="0.0" width="102" height="79"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="%">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="pgf-W3-3m4"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwu-1Q-GKs" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="311" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="÷">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="aWb-wh-0Xr"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="J8i-L0-x1M">
+                                                        <rect key="frame" x="0.0" y="80" width="414" height="79"/>
+                                                        <subviews>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-lK-y3i" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="7">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="u9E-tX-qdi"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVY-dc-bt7" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="104" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="8">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="nMg-HF-tTa"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF3-3t-N1R" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="208" y="0.0" width="102" height="79"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="9">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="qh8-bD-iZc"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLb-MT-MHa" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="311" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="x">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="cnO-6o-5lS"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="uT9-3M-dau">
+                                                        <rect key="frame" x="0.0" y="160" width="414" height="80"/>
+                                                        <subviews>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9v-09-8Kp" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="103" height="80"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="4">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="hBY-Ce-p7r"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeY-Dq-fpU" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="104" y="0.0" width="103" height="80"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="5">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="Pwg-3i-69m"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHk-kU-zgb" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="208" y="0.0" width="102" height="80"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="6">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="PJ5-UF-7FX"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytp-h9-J98" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="311" y="0.0" width="103" height="80"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="-">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="ewq-Bm-n6Q"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="gZa-gF-drw">
+                                                        <rect key="frame" x="0.0" y="241" width="414" height="79"/>
+                                                        <subviews>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-MO-K2c" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="1">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="URD-Bu-ryb"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xP-FP-pWb" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="104" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="2">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="19d-lg-HXx"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0Z-w9-dXQ" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="208" y="0.0" width="102" height="79"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="3">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="8n1-lS-zds"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJJ-Uc-Mnf" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="311" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="+">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="wr2-cD-oJo"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-mu-x0U">
+                                                        <rect key="frame" x="0.0" y="321" width="414" height="79"/>
+                                                        <subviews>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="at6-Qh-1s8" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="79"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="0">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="buttonNumberInput:" destination="276-oY-jHz" eventType="touchUpInside" id="tYh-FY-2od"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvB-KO-viY" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="208" y="0.0" width="102" height="79"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title=".">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="qTo-d0-Due"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.94999998807907104" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvb-xc-zXB" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                                <rect key="frame" x="311" y="0.0" width="103" height="79"/>
+                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" title="=">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="hWR-1e-oC4"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="mvb-xc-zXB" firstAttribute="width" secondItem="GJJ-Uc-Mnf" secondAttribute="width" id="437-hV-r7G"/>
+                                                    <constraint firstItem="GvB-KO-viY" firstAttribute="width" secondItem="w0Z-w9-dXQ" secondAttribute="width" id="LJC-AX-13b"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="oNw-Xe-U1j" secondAttribute="trailing" id="9Fc-Wg-L9Y"/>
+                                            <constraint firstAttribute="bottom" secondItem="oNw-Xe-U1j" secondAttribute="bottom" id="hTG-Ng-tCz"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" priority="500" constant="400" id="jLA-HJ-9Aj"/>
+                                            <constraint firstItem="oNw-Xe-U1j" firstAttribute="top" secondItem="24l-gH-yaj" secondAttribute="top" id="lyu-Nj-hBG"/>
+                                            <constraint firstItem="oNw-Xe-U1j" firstAttribute="leading" secondItem="24l-gH-yaj" secondAttribute="leading" id="pFS-uD-W7G"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Fwd-ks-zRf" firstAttribute="width" secondItem="cwu-1Q-GKs" secondAttribute="width" id="20U-Tn-KJe"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9hS-e7-gr3" firstAttribute="leading" secondItem="kzR-SA-nPI" secondAttribute="leading" id="7eo-eG-VWE"/>
+                            <constraint firstItem="9hS-e7-gr3" firstAttribute="top" secondItem="hbh-9e-C30" secondAttribute="bottom" id="8Xn-H4-m5v"/>
+                            <constraint firstAttribute="trailing" secondItem="9hS-e7-gr3" secondAttribute="trailing" id="JAc-Fi-3X4"/>
+                            <constraint firstItem="vTK-Il-Ch1" firstAttribute="bottom" secondItem="1GA-yv-Hxx" secondAttribute="top" id="gS3-Cx-YiE"/>
+                            <constraint firstItem="vTK-Il-Ch1" firstAttribute="top" secondItem="hbh-9e-C30" secondAttribute="bottom" constant="-64" id="jVH-ND-k94"/>
+                            <constraint firstItem="1GA-yv-Hxx" firstAttribute="top" secondItem="9hS-e7-gr3" secondAttribute="bottom" id="nqH-ae-xwZ"/>
+                            <constraint firstAttribute="trailing" secondItem="vTK-Il-Ch1" secondAttribute="trailing" id="z7J-0c-tkw"/>
+                            <constraint firstItem="vTK-Il-Ch1" firstAttribute="leading" secondItem="kzR-SA-nPI" secondAttribute="leading" id="zln-PL-WjO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="adz-dy-cFF">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="XYl-Gw-RWn">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="fBg-DO-ULA" kind="presentation" identifier="toHistoryTable" id="qJb-ZA-YMf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="resultTextLabel" destination="9aM-1M-F0g" id="JyC-35-3et"/>
+                        <outlet property="wallpaperImageView" destination="vTK-Il-Ch1" id="ugp-b7-wp4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1bd-ZH-fX2" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="36"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Rs1-f1-27m">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1SX-H5-LpE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HRI-KB-cE9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="276-oY-jHz" kind="relationship" relationship="rootViewController" id="4nn-dr-toD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0PP-K8-RqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="232" y="36"/>
         </scene>
     </scenes>
     <resources>
