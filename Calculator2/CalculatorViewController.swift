@@ -84,7 +84,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             
         // Positive or Negative button (+/-)
         case Operations.plusMinus.rawValue:
-            positiveOrNegative(currentNumber: resultLabelValue)
+            resultTextLabel.text = positiveOrNegative(currentNumber: resultLabelValue)
             
         // Percent button (%)
         case Operations.percent.rawValue:
@@ -133,7 +133,8 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         case Operations.decimal.rawValue:
             
             // Adds a decimal to the result text label
-            convertToDecimalNumber(number: resultTextLabel.text ?? "0")
+            resultTextLabel.text = convertToDecimalNumber(number: resultTextLabel.text ?? "0")
+            sharedController.saveToPersistentStorage()
             
         // Equals button (=)
         case Operations.equals.rawValue:
@@ -293,38 +294,38 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     }
     
     // Add a decimal to the result text label
-    func convertToDecimalNumber(number: String) {
+    func convertToDecimalNumber(number: String) -> String {
         
         // Only run if the decimal button has NEVER been tapped for this set of numbers
         if decimalPressed == false {
             
             // If numbers are not being entered add the decimal to the result text label
             if calculator.currentlyTypingNumber == false {
-                resultTextLabel.text = "."
                 calculator.currentNumber = "."
                 // set decimalPressed to true since a decimal has been entered
                 decimalPressed = true
+                return "."
                 
                 // Since numbers are currently being entered run this
             } else {
                 // Add a decimal to the current number in result text label
                 let decimalNumber = number + "."
-                resultTextLabel.text = decimalNumber
                 calculator.currentNumber = decimalNumber
                 // set decimalPressed to true since a decimal has been entered
                 decimalPressed = true
+                return decimalNumber
             }
         }
-        sharedController.saveToPersistentStorage()
+        return number
     }
     
-    func positiveOrNegative(currentNumber: Double) {
+    func positiveOrNegative(currentNumber: Double) -> String {
         
         var resultValue = currentNumber
         resultValue = resultValue * -1
-        resultTextLabel.text = removeTrailingZero(number: resultValue)
-        calculator.currentNumber = resultTextLabel.text
+        calculator.currentNumber = removeTrailingZero(number: resultValue)
         calculator.currentlyTypingNumber = false
+        return removeTrailingZero(number: resultValue)
     }
     
     func removeTrailingZero(number: Double) -> String {
@@ -332,10 +333,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         return tempNumber
     }
     
-    func removeTrailingZero(numberString: String) -> String {
-        let tempNumber = String(format: "%g", numberString)
-        return tempNumber
-    }
     
     ///Converts a passed in number into a percentage and returns the value
     func percentage(currentNumber: Double) -> Double {
