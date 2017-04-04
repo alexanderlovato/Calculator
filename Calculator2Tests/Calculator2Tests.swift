@@ -11,6 +11,8 @@ import XCTest
 
 class Calculator2Tests: XCTestCase {
     
+    let viewController = CalculatorViewController()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,6 +26,13 @@ class Calculator2Tests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testRunOperation() {
+        let stack: [Any] = [23, "x", 100, "÷", 3, "+", 1500]
+        let answer: Double = 2266
+        
+        XCTAssertEqual(viewController.runOperation(stackToUse: stack), answer)
     }
     
     func testPerformanceExample() {
