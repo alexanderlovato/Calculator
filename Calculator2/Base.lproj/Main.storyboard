@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1SX-H5-LpE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1SX-H5-LpE">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -62,11 +62,11 @@
                                             <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J7D-rq-AJy" id="zTX-wU-fT2">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <subviews>
                                                     <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ODB-ox-85f">
-                                                        <rect key="frame" x="15" y="0.0" width="384" height="43"/>
+                                                        <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
@@ -86,6 +86,7 @@
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="DhI-NL-1k8" firstAttribute="leading" secondItem="ctI-2U-0yF" secondAttribute="leading" id="89y-Xe-z9k"/>
                                 <constraint firstAttribute="trailing" secondItem="CyT-4Z-pje" secondAttribute="trailing" id="B6G-zI-6sL"/>
@@ -116,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sva-V7-O6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2876.811594202899" y="32.608695652173914"/>
+            <point key="canvasLocation" x="2778" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tl5-7v-OQD">
@@ -516,7 +517,7 @@
                         <barButtonItem key="rightBarButtonItem" title="History" id="XYl-Gw-RWn">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="fBg-DO-ULA" kind="presentation" identifier="toHistoryTable" id="qJb-ZA-YMf"/>
+                                <segue destination="fBg-DO-ULA" kind="presentation" identifier="toHistoryTable" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="qJb-ZA-YMf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
