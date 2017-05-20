@@ -35,7 +35,8 @@ struct ScoreFormatter {
     
     static func formattedScore(_ scoreString: String?) -> String? {
         guard let scoreString = scoreString, let score = numberFormatter.number(from: scoreString) else { return nil }
-        let formattedScore = numberFormatter.string(from: score)
+        // Removed the numberFormatter call and just set formatterScore to be a String
+        let formattedScore = "\(score)"
         return formattedScore
     }
     

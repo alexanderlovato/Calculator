@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1SX-H5-LpE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1SX-H5-LpE">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -149,13 +149,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stone_Wall-wallpaper-10422235" translatesAutoresizingMaskIntoConstraints="NO" id="vTK-Il-Ch1">
-                                <rect key="frame" x="0.0" y="-44" width="414" height="780"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9hS-e7-gr3">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="9aM-1M-F0g">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="232"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="SWw-ud-nJv"/>
@@ -165,11 +165,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwx-po-JTF">
-                                        <rect key="frame" x="0.0" y="276" width="414" height="40"/>
+                                        <rect key="frame" x="0.0" y="232" width="414" height="40"/>
                                         <subviews>
                                             <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-gk-xeN">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="SaveResultID" label="SaveResultLabel"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="138" id="aKY-6q-0PE"/>
                                                 </constraints>
@@ -182,11 +183,11 @@
                                                 </connections>
                                             </button>
                                             <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ve-1V-y7t">
-                                                <rect key="frame" x="138" y="0.0" width="173" height="40"/>
+                                                <rect key="frame" x="138" y="0.0" width="173.33333333333331" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwd-ks-zRf" userLabel="Backspace">
-                                                <rect key="frame" x="311" y="0.0" width="103" height="40"/>
+                                                <rect key="frame" x="311.33333333333326" y="0.0" width="102.66666666666669" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="Backspace"/>
@@ -200,17 +201,18 @@
                                         </constraints>
                                     </stackView>
                                     <view alpha="0.89999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24l-gH-yaj">
-                                        <rect key="frame" x="0.0" y="316" width="414" height="400"/>
+                                        <rect key="frame" x="0.0" y="272" width="414" height="400"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="oNw-Xe-U1j">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="XgF-Iu-aVc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="79.333333333333314"/>
                                                         <subviews>
                                                             <button opaque="NO" alpha="0.94999998807907104" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y18-tK-MfR" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="102.66666666666667" height="79.333333333333314"/>
                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="ClearID" label="ClearLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="C">
@@ -221,8 +223,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04n-a6-H2S" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="104" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="103.66666666666666" y="0.0" width="102.99999999999997" height="79.333333333333314"/>
                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="PlusMinusID" label="PlusMinusLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="+/-">
@@ -233,8 +236,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfV-51-HCc" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="208" y="0.0" width="102" height="79"/>
+                                                                <rect key="frame" x="207.66666666666669" y="0.0" width="102.66666666666669" height="79.333333333333314"/>
                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="PercentageID" label="PercentageLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="%">
@@ -245,8 +249,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwu-1Q-GKs" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="311" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="311.33333333333326" y="0.0" width="102.66666666666669" height="79.333333333333314"/>
                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="DivideID" label="DivideLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="÷">
@@ -259,11 +264,12 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="J8i-L0-x1M">
-                                                        <rect key="frame" x="0.0" y="80" width="414" height="79"/>
+                                                        <rect key="frame" x="0.0" y="80.333333333333314" width="414" height="79"/>
                                                         <subviews>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-lK-y3i" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="102.66666666666667" height="79"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="SevenID" label="SevenLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="7">
@@ -274,8 +280,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVY-dc-bt7" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="104" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="103.66666666666666" y="0.0" width="102.99999999999997" height="79"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="EightID" label="EightLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="8">
@@ -286,8 +293,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EF3-3t-N1R" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="208" y="0.0" width="102" height="79"/>
+                                                                <rect key="frame" x="207.66666666666669" y="0.0" width="102.66666666666669" height="79"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="NineID" label="NineLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="9">
@@ -298,8 +306,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLb-MT-MHa" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="311" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="311.33333333333326" y="0.0" width="102.66666666666669" height="79"/>
                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="MultiplicationID" label="MultiplicationLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="x">
@@ -312,11 +321,12 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="uT9-3M-dau">
-                                                        <rect key="frame" x="0.0" y="160" width="414" height="80"/>
+                                                        <rect key="frame" x="0.0" y="160.33333333333331" width="414" height="79.333333333333314"/>
                                                         <subviews>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9v-09-8Kp" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="103" height="80"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="102.66666666666667" height="79.333333333333314"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="FourID" label="FourLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="4">
@@ -327,8 +337,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeY-Dq-fpU" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="104" y="0.0" width="103" height="80"/>
+                                                                <rect key="frame" x="103.66666666666666" y="0.0" width="102.99999999999997" height="79.333333333333314"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="FiveID" label="FiveLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="5">
@@ -339,8 +350,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHk-kU-zgb" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="208" y="0.0" width="102" height="80"/>
+                                                                <rect key="frame" x="207.66666666666669" y="0.0" width="102.66666666666669" height="79.333333333333314"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="SixID" label="SixLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="6">
@@ -351,8 +363,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytp-h9-J98" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="311" y="0.0" width="103" height="80"/>
+                                                                <rect key="frame" x="311.33333333333326" y="0.0" width="102.66666666666669" height="79.333333333333314"/>
                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="SubtractionID" label="SubtractionLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="-">
@@ -365,11 +378,12 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="gZa-gF-drw">
-                                                        <rect key="frame" x="0.0" y="241" width="414" height="79"/>
+                                                        <rect key="frame" x="0.0" y="240.66666666666663" width="414" height="79"/>
                                                         <subviews>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-MO-K2c" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="102.66666666666667" height="79"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="OneID" label="OneLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="1">
@@ -380,8 +394,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xP-FP-pWb" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="104" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="103.66666666666666" y="0.0" width="102.99999999999997" height="79"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="TwoID" label="TwoLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="2">
@@ -392,8 +407,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0Z-w9-dXQ" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="208" y="0.0" width="102" height="79"/>
+                                                                <rect key="frame" x="207.66666666666669" y="0.0" width="102.66666666666669" height="79"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="ThreeID" label="ThreeLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="3">
@@ -404,8 +420,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJJ-Uc-Mnf" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="311" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="311.33333333333326" y="0.0" width="102.66666666666669" height="79"/>
                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="AdditionID" label="AdditionLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="+">
@@ -418,11 +435,12 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-mu-x0U">
-                                                        <rect key="frame" x="0.0" y="321" width="414" height="79"/>
+                                                        <rect key="frame" x="0.0" y="320.66666666666663" width="414" height="79.333333333333371"/>
                                                         <subviews>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="at6-Qh-1s8" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="79"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="206.66666666666666" height="79.333333333333371"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="ZeroID" label="ZeroLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="0">
@@ -433,8 +451,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvB-KO-viY" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="208" y="0.0" width="102" height="79"/>
+                                                                <rect key="frame" x="207.66666666666669" y="0.0" width="102.66666666666669" height="79.333333333333371"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="DecimalID" label="DecimalLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title=".">
@@ -445,8 +464,9 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.94999998807907104" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvb-xc-zXB" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
-                                                                <rect key="frame" x="311" y="0.0" width="103" height="79"/>
+                                                                <rect key="frame" x="311.33333333333326" y="0.0" width="102.66666666666669" height="79.333333333333371"/>
                                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="EqualID" label="EqualMatcher"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <state key="normal" title="=">

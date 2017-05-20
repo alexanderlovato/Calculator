@@ -35,9 +35,9 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     var decimalPressed = false
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
-        let returnValue = ScoreFormatter.unformattedNumberString(value)
+        let returnValue = ScoreFormatter.unformattedNumber(value)
         guard let returnDouble = returnValue else { return 0 }
-        return Double(returnDouble) ?? 0
+        return Double(returnDouble)
     }
     
     // MARK: - Calculator singleton
@@ -339,7 +339,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         
         var stack = calculator.operationStack
         
-        if stack.count > 3 {
+        if stack.count >= 3 {
             var tempStack = stack
             _ = tempStack.removeLast()
             let stackSum = runOperation(stackToUse: tempStack)
