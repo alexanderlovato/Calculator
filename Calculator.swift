@@ -25,6 +25,8 @@ class Calculator: Equatable {
     var entireOperationString: [String]
     var currentlyTypingNumber: Bool
     var screenshotData: Data?
+    
+    // Returns a UIImage when called or converts a UIImage to Data
     var screenshotImage: UIImage? {
         get {
             guard let screenshotData = self.screenshotData else { return nil }
@@ -36,8 +38,8 @@ class Calculator: Equatable {
     }
     
     // MARK: - Initializers
-    init(result: String = "0", operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, screenshotData: Data? = Data()) {
-        self.currentNumber = result
+    init(currentNumber: String = "0", operationStack: [Any] = [], entireOperationString: [String] = [], currentlyTypingNumber: Bool = false, screenshotData: Data? = Data()) {
+        self.currentNumber = currentNumber
         self.operationStack = operationStack
         self.entireOperationString = entireOperationString
         self.currentlyTypingNumber = currentlyTypingNumber

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1SX-H5-LpE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZET-ld-ogh">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -119,10 +119,10 @@
             </objects>
             <point key="canvasLocation" x="2778" y="36"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="tl5-7v-OQD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fBg-DO-ULA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fBg-DO-ULA" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ccc-QV-6Zh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -140,7 +140,7 @@
         <!--Calculator View Controller-->
         <scene sceneID="CS7-bR-1oH">
             <objects>
-                <viewController id="276-oY-jHz" customClass="CalculatorViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalculatorViewController" id="276-oY-jHz" customClass="CalculatorViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hbh-9e-C30"/>
                         <viewControllerLayoutGuide type="bottom" id="1GA-yv-Hxx"/>
@@ -514,6 +514,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="adz-dy-cFF">
+                        <barButtonItem key="leftBarButtonItem" image="Carosel_HalfSize" id="sVE-8R-Xc0">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="multitaskingButton:" destination="276-oY-jHz" id="7Pl-PM-fAi"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="History" id="XYl-Gw-RWn">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -530,10 +536,10 @@
             </objects>
             <point key="canvasLocation" x="1048" y="36"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="Rs1-f1-27m">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1SX-H5-LpE" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1SX-H5-LpE" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HRI-KB-cE9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -548,9 +554,48 @@
             </objects>
             <point key="canvasLocation" x="232" y="36"/>
         </scene>
+        <!--Navigation View Controller-->
+        <scene sceneID="ip7-LT-pAH">
+            <objects>
+                <navigationController id="ZET-ld-ogh" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bNc-SO-Ddf" customClass="TransparentNavigationBar" customModule="Calculator2" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TrI-7e-YEc" kind="relationship" relationship="rootViewController" id="Lga-Fv-Ljl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9Q-Qm-gku" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1538" y="36"/>
+        </scene>
+        <!--Card Collection View Controller-->
+        <scene sceneID="IhJ-9f-6jw">
+            <objects>
+                <collectionViewController id="TrI-7e-YEc" customClass="CardCollectionViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="ciB-mZ-XSo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewLayout key="collectionViewLayout" id="IFi-lv-lSW" customClass="CardLayout" customModule="Calculator2" customModuleProvider="target"/>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="TrI-7e-YEc" id="SZd-p6-bxH"/>
+                            <outlet property="delegate" destination="TrI-7e-YEc" id="Zey-cM-fhw"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="6fB-Jg-Qsf">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="rSL-xK-7Cq"/>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZHk-xq-AMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-701" y="36"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backspace" width="30" height="20"/>
+        <image name="Carosel_HalfSize" width="46" height="34"/>
         <image name="Stone_Wall-wallpaper-10422235" width="1440" height="1280"/>
     </resources>
 </document>

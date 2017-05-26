@@ -40,8 +40,17 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         return Double(returnDouble)
     }
     
+    // Take and return screenshot of current content
+    var snapshotImage: UIImage {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return screenshot ?? UIImage()
+    }
+    
     // MARK: - Calculator singleton
-    var calculator = CalculatorController.sharedController.calculators.last ?? Calculator(result: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: Data())
+    var calculator = CalculatorController.sharedController.calculators.last ?? Calculator(currentNumber: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: Data())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +70,14 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     }
     
     // MARK: - View Controller Actions
+    
+    @IBAction func multitaskingButton(_ sender: UIBarButtonItem) {
+        calculator.currentNumber = resultTextLabel.text!
+        calculator.screenshotImage = snapshotImage
+        sharedController.saveToPersistentStorage()
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     
     // Action called when an operation button is selected
     @IBAction func operationAction(_ sender: UIButton) {
