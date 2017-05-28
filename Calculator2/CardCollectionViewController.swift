@@ -9,6 +9,7 @@
 import UIKit
 
 class CardCollectionViewController: UICollectionViewController {
+    
     /// The pan gesture will be used for this scroll view so the collection view can page items smaller than it's width
     lazy var pagingScrollView: UIScrollView = { [unowned self] in
         let scrollView = UIScrollView()
@@ -59,7 +60,8 @@ class CardCollectionViewController: UICollectionViewController {
             width: flowLayout.itemSize.width,
             height: self.view.bounds.height)
         pagingScrollView.frame = scrollViewFrame
-        pagingScrollView.contentSize = CGSize(width: flowLayout.itemSize.width*8, height: self.view.bounds.height)
+        let cellCount = CGFloat(CalculatorController.sharedController.calculators.count)
+        pagingScrollView.contentSize = CGSize(width: flowLayout.itemSize.width*cellCount, height: self.view.bounds.height)
         self.collectionView!.superview!.insertSubview(pagingScrollView, belowSubview: self.collectionView!)
         self.collectionView!.addGestureRecognizer(pagingScrollView.panGestureRecognizer)
         self.collectionView!.isScrollEnabled = false
@@ -74,15 +76,16 @@ class CardCollectionViewController: UICollectionViewController {
             let cardIndex = CalculatorController.sharedController.calculators.first!
             vc.calculator = cardIndex
             self.navigationController?.pushViewController(vc, animated: true)
+            
+            collectionView?.remembersLastFocusedIndexPath = true
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.collectionView?.reloadData()
-        
-        
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        self.collectionView?.reloadData()
+//    }
+    
 
     
     // MARK: - Layout
@@ -106,6 +109,7 @@ extension CardCollectionViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
         let cardIndex = CalculatorController.sharedController.calculators[indexPath.item]
+        
         vc.calculator = cardIndex
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -150,6 +154,7 @@ extension CardCollectionViewController {
 // MARK: - Transition Delegate
 
 extension CardCollectionViewController: CardToDetailViewAnimating {
+    
     // returns index path at center of screen (if there is one)
     private func centeredIndexPath() -> IndexPath? {
         guard let collectionView = self.collectionView else { return nil }
@@ -158,7 +163,7 @@ extension CardCollectionViewController: CardToDetailViewAnimating {
         return collectionView.indexPathForItem(at: centerPoint)
     }
     // returns cell at center of screen (if there is one)
-    private func centeredCell() -> UICollectionViewCell? {
+    func centeredCell() -> UICollectionViewCell? {
         guard let collectionView = self.collectionView else { return nil }
         if let indexPath = centeredIndexPath() {
             return collectionView.cellForItem(at: indexPath)
@@ -166,9 +171,23 @@ extension CardCollectionViewController: CardToDetailViewAnimating {
             return nil
         }
     }
-    func viewForTransition() -> UIView {
+    
+    
+    
+    func viewForTransition() -> UICollectionViewCell {
         //TODO: - Reset to original config once cell images start working
-        guard let cell = centeredCell() else { return UIView()}
+        guard let cell = centeredCell() else { return UICollectionViewCell() }
+        
+        //This is the cause of the cell rendering issue!!!!!!
+        // I can hide the cell when returning to collectionView but unable to unhide the cell
+//        cell.isHidden = true
+//        let mainQueue = DispatchQueue.main
+//        let deadline = DispatchTime.now() + .milliseconds(1300)
+//        mainQueue.asyncAfter(deadline: deadline) {
+//            cell.isHidden = false
+//            
+//        }
+        
         return cell
     }
     func beginFrameForTransition() -> CGRect {

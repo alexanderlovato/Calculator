@@ -10,7 +10,7 @@ import UIKit
 
 protocol CardToDetailViewAnimating {
     /// The view (card) that will be used in the animation.
-    func viewForTransition() -> UIView
+    func viewForTransition() -> UICollectionViewCell
     /// The initial frame of the transitioning view, relative to it's view controller.
     func beginFrameForTransition() -> CGRect
 }
@@ -38,8 +38,8 @@ class CardToDetailViewAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         UIView.animate(
             withDuration: self.transitionDuration(using: transitionContext),
             delay: 0,
-            usingSpringWithDamping: 0.7,
-            initialSpringVelocity: 12,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 11,
             options: [],
             animations: {
                 cardViewSnapshot?.frame = toViewController.view.bounds

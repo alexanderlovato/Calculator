@@ -13,7 +13,7 @@ class DetailViewToCardAnimator: NSObject, UIViewControllerAnimatedTransitioning 
     // MARK: - UIViewControllerAnimatedTransitioning
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.4
+        return 0.7
     }
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
@@ -25,7 +25,7 @@ class DetailViewToCardAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         let cardViewSnapshot = fromViewController.view.snapshotView(afterScreenUpdates: false)
         
         // match corner radius to target views
-        cardView.isHidden = true
+//        cardView.isHidden = true
         cardViewSnapshot?.layer.cornerRadius = cardView.layer.cornerRadius
         cardViewSnapshot?.clipsToBounds = true
         cardViewSnapshot?.frame = fromViewController.view.bounds
@@ -38,16 +38,17 @@ class DetailViewToCardAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         UIView.animate(
             withDuration: self.transitionDuration(using: transitionContext),
             delay: 0,
-            usingSpringWithDamping: 0.7,
-            initialSpringVelocity: 12,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 11,
             options: [],
             animations: {
                 cardViewSnapshot?.frame = cardFrame
             }, completion: { _ in
                 
                 // finish animation and transition
-                cardView.isHidden = false
+//                cardView.isHidden = false
                 cardViewSnapshot?.removeFromSuperview()
+                cardController.collectionView?.reloadData()
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 
         })
