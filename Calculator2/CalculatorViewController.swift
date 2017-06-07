@@ -40,10 +40,10 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         return Double(returnDouble)
     }
     
-    // Take and return screenshot of current content
+    // Take and return screenshot of current view
     var snapshotImage: UIImage {
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        self.view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, false, 0)
+        self.view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
         let screenshot = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return screenshot ?? UIImage()
@@ -62,10 +62,10 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         
         resultTextLabel.text = calculator.currentNumber
         
-        //        let blurEffect = UIBlurEffect(style: .light)
-        //        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-        //        blurredEffectView.frame = wallpaperImageView!.bounds
-        //        view.insertSubview(blurredEffectView, aboveSubview: wallpaperImageView)
+                let blurEffect = UIBlurEffect(style: .light)
+                let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+                blurredEffectView.frame = wallpaperImageView!.bounds
+                view.insertSubview(blurredEffectView, aboveSubview: wallpaperImageView)
         
     }
     

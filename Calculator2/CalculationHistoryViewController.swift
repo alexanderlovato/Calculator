@@ -31,6 +31,8 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CalculatorController.sharedController.history.count
     }

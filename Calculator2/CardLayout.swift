@@ -16,6 +16,9 @@ struct CardLayoutConst {
 
 class CardLayout: UICollectionViewFlowLayout {
     
+    private var deletedIndexPaths: [IndexPath] = []
+    private var insertedIndexPaths: [IndexPath] = []
+    
     
     // MARK: - Init
     
@@ -69,5 +72,49 @@ class CardLayout: UICollectionViewFlowLayout {
         
         return modifiedLayoutAtts
     }
+    
+    override func prepare(forCollectionViewUpdates updateItems: [UICollectionViewUpdateItem]) {
+        super.prepare(forCollectionViewUpdates: updateItems)
+        
+        insertedIndexPaths.removeAll(keepingCapacity: false)
+        deletedIndexPaths.removeAll(keepingCapacity: false)
+        
+        for update in updateItems {
+            switch update.updateAction {
+            case.insert:
+                insertedIndexPaths.append(update.indexPathAfterUpdate!)
+            case.delete:
+                deletedIndexPaths.append(update.indexPathBeforeUpdate!)
+            default:
+                return
+            }
+        }
+    }
+    
+    override func finalizeCollectionViewUpdates() {
+        super.finalizeCollectionViewUpdates()
+        
+        insertedIndexPaths.removeAll(keepingCapacity: false)
+        deletedIndexPaths.removeAll(keepingCapacity: false)
+    }
+    
+    override func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = super.finalLayoutAttributesForDisappearingItem(at: itemIndexPath)
+        attributes?.transform = CGAffineTransform.init(translationX: 0, y: -400)
+        attributes?.alpha = 0.0
+        return attributes
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

@@ -37,36 +37,6 @@ class CardCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        // inset collection view left/right-most cards can be centered
-        let flowLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
-        let edgePadding = (self.collectionView!.bounds.size.width - flowLayout.itemSize.width)/2
-        self.collectionView!.contentInset = UIEdgeInsets(top: 0, left: edgePadding, bottom: 0, right: edgePadding)
-        
-        // style
-        self.collectionView?.backgroundView = {
-            let view = UIView(frame: self.view.bounds)
-            view.layer.addSublayer(self.backgroundGradientLayer)
-            return view
-        }()
-
-        // Register cell classes
-        self.collectionView!.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCellConst.reuseId)
-
-        // add scroll view which we'll hijack scrolling from
-        let scrollViewFrame = CGRect(
-            x: self.view.bounds.width,
-            y: 0,
-            width: flowLayout.itemSize.width,
-            height: self.view.bounds.height)
-        pagingScrollView.frame = scrollViewFrame
-        let cellCount = CGFloat(CalculatorController.sharedController.calculators.count)
-        pagingScrollView.contentSize = CGSize(width: flowLayout.itemSize.width*cellCount, height: self.view.bounds.height)
-        self.collectionView!.superview!.insertSubview(pagingScrollView, belowSubview: self.collectionView!)
-        self.collectionView!.addGestureRecognizer(pagingScrollView.panGestureRecognizer)
-        self.collectionView!.isScrollEnabled = false
-        
-        
         if CalculatorController.sharedController.calculators.count == 0 {
             let calculator = Calculator(currentNumber: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: Data())
             CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
@@ -78,13 +48,49 @@ class CardCollectionViewController: UICollectionViewController {
             self.navigationController?.pushViewController(vc, animated: true)
             
             collectionView?.remembersLastFocusedIndexPath = true
+            self.restoresFocusAfterTransition = true
+            
+            
         }
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(true)
-//        self.collectionView?.reloadData()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // inset collection view left/right-most cards can be centered
+        let flowLayout = getFlowLayout()
+        let edgePadding = (self.collectionView!.bounds.size.width - flowLayout.itemSize.width)/2
+        self.collectionView!.contentInset = UIEdgeInsets(top: 0, left: edgePadding, bottom: 0, right: edgePadding)
+        
+        // style
+        self.collectionView?.backgroundView = {
+            let view = UIView(frame: self.view.bounds)
+            view.layer.addSublayer(self.backgroundGradientLayer)
+            return view
+        }()
+        
+        // Register cell classes
+        self.collectionView!.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: CardCollectionViewCellConst.reuseId)
+        
+        // add scroll view which we'll hijack scrolling from
+        
+        pagingScrollView.frame = scrollViewFrameSize()
+        //TODO: - Need to find a way to resize the ScrollView contentSize when calculators have been added and deleted
+        pagingScrollView.contentSize = setScrollViewContentSize()
+        self.collectionView!.superview!.insertSubview(pagingScrollView, belowSubview: self.collectionView!)
+        self.collectionView!.addGestureRecognizer(pagingScrollView.panGestureRecognizer)
+        self.collectionView!.isScrollEnabled = false
+        
+        //Swipe up to enable deleting calculators
+        //TODO: - Need to find a way to extend the length of the gesture in the swipe
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToDelete(sender:)))
+        upSwipe.direction = UISwipeGestureRecognizerDirection.up
+        self.collectionView!.addGestureRecognizer(upSwipe)
+        self.collectionView?.reloadData()
+        
+        
+        
+    }
     
 
     
@@ -99,7 +105,90 @@ class CardCollectionViewController: UICollectionViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    func scrollViewFrameSize() -> CGRect {
+        let flowLayout = getFlowLayout()
+        
+        let frame = CGRect(
+            x: self.view.bounds.width,
+            y: 0,
+            width: flowLayout.itemSize.width,
+            height: self.view.bounds.height)
+        return frame
+    }
+    
+    func getFlowLayout() -> UICollectionViewFlowLayout {
+        let flowLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+        return flowLayout
+    }
+    
+    func setScrollViewContentSize() -> CGSize {
+        let cellCount = CGFloat(CalculatorController.sharedController.calculators.count)
+        let contentSize = CGSize(width: getFlowLayout().itemSize.width*cellCount, height: self.view.bounds.height)
+        return contentSize
+    }
+    
+    // MARK: - Delete Cell Functions
+    
+    func swipeToDelete(sender: UISwipeGestureRecognizer) {
+        
+        if CalculatorController.sharedController.calculators.count != 1 {
+            
+            collectionView?.performBatchUpdates({
+                guard let indexPath = self.centeredIndexPath() else { return }
+                let calculator = CalculatorController.sharedController.calculators[indexPath.item]
+                CalculatorController.sharedController.deleteCalculator(calculator: calculator)
+                self.collectionView?.deleteItems(at: [indexPath])
+
+            }, completion: { (true) in
+                
+                self.pagingScrollView.contentSize = self.setScrollViewContentSize()
+                self.collectionView?.reloadData()
+                
+            })
+        }
+    }
+
+
+    @IBAction func addNewCalculatorButtonTapped(_ sender: UIBarButtonItem) {
+        
+        self.collectionView?.performBatchUpdates({
+            let calculator = Calculator(currentNumber: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false)
+            CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
+            let count = CalculatorController.sharedController.calculators.count
+            let insertedIndexPath = IndexPath(item: count-1, section: 0)
+            self.collectionView?.insertItems(at: [insertedIndexPath])
+            
+        }, completion: { (true) in
+            self.pagingScrollView.contentSize = self.setScrollViewContentSize()
+            self.collectionView?.reloadData()
+            
+            self.scrollToLastAddedCellAnimated(true)
+            
+            //Select the new calcuator cell
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
+//            let calculator = CalculatorController.sharedController.calculators.last!
+//            
+//            vc.calculator = calculator
+//            self.navigationController?.pushViewController(vc, animated: true)
+            
+        })
+    }
+    
+    func scrollToLastAddedCellAnimated(_ animated: Bool) {
+        let count = CalculatorController.sharedController.calculators.count
+        if count > 0 {
+            self.collectionView?.scrollToItem(at: IndexPath(item: count-1, section: 0), at: .right, animated: animated)
+            
+//            self.collectionView?.selectItem(at: IndexPath(item: count-1, section: 0), animated: animated, scrollPosition: .right)
+        }
+    }
+    
+    
 }
+
+
 
 
 // MARK: - Collection View Delegate
@@ -132,6 +221,7 @@ extension CardCollectionViewController {
         let calculatorIndex = CalculatorController.sharedController.calculators[indexPath.item]
         let screenshotImage = calculatorIndex.screenshotImage
         cell.imageView.image = screenshotImage
+        
         return cell
     }
 }
@@ -156,7 +246,7 @@ extension CardCollectionViewController {
 extension CardCollectionViewController: CardToDetailViewAnimating {
     
     // returns index path at center of screen (if there is one)
-    private func centeredIndexPath() -> IndexPath? {
+    func centeredIndexPath() -> IndexPath? {
         guard let collectionView = self.collectionView else { return nil }
         let centerPoint = CGPoint(x: collectionView.contentOffset.x + self.view.bounds.midX,
                                   y: collectionView.bounds.midY)

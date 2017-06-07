@@ -27,7 +27,7 @@ class CardToDetailViewAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
         guard fromViewController is CardCollectionViewController else { fatalError("\(String(describing: self))) should only be used to transition from card view") }
         let cardController = fromViewController as! CardCollectionViewController
-        let cardViewSnapshot = cardController.viewForTransition().snapshotView(afterScreenUpdates: false)
+        let cardViewSnapshot = cardController.viewForTransition().snapshotView(afterScreenUpdates: true)
         let cardFrame = cardController.beginFrameForTransition()
         cardViewSnapshot?.frame = cardFrame
         // add required view to context

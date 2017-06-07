@@ -13,7 +13,7 @@ class DetailViewToCardAnimator: NSObject, UIViewControllerAnimatedTransitioning 
     // MARK: - UIViewControllerAnimatedTransitioning
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.7
+        return 0.3
     }
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
@@ -48,7 +48,6 @@ class DetailViewToCardAnimator: NSObject, UIViewControllerAnimatedTransitioning 
                 // finish animation and transition
 //                cardView.isHidden = false
                 cardViewSnapshot?.removeFromSuperview()
-                cardController.collectionView?.reloadData()
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 
         })
