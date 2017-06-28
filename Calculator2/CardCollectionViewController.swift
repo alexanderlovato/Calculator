@@ -10,6 +10,8 @@ import UIKit
 
 class CardCollectionViewController: UICollectionViewController {
     
+    
+    
     /// The pan gesture will be used for this scroll view so the collection view can page items smaller than it's width
     lazy var pagingScrollView: UIScrollView = { [unowned self] in
         let scrollView = UIScrollView()
@@ -37,26 +39,6 @@ class CardCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if CalculatorController.sharedController.calculators.count == 0 {
-            let calculator = Calculator(currentNumber: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: Data())
-            CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
-            collectionView?.reloadData()
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
-            let cardIndex = CalculatorController.sharedController.calculators.first!
-            vc.calculator = cardIndex
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-            collectionView?.remembersLastFocusedIndexPath = true
-            self.restoresFocusAfterTransition = true
-            
-            
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
         // inset collection view left/right-most cards can be centered
         let flowLayout = getFlowLayout()
         let edgePadding = (self.collectionView!.bounds.size.width - flowLayout.itemSize.width)/2
@@ -75,20 +57,41 @@ class CardCollectionViewController: UICollectionViewController {
         // add scroll view which we'll hijack scrolling from
         
         pagingScrollView.frame = scrollViewFrameSize()
-        //TODO: - Need to find a way to resize the ScrollView contentSize when calculators have been added and deleted
         pagingScrollView.contentSize = setScrollViewContentSize()
         self.collectionView!.superview!.insertSubview(pagingScrollView, belowSubview: self.collectionView!)
         self.collectionView!.addGestureRecognizer(pagingScrollView.panGestureRecognizer)
-        self.collectionView!.isScrollEnabled = false
+
+        self.collectionView?.isScrollEnabled = false
+//        self.collectionView?.isPagingEnabled = true
+        
         
         //Swipe up to enable deleting calculators
         //TODO: - Need to find a way to extend the length of the gesture in the swipe
         let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeToDelete(sender:)))
         upSwipe.direction = UISwipeGestureRecognizerDirection.up
         self.collectionView!.addGestureRecognizer(upSwipe)
+        
+        
+        // Automatically create and transition into a new calculator is there aren't any
+        if CalculatorController.sharedController.calculators.count == 0 {
+            let calculator = Calculator(currentNumber: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: Data())
+            CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
+            collectionView?.reloadData()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
+            let cardIndex = CalculatorController.sharedController.calculators.first!
+            vc.calculator = cardIndex
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        collectionView?.remembersLastFocusedIndexPath = true
+        self.restoresFocusAfterTransition = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         self.collectionView?.reloadData()
-        
-        
         
     }
     
@@ -163,29 +166,33 @@ class CardCollectionViewController: UICollectionViewController {
             self.pagingScrollView.contentSize = self.setScrollViewContentSize()
             self.collectionView?.reloadData()
             
-            self.scrollToLastAddedCellAnimated(true)
+            //Scroll to last Calculator cell
+            let cellCount = CGFloat(CalculatorController.sharedController.calculators.count) - 1
+            let frameSize = self.getFlowLayout().itemSize.width*cellCount
+            let point = CGPoint(x: frameSize, y: 0)
+            self.pagingScrollView.setContentOffset(point, animated: true)
+            
             
             //Select the new calcuator cell
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
-//            let calculator = CalculatorController.sharedController.calculators.last!
-//            
-//            vc.calculator = calculator
-//            self.navigationController?.pushViewController(vc, animated: true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
+            let calculator = CalculatorController.sharedController.calculators.last!
+            
+            
+            vc.calculator = calculator
+            self.navigationController?.pushViewController(vc, animated: true)
+            
             
         })
     }
     
-    func scrollToLastAddedCellAnimated(_ animated: Bool) {
-        let count = CalculatorController.sharedController.calculators.count
-        if count > 0 {
-            self.collectionView?.scrollToItem(at: IndexPath(item: count-1, section: 0), at: .right, animated: animated)
-            
-//            self.collectionView?.selectItem(at: IndexPath(item: count-1, section: 0), animated: animated, scrollPosition: .right)
-        }
-    }
-    
-    
+//    func scrollToLastAddedCellAnimated(_ animated: Bool) {
+//        let count = CalculatorController.sharedController.calculators.count
+//        if count > 0 {
+//            self.collectionView?.scrollToItem(at: IndexPath(item: count-1, section: 0), at: .right, animated: animated)
+//            
+//        }
+//    }
 }
 
 
@@ -268,7 +275,6 @@ extension CardCollectionViewController: CardToDetailViewAnimating {
         //TODO: - Reset to original config once cell images start working
         guard let cell = centeredCell() else { return UICollectionViewCell() }
         
-        //This is the cause of the cell rendering issue!!!!!!
         // I can hide the cell when returning to collectionView but unable to unhide the cell
 //        cell.isHidden = true
 //        let mainQueue = DispatchQueue.main

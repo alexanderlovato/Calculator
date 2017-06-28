@@ -60,7 +60,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             sharedController.saveCalculatorTab(calculatorTab: calculator)
         }
         
-        resultTextLabel.text = calculator.currentNumber
+        resultTextLabel.text = ScoreFormatter.formattedScore(calculator.currentNumber)
         
                 let blurEffect = UIBlurEffect(style: .light)
                 let blurredEffectView = UIVisualEffectView(effect: blurEffect)
@@ -106,8 +106,9 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         // Percent button (%)
         case Operations.percent.rawValue:
             let percentValue = percentage(currentNumber: resultLabelValue)
-            resultTextLabel.text = removeTrailingZero(number: percentValue)
-            calculator.currentNumber = resultTextLabel.text
+            let removedZero = removeTrailingZero(number: percentValue)
+            resultTextLabel.text = ScoreFormatter.formattedScore(removedZero)
+            calculator.currentNumber = ScoreFormatter.unformattedNumberString(resultTextLabel.text ?? "0") ?? "0"
             
             // The following notes applies to the "÷", "x", "-", and "+" operator cases:
             // Append the current number from the result text label to the operationStack
@@ -220,7 +221,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // Delete the last number in the result text label then store that in "truncated"
             let truncated = resultText.substring(to: resultText.index(before: resultText.endIndex))
             // Set the result text label to show the "truncated" value
-            resultTextLabel.text! = truncated
+            resultTextLabel.text! = ScoreFormatter.formattedScore(truncated) ?? "0"
             calculator.currentNumber = truncated
         }
         sharedController.saveToPersistentStorage()
@@ -231,8 +232,10 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         
         // Capture the current number being pressed in "buttonNumber"
         let buttonNumber = sender.titleLabel?.text ?? "0"
+        
         // Unformat the current number in the result text label to not show any potential commas
         let unformattedNumber = ScoreFormatter.unformattedNumberString(resultTextLabel.text ?? "0") ?? "0"
+        
         // Capture the currently formatted number in the result text label
         let labelNumber = resultTextLabel.text ?? "0"
         
@@ -417,7 +420,8 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             } else {
                 //If none of the above scenarios match then execute this block of code
                 let labelNumber = "\(dataStack.removeLast())"
-                resultTextLabel.text = labelNumber.replacingOccurrences(of: ".0", with: "")
+                let numberString = labelNumber.replacingOccurrences(of: ".0", with: "")
+                resultTextLabel.text = ScoreFormatter.formattedScore(numberString)
                 calculator.currentNumber = labelNumber
                 calculator.currentlyTypingNumber = true
             }
