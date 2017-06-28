@@ -14,6 +14,14 @@
 		DDB36ACC9B00819586374CCC /* Pods_Calculator2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8946FB8DA3DA2674DD4C7201 /* Pods_Calculator2Tests.framework */; };
 		E6D152F7EF8032A980709DA5 /* Pods_Calculator2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5537B61EDD8D04160E9C29 /* Pods_Calculator2.framework */; };
 		FA131EF01DD7A253000904F7 /* CalculationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA131EEF1DD7A253000904F7 /* CalculationHistoryViewController.swift */; };
+		FA2413A31ED0F1CB00AF0D7C /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413A21ED0F1CB00AF0D7C /* CardCollectionViewController.swift */; };
+		FA2413A51ED0F1D600AF0D7C /* NavigationTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413A41ED0F1D600AF0D7C /* NavigationTransitionController.swift */; };
+		FA2413A71ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413A61ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift */; };
+		FA2413A91ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413A81ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift */; };
+		FA2413AB1ED0F1F500AF0D7C /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413AA1ED0F1F500AF0D7C /* NavigationViewController.swift */; };
+		FA2413AE1ED0F21100AF0D7C /* CardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413AD1ED0F21100AF0D7C /* CardLayout.swift */; };
+		FA2413B11ED0F24A00AF0D7C /* TransparentNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413B01ED0F24A00AF0D7C /* TransparentNavigationBar.swift */; };
+		FA2413B31ED0F25200AF0D7C /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413B21ED0F25200AF0D7C /* CardCollectionViewCell.swift */; };
 		FA50514A1E3C7A6E0087FDC4 /* Calculator2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA5051481E3C7A6E0087FDC4 /* Calculator2.xcdatamodeld */; };
 		FA50514C1E3C7AD10087FDC4 /* History+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50514B1E3C7AD10087FDC4 /* History+Convenience.swift */; };
 		FA50514E1E3C7AED0087FDC4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50514D1E3C7AED0087FDC4 /* CoreDataStack.swift */; };
@@ -87,6 +95,14 @@
 		DAE34361575DC597948BF165 /* Pods_Calculator2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calculator2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF82A289EE799212B587E42F /* EarlGrey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EarlGrey.framework; path = "${SRCROOT}/Pods/EarlGrey/EarlGrey/EarlGrey.framework"; sourceTree = SRCROOT; };
 		FA131EEF1DD7A253000904F7 /* CalculationHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationHistoryViewController.swift; sourceTree = "<group>"; };
+		FA2413A21ED0F1CB00AF0D7C /* CardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
+		FA2413A41ED0F1D600AF0D7C /* NavigationTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTransitionController.swift; sourceTree = "<group>"; };
+		FA2413A61ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardToDetailViewAnimator.swift; sourceTree = "<group>"; };
+		FA2413A81ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewToCardAnimator.swift; sourceTree = "<group>"; };
+		FA2413AA1ED0F1F500AF0D7C /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		FA2413AD1ED0F21100AF0D7C /* CardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLayout.swift; sourceTree = "<group>"; };
+		FA2413B01ED0F24A00AF0D7C /* TransparentNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentNavigationBar.swift; sourceTree = "<group>"; };
+		FA2413B21ED0F25200AF0D7C /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA5051491E3C7A6E0087FDC4 /* Calculator2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Calculator2.xcdatamodel; sourceTree = "<group>"; };
 		FA50514B1E3C7AD10087FDC4 /* History+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "History+Convenience.swift"; sourceTree = "<group>"; };
 		FA50514D1E3C7AED0087FDC4 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -176,6 +192,48 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FA24139F1ED0F13800AF0D7C /* Navigation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413AA1ED0F1F500AF0D7C /* NavigationViewController.swift */,
+			);
+			name = "Navigation Controller";
+			sourceTree = "<group>";
+		};
+		FA2413A01ED0F15A00AF0D7C /* Animation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413A61ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift */,
+				FA2413A81ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift */,
+			);
+			name = "Animation Controller";
+			sourceTree = "<group>";
+		};
+		FA2413A11ED0F16500AF0D7C /* Transition Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413A41ED0F1D600AF0D7C /* NavigationTransitionController.swift */,
+			);
+			name = "Transition Controller";
+			sourceTree = "<group>";
+		};
+		FA2413AC1ED0F20500AF0D7C /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413AD1ED0F21100AF0D7C /* CardLayout.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		FA2413AF1ED0F22900AF0D7C /* Subclassed Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413B21ED0F25200AF0D7C /* CardCollectionViewCell.swift */,
+				FA2413B01ED0F24A00AF0D7C /* TransparentNavigationBar.swift */,
+			);
+			name = "Subclassed Views";
+			sourceTree = "<group>";
+		};
 		FA50514F1E3C7B370087FDC4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +254,8 @@
 		FA5051511E3C7B520087FDC4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA2413AF1ED0F22900AF0D7C /* Subclassed Views */,
+				FA2413A21ED0F1CB00AF0D7C /* CardCollectionViewController.swift */,
 				FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */,
 				FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */,
 				FA131EEF1DD7A253000904F7 /* CalculationHistoryViewController.swift */,
@@ -245,6 +305,10 @@
 		FA5FEC1A1DAC65A5009218B9 /* Calculator2 */ = {
 			isa = PBXGroup;
 			children = (
+				FA2413AC1ED0F20500AF0D7C /* Layout */,
+				FA2413A11ED0F16500AF0D7C /* Transition Controller */,
+				FA2413A01ED0F15A00AF0D7C /* Animation Controller */,
+				FA24139F1ED0F13800AF0D7C /* Navigation Controller */,
 				FA5FEC1B1DAC65A5009218B9 /* AppDelegate.swift */,
 				FA50514F1E3C7B370087FDC4 /* Model */,
 				FA5051501E3C7B430087FDC4 /* Model Controller */,
@@ -649,15 +713,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA50514C1E3C7AD10087FDC4 /* History+Convenience.swift in Sources */,
+				FA2413B11ED0F24A00AF0D7C /* TransparentNavigationBar.swift in Sources */,
 				FA5FEC501DAC9A11009218B9 /* CalculatorViewController.swift in Sources */,
 				FA5FEC1C1DAC65A5009218B9 /* AppDelegate.swift in Sources */,
+				FA2413AE1ED0F21100AF0D7C /* CardLayout.swift in Sources */,
+				FA2413AB1ED0F1F500AF0D7C /* NavigationViewController.swift in Sources */,
 				FAC33E1D1DE0DF5B00D517AB /* ScoreFormatter.swift in Sources */,
+				FA2413A71ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift in Sources */,
 				FA131EF01DD7A253000904F7 /* CalculationHistoryViewController.swift in Sources */,
 				FA50514E1E3C7AED0087FDC4 /* CoreDataStack.swift in Sources */,
+				FA2413A51ED0F1D600AF0D7C /* NavigationTransitionController.swift in Sources */,
 				FA50514A1E3C7A6E0087FDC4 /* Calculator2.xcdatamodeld in Sources */,
+				FA2413A91ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift in Sources */,
 				FAC33E1B1DE0BA8600D517AB /* ButtonFontSize.swift in Sources */,
 				FA5FEC4C1DAC7D83009218B9 /* Calculator.swift in Sources */,
 				FA5FEC4E1DAC7E71009218B9 /* CalculatorController.swift in Sources */,
+				FA2413B31ED0F25200AF0D7C /* CardCollectionViewCell.swift in Sources */,
+				FA2413A31ED0F1CB00AF0D7C /* CardCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

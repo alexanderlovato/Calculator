@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1SX-H5-LpE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZET-ld-ogh">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -35,7 +35,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
                                             <state key="normal" title="Clear History">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
                                                 <action selector="clearHistoryButtonTapped:" destination="fMi-31-sh8" eventType="touchUpInside" id="o7P-QL-Jj3"/>
@@ -106,6 +106,7 @@
                     </visualEffectView>
                     <navigationItem key="navigationItem" id="oEp-Ra-Jm2">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3hG-GG-ow4">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="doneButtonTapped:" destination="fMi-31-sh8" id="2ET-Mz-fHO"/>
                             </connections>
@@ -119,12 +120,12 @@
             </objects>
             <point key="canvasLocation" x="2778" y="36"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="tl5-7v-OQD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fBg-DO-ULA" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fBg-DO-ULA" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ccc-QV-6Zh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ccc-QV-6Zh" customClass="TransparentNavigationBar" customModule="Calculator2" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -140,7 +141,7 @@
         <!--Calculator View Controller-->
         <scene sceneID="CS7-bR-1oH">
             <objects>
-                <viewController id="276-oY-jHz" customClass="CalculatorViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalculatorViewController" id="276-oY-jHz" customClass="CalculatorViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hbh-9e-C30"/>
                         <viewControllerLayoutGuide type="bottom" id="1GA-yv-Hxx"/>
@@ -149,48 +150,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stone_Wall-wallpaper-10422235" translatesAutoresizingMaskIntoConstraints="NO" id="vTK-Il-Ch1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueShoreLine" translatesAutoresizingMaskIntoConstraints="NO" id="vTK-Il-Ch1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9hS-e7-gr3">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="9aM-1M-F0g">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="9aM-1M-F0g">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="232"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="SWw-ud-nJv"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="100"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwx-po-JTF">
                                         <rect key="frame" x="0.0" y="232" width="414" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-gk-xeN">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-gk-xeN">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="SaveResultID" label="SaveResultLabel"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="138" id="aKY-6q-0PE"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="22"/>
                                                 <state key="normal" title="Save Result">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="saveResultButtonTapped:" destination="276-oY-jHz" eventType="touchUpInside" id="RAD-sU-F31"/>
                                                 </connections>
                                             </button>
-                                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ve-1V-y7t">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ve-1V-y7t">
                                                 <rect key="frame" x="138" y="0.0" width="173.33333333333331" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwd-ks-zRf" userLabel="Backspace">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwd-ks-zRf" userLabel="Backspace">
                                                 <rect key="frame" x="311.33333333333326" y="0.0" width="102.66666666666669" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="Backspace"/>
                                                 <connections>
                                                     <action selector="backspaceButtonTapped:" destination="276-oY-jHz" eventType="touchUpInside" id="PLn-Rz-agm"/>
@@ -210,9 +211,9 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="XgF-Iu-aVc">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="79.333333333333314"/>
                                                         <subviews>
-                                                            <button opaque="NO" alpha="0.94999998807907104" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y18-tK-MfR" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y18-tK-MfR" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="102.66666666666667" height="79.333333333333314"/>
-                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="ClearID" label="ClearLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -223,9 +224,9 @@
                                                                     <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="386-Rr-ehK"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" alpha="0.94999998807907104" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04n-a6-H2S" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04n-a6-H2S" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
                                                                 <rect key="frame" x="103.66666666666666" y="0.0" width="102.99999999999997" height="79.333333333333314"/>
-                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="PlusMinusID" label="PlusMinusLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -236,9 +237,9 @@
                                                                     <action selector="operationAction:" destination="276-oY-jHz" eventType="touchUpInside" id="6he-Gc-IIz"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" alpha="0.94999998807907104" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfV-51-HCc" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
+                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfV-51-HCc" customClass="ButtonFontSize" customModule="Calculator2" customModuleProvider="target">
                                                                 <rect key="frame" x="207.66666666666669" y="0.0" width="102.66666666666669" height="79.333333333333314"/>
-                                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="PercentageID" label="PercentageLabel"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="45"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -514,8 +515,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="adz-dy-cFF">
+                        <barButtonItem key="leftBarButtonItem" image="Carosel_HalfSize" id="sVE-8R-Xc0">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="multitaskingButton:" destination="276-oY-jHz" id="7Pl-PM-fAi"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="History" id="XYl-Gw-RWn">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="fBg-DO-ULA" kind="presentation" identifier="toHistoryTable" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="qJb-ZA-YMf"/>
                             </connections>
@@ -530,12 +537,12 @@
             </objects>
             <point key="canvasLocation" x="1048" y="36"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="Rs1-f1-27m">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1SX-H5-LpE" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1SX-H5-LpE" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HRI-KB-cE9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HRI-KB-cE9" customClass="TransparentNavigationBar" customModule="Calculator2" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -548,9 +555,53 @@
             </objects>
             <point key="canvasLocation" x="232" y="36"/>
         </scene>
+        <!--Navigation View Controller-->
+        <scene sceneID="ip7-LT-pAH">
+            <objects>
+                <navigationController id="ZET-ld-ogh" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bNc-SO-Ddf" customClass="TransparentNavigationBar" customModule="Calculator2" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TrI-7e-YEc" kind="relationship" relationship="rootViewController" id="Lga-Fv-Ljl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9Q-Qm-gku" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1538" y="36"/>
+        </scene>
+        <!--Card Collection View Controller-->
+        <scene sceneID="IhJ-9f-6jw">
+            <objects>
+                <collectionViewController id="TrI-7e-YEc" customClass="CardCollectionViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="ciB-mZ-XSo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewLayout key="collectionViewLayout" id="IFi-lv-lSW" customClass="CardLayout" customModule="Calculator2" customModuleProvider="target"/>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="TrI-7e-YEc" id="SZd-p6-bxH"/>
+                            <outlet property="delegate" destination="TrI-7e-YEc" id="Zey-cM-fhw"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="6fB-Jg-Qsf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qJX-xn-s4W">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addNewCalculatorButtonTapped:" destination="TrI-7e-YEc" id="1By-34-nc2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZHk-xq-AMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-701" y="36"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Backspace" width="30" height="20"/>
-        <image name="Stone_Wall-wallpaper-10422235" width="1440" height="1280"/>
+        <image name="BlueShoreLine" width="1587" height="2830"/>
+        <image name="Carosel_HalfSize" width="46" height="34"/>
     </resources>
 </document>

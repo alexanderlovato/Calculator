@@ -12,9 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    let transitionController = NavigationTransitionController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //        UINavigationBar.appearance().tintColor = UIColor.black
+        // setup navigation delegate
+        let rootNavigationController = self.window!.rootViewController as! UINavigationController
+        rootNavigationController.delegate = transitionController
         
         return true
     }
