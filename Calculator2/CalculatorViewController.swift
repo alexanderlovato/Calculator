@@ -32,7 +32,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     
     // MARK: - Properties
     var finishedEquation = false
-    var decimalPressed = false
     var resultLabelValue: Double {
         let value = resultTextLabel.text ?? "0"
         let returnValue = ScoreFormatter.unformattedNumber(value)
@@ -97,7 +96,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // Reset the below boolean variables to false
             calculator.currentlyTypingNumber = false
             finishedEquation = false
-            decimalPressed = false
             
         // Positive or Negative button (+/-)
         case Operations.plusMinus.rawValue:
@@ -121,7 +119,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             calculator.enter(addToStack: "÷")
             calculator.currentlyTypingNumber = false
             finishedEquation = false
-            decimalPressed = false
             
         // Multiplication button (x)
         case Operations.multiplication.rawValue:
@@ -129,7 +126,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             calculator.enter(addToStack: "x")
             calculator.currentlyTypingNumber = false
             finishedEquation = false
-            decimalPressed = false
             
         // Subtraction button (-)
         case Operations.subtraction.rawValue:
@@ -137,7 +133,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             calculator.enter(addToStack: "-")
             calculator.currentlyTypingNumber = false
             finishedEquation = false
-            decimalPressed = false
             
         // Addition button (+)
         case Operations.addition.rawValue:
@@ -145,7 +140,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             calculator.enter(addToStack: "+")
             calculator.currentlyTypingNumber = false
             finishedEquation = false
-            decimalPressed = false
             
         // Decimal button (.)
         case Operations.decimal.rawValue:
@@ -192,7 +186,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             
             // Reset currentlyTypingNumber and decimalPressed back to false
             calculator.currentlyTypingNumber = false
-            decimalPressed = false
             
             // Since the equation has finished, set this to true
             finishedEquation = true
@@ -242,7 +235,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         // Check if a number is currently being entered
         if calculator.currentlyTypingNumber {
             // Then check if the decimal button has been pressed
-            if decimalPressed {
+            if resultTextLabel.text?.contains(find: ".") == true {
                 // Add the tapped number after the decimal point to the result text label
                 let number = labelNumber + buttonNumber
                 resultTextLabel.text = number
@@ -259,7 +252,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             
             // If a number is not currently being entered then check if the decimal button has been tapped
             // This is in case a decimal number less than 1 is being tapped
-        } else if decimalPressed {
+        } else if resultTextLabel.text?.contains(find: ".") == true {
             // Add the tapped number after the decimal point
             resultTextLabel.text = labelNumber + buttonNumber
             calculator.currentNumber = resultTextLabel.text
@@ -317,13 +310,12 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     func convertToDecimalNumber(number: String) -> String {
         
         // Only run if the decimal button has NEVER been tapped for this set of numbers
-        if decimalPressed == false {
+        if resultTextLabel.text?.contains(find: ".") == false {
             
             // If numbers are not being entered add the decimal to the result text label
             if calculator.currentlyTypingNumber == false {
                 calculator.currentNumber = "."
                 // set decimalPressed to true since a decimal has been entered
-                decimalPressed = true
                 return "."
                 
                 // Since numbers are currently being entered run this
@@ -332,12 +324,12 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
                 let decimalNumber = number + "."
                 calculator.currentNumber = decimalNumber
                 // set decimalPressed to true since a decimal has been entered
-                decimalPressed = true
                 return decimalNumber
             }
         }
         return number
     }
+    
     
     func positiveOrNegative(currentNumber: Double) -> String {
         
@@ -437,5 +429,11 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // Get the new view controller using segue.destinationViewController.
             // Pass the selected object to the new view controller.
         }
+    }
+}
+
+extension String {
+    func contains(find: String) -> Bool {
+        return self.range(of: find) != nil
     }
 }
