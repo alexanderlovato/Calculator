@@ -111,7 +111,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // The following notes applies to the "÷", "x", "-", and "+" operator cases:
             // Append the current number from the result text label to the operationStack
             // Append the operator being tapped to the operationStack
-            // Reset currentlyTypingNumber, finishedEquation, and decimalPressed back to false
+            // Reset currentlyTypingNumber and finishedEquation
             
         // Division button (÷)
         case Operations.division.rawValue:
@@ -147,7 +147,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // Adds a decimal to the result text label
             resultTextLabel.text = convertToDecimalNumber(number: resultTextLabel.text ?? "0")
             sharedController.saveToPersistentStorage()
-            
+            calculator.currentlyTypingNumber = true
         // Equals button (=)
         case Operations.equals.rawValue:
             
@@ -184,7 +184,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             calculator.currentNumber = labelResult
             sharedController.saveToPersistentStorage()
             
-            // Reset currentlyTypingNumber and decimalPressed back to false
+            // Reset currentlyTypingNumber back to false
             calculator.currentlyTypingNumber = false
             
             // Since the equation has finished, set this to true
@@ -252,14 +252,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             
             // If a number is not currently being entered then check if the decimal button has been tapped
             // This is in case a decimal number less than 1 is being tapped
-        } else if resultTextLabel.text?.contains(find: ".") == true {
-            // Add the tapped number after the decimal point
-            resultTextLabel.text = labelNumber + buttonNumber
-            calculator.currentNumber = resultTextLabel.text
-            // Set currentlyTypingNumber to true since numbers are currently being entered
-            calculator.currentlyTypingNumber = true
-            
-            // Since no numbers are being entered and the decimal button has not been pressed, run this
         } else {
             // Add the formatted button to the result text label
             resultTextLabel.text = ScoreFormatter.formattedScore(buttonNumber)
@@ -315,7 +307,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             // If numbers are not being entered add the decimal to the result text label
             if calculator.currentlyTypingNumber == false {
                 calculator.currentNumber = "."
-                // set decimalPressed to true since a decimal has been entered
                 return "."
                 
                 // Since numbers are currently being entered run this
@@ -323,7 +314,6 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
                 // Add a decimal to the current number in result text label
                 let decimalNumber = number + "."
                 calculator.currentNumber = decimalNumber
-                // set decimalPressed to true since a decimal has been entered
                 return decimalNumber
             }
         }

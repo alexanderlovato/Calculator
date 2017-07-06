@@ -41,8 +41,16 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalculatorCell", for: indexPath)
         let history = CalculatorController.sharedController.history[indexPath.row]
         let data = history.historyStack!.replacingOccurrences(of: ".0", with: "")
-        cell.textLabel?.text = ScoreFormatter.formattedScore(data)
-        return cell
+        
+        if data.contains(find: "÷") || data.contains(find: "x") || data.contains(find: "-") || data.contains(find: "+") {
+            cell.textLabel?.text = data
+            return cell
+        } else {
+            cell.textLabel?.text = ScoreFormatter.formattedScore(data)
+            return cell
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -56,7 +64,7 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let entry = tableView.indexPathForSelectedRow?.row
         let stackIndex = CalculatorController.sharedController.history[entry!]
-        let returnString = ScoreFormatter.unformattedNumberString(stackIndex.historyStack)
+        let returnString = stackIndex.historyStack
         let returnData = returnString!.components(separatedBy: " ")
         passDataBackwards(anyData: returnData)
         self.dismiss(animated: true, completion: nil)

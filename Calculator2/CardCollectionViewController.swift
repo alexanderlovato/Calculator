@@ -156,7 +156,8 @@ class CardCollectionViewController: UICollectionViewController {
     @IBAction func addNewCalculatorButtonTapped(_ sender: UIBarButtonItem) {
         
         self.collectionView?.performBatchUpdates({
-            let calculator = Calculator(currentNumber: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false)
+            let defaultPhoto = UIImagePNGRepresentation(#imageLiteral(resourceName: "DefaultCell"))
+            let calculator = Calculator(currentNumber: "0", operationStack: [], entireOperationString: [], currentlyTypingNumber: false, screenshotData: defaultPhoto)
             CalculatorController.sharedController.saveCalculatorTab(calculatorTab: calculator)
             let count = CalculatorController.sharedController.calculators.count
             let insertedIndexPath = IndexPath(item: count-1, section: 0)
