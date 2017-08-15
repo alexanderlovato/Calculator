@@ -2,8 +2,8 @@
 //  NavigationViewController.swift
 //  CardCollectionView
 //
-//  Created by Kyle Zaragoza on 7/11/16.
-//  Copyright © 2016 Kyle Zaragoza. All rights reserved.
+//  Created by Alexander Lovato on 1/18/17.
+//  Copyright © 2017 Nonsense. All rights reserved.
 //
 
 import UIKit

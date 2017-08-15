@@ -103,13 +103,14 @@ class Calculator: Equatable {
         operationStack.removeAll()
         print(operationStack)
     }
+    
+    
 }
 
 // MARK: - Equatable Protocol Function
 func ==(lhs: Calculator, rhs: Calculator) -> Bool {
     return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }
-
 
 
 
