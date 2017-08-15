@@ -76,6 +76,13 @@ class CalculatorController {
             saveToHistoryStorage()
     }
     
+    func deleteCalculator(calculator: Calculator) {
+        if let calculatorIndex = calculators.index(of: calculator) {
+            calculators.remove(at: calculatorIndex)
+            saveToPersistentStorage()
+        }
+    }
+    
     func clearAllHistoryEntires() {
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
         let request = NSBatchDeleteRequest(fetchRequest: fetch)

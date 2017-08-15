@@ -7,7 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F94EB82AA8D09DE1B05A464 /* Pods_EarlGreyUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44540A569D1F006CFEEACAF0 /* Pods_EarlGreyUnitTests.framework */; };
+		31F42B67CB8BDE6A3937085E /* Pods_Calculator2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE34361575DC597948BF165 /* Pods_Calculator2UITests.framework */; };
+		5CDB37323DA0C8F11005FF9A /* EarlGrey.framework in EarlGrey Copy Files */ = {isa = PBXBuildFile; fileRef = EF82A289EE799212B587E42F /* EarlGrey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		A935B80E4A53C42944F92B91 /* EarlGrey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF82A289EE799212B587E42F /* EarlGrey.framework */; };
+		DDB36ACC9B00819586374CCC /* Pods_Calculator2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8946FB8DA3DA2674DD4C7201 /* Pods_Calculator2Tests.framework */; };
+		E6D152F7EF8032A980709DA5 /* Pods_Calculator2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5537B61EDD8D04160E9C29 /* Pods_Calculator2.framework */; };
 		FA131EF01DD7A253000904F7 /* CalculationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA131EEF1DD7A253000904F7 /* CalculationHistoryViewController.swift */; };
+		FA2413A31ED0F1CB00AF0D7C /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413A21ED0F1CB00AF0D7C /* CardCollectionViewController.swift */; };
+		FA2413A51ED0F1D600AF0D7C /* NavigationTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413A41ED0F1D600AF0D7C /* NavigationTransitionController.swift */; };
+		FA2413A71ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413A61ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift */; };
+		FA2413A91ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413A81ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift */; };
+		FA2413AB1ED0F1F500AF0D7C /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413AA1ED0F1F500AF0D7C /* NavigationViewController.swift */; };
+		FA2413AE1ED0F21100AF0D7C /* CardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413AD1ED0F21100AF0D7C /* CardLayout.swift */; };
+		FA2413B11ED0F24A00AF0D7C /* TransparentNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413B01ED0F24A00AF0D7C /* TransparentNavigationBar.swift */; };
+		FA2413B31ED0F25200AF0D7C /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2413B21ED0F25200AF0D7C /* CardCollectionViewCell.swift */; };
+		FA50514A1E3C7A6E0087FDC4 /* Calculator2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA5051481E3C7A6E0087FDC4 /* Calculator2.xcdatamodeld */; };
+		FA50514C1E3C7AD10087FDC4 /* History+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50514B1E3C7AD10087FDC4 /* History+Convenience.swift */; };
+		FA50514E1E3C7AED0087FDC4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50514D1E3C7AED0087FDC4 /* CoreDataStack.swift */; };
 		FA5FEC1C1DAC65A5009218B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC1B1DAC65A5009218B9 /* AppDelegate.swift */; };
 		FA5FEC211DAC65A5009218B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5FEC1F1DAC65A5009218B9 /* Main.storyboard */; };
 		FA5FEC261DAC65A5009218B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5FEC241DAC65A5009218B9 /* LaunchScreen.storyboard */; };
@@ -16,9 +33,12 @@
 		FA5FEC4C1DAC7D83009218B9 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */; };
 		FA5FEC4E1DAC7E71009218B9 /* CalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */; };
 		FA5FEC501DAC9A11009218B9 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */; };
+		FA7082881EAF050C00648686 /* EarlGreyUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7082871EAF050C00648686 /* EarlGreyUnitTests.swift */; };
+		FA7082901EAF0E8500648686 /* MyFirstEarlGreyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA70828F1EAF0E8500648686 /* MyFirstEarlGreyTest.swift */; };
 		FAC33E1B1DE0BA8600D517AB /* ButtonFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */; };
 		FAC33E1D1DE0DF5B00D517AB /* ScoreFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC33E1C1DE0DF5B00D517AB /* ScoreFormatter.swift */; };
 		FAD5D64C1DD42362005DA6A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */; };
+		FBA5AB9440A27FA6DDD1F34A /* EarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002EFC87CC9D65CDBAFB3875 /* EarlGrey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +56,56 @@
 			remoteGlobalIDString = FA5FEC171DAC65A5009218B9;
 			remoteInfo = Calculator2;
 		};
+		FA70828A1EAF050C00648686 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA5FEC101DAC65A5009218B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA5FEC171DAC65A5009218B9;
+			remoteInfo = Calculator2;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B93980CA2923550FBDA953D0 /* EarlGrey Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(TEST_HOST)/../";
+			dstSubfolderSpec = 0;
+			files = (
+				5CDB37323DA0C8F11005FF9A /* EarlGrey.framework in EarlGrey Copy Files */,
+			);
+			name = "EarlGrey Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		002EFC87CC9D65CDBAFB3875 /* EarlGrey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EarlGrey.swift; sourceTree = "<group>"; };
+		08372D0FB3F2F895C237135D /* Pods-Calculator2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calculator2/Pods-Calculator2.debug.xcconfig"; sourceTree = "<group>"; };
+		319D51D8612D6056EED605A2 /* Pods-Calculator2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calculator2/Pods-Calculator2.release.xcconfig"; sourceTree = "<group>"; };
+		3489CDDA62D990740A578FAC /* Pods-Calculator2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calculator2UITests/Pods-Calculator2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		3A7C965B909E60414BFCCD9E /* Pods-Calculator2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Calculator2Tests/Pods-Calculator2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		44540A569D1F006CFEEACAF0 /* Pods_EarlGreyUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EarlGreyUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5537B61EDD8D04160E9C29 /* Pods_Calculator2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calculator2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62F2989CEBC26A5DBED72C59 /* Pods-EarlGreyUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlGreyUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarlGreyUnitTests/Pods-EarlGreyUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8946FB8DA3DA2674DD4C7201 /* Pods_Calculator2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calculator2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		954F709435EFBF4A7E1CC96B /* Pods-Calculator2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calculator2UITests/Pods-Calculator2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B904B0ADA88580A438BF767C /* Pods-Calculator2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calculator2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Calculator2Tests/Pods-Calculator2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		BDA2EBC0685ADD2E6BDB1F71 /* Pods-EarlGreyUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarlGreyUnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarlGreyUnitTests/Pods-EarlGreyUnitTests.release.xcconfig"; sourceTree = "<group>"; };
+		DAE34361575DC597948BF165 /* Pods_Calculator2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calculator2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF82A289EE799212B587E42F /* EarlGrey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EarlGrey.framework; path = "${SRCROOT}/Pods/EarlGrey/EarlGrey/EarlGrey.framework"; sourceTree = SRCROOT; };
 		FA131EEF1DD7A253000904F7 /* CalculationHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationHistoryViewController.swift; sourceTree = "<group>"; };
+		FA2413A21ED0F1CB00AF0D7C /* CardCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
+		FA2413A41ED0F1D600AF0D7C /* NavigationTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTransitionController.swift; sourceTree = "<group>"; };
+		FA2413A61ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardToDetailViewAnimator.swift; sourceTree = "<group>"; };
+		FA2413A81ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewToCardAnimator.swift; sourceTree = "<group>"; };
+		FA2413AA1ED0F1F500AF0D7C /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		FA2413AD1ED0F21100AF0D7C /* CardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLayout.swift; sourceTree = "<group>"; };
+		FA2413B01ED0F24A00AF0D7C /* TransparentNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentNavigationBar.swift; sourceTree = "<group>"; };
+		FA2413B21ED0F25200AF0D7C /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA5051491E3C7A6E0087FDC4 /* Calculator2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Calculator2.xcdatamodel; sourceTree = "<group>"; };
+		FA50514B1E3C7AD10087FDC4 /* History+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "History+Convenience.swift"; sourceTree = "<group>"; };
+		FA50514D1E3C7AED0087FDC4 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FA5FEC181DAC65A5009218B9 /* Calculator2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5FEC1B1DAC65A5009218B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA5FEC201DAC65A5009218B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,6 +120,10 @@
 		FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Calculator.swift; path = ../Calculator.swift; sourceTree = "<group>"; };
 		FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorController.swift; sourceTree = "<group>"; };
 		FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		FA7082851EAF050B00648686 /* EarlGreyUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarlGreyUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7082871EAF050C00648686 /* EarlGreyUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlGreyUnitTests.swift; sourceTree = "<group>"; };
+		FA7082891EAF050C00648686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA70828F1EAF0E8500648686 /* MyFirstEarlGreyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFirstEarlGreyTest.swift; sourceTree = "<group>"; };
 		FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonFontSize.swift; sourceTree = "<group>"; };
 		FAC33E1C1DE0DF5B00D517AB /* ScoreFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreFormatter.swift; sourceTree = "<group>"; };
 		FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6D152F7EF8032A980709DA5 /* Pods_Calculator2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB36ACC9B00819586374CCC /* Pods_Calculator2Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,19 +150,143 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31F42B67CB8BDE6A3937085E /* Pods_Calculator2UITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA7082821EAF050B00648686 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A935B80E4A53C42944F92B91 /* EarlGrey.framework in Frameworks */,
+				0F94EB82AA8D09DE1B05A464 /* Pods_EarlGreyUnitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A7E0A60AC67FD76E3A62090 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E5537B61EDD8D04160E9C29 /* Pods_Calculator2.framework */,
+				8946FB8DA3DA2674DD4C7201 /* Pods_Calculator2Tests.framework */,
+				DAE34361575DC597948BF165 /* Pods_Calculator2UITests.framework */,
+				44540A569D1F006CFEEACAF0 /* Pods_EarlGreyUnitTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9BDB5FF7C9D8AF824C7215FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				08372D0FB3F2F895C237135D /* Pods-Calculator2.debug.xcconfig */,
+				319D51D8612D6056EED605A2 /* Pods-Calculator2.release.xcconfig */,
+				B904B0ADA88580A438BF767C /* Pods-Calculator2Tests.debug.xcconfig */,
+				3A7C965B909E60414BFCCD9E /* Pods-Calculator2Tests.release.xcconfig */,
+				954F709435EFBF4A7E1CC96B /* Pods-Calculator2UITests.debug.xcconfig */,
+				3489CDDA62D990740A578FAC /* Pods-Calculator2UITests.release.xcconfig */,
+				62F2989CEBC26A5DBED72C59 /* Pods-EarlGreyUnitTests.debug.xcconfig */,
+				BDA2EBC0685ADD2E6BDB1F71 /* Pods-EarlGreyUnitTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FA24139F1ED0F13800AF0D7C /* Navigation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413AA1ED0F1F500AF0D7C /* NavigationViewController.swift */,
+			);
+			name = "Navigation Controller";
+			sourceTree = "<group>";
+		};
+		FA2413A01ED0F15A00AF0D7C /* Animation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413A61ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift */,
+				FA2413A81ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift */,
+			);
+			name = "Animation Controller";
+			sourceTree = "<group>";
+		};
+		FA2413A11ED0F16500AF0D7C /* Transition Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413A41ED0F1D600AF0D7C /* NavigationTransitionController.swift */,
+			);
+			name = "Transition Controller";
+			sourceTree = "<group>";
+		};
+		FA2413AC1ED0F20500AF0D7C /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413AD1ED0F21100AF0D7C /* CardLayout.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		FA2413AF1ED0F22900AF0D7C /* Subclassed Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413B21ED0F25200AF0D7C /* CardCollectionViewCell.swift */,
+				FA2413B01ED0F24A00AF0D7C /* TransparentNavigationBar.swift */,
+			);
+			name = "Subclassed Views";
+			sourceTree = "<group>";
+		};
+		FA50514F1E3C7B370087FDC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */,
+				FA50514B1E3C7AD10087FDC4 /* History+Convenience.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FA5051501E3C7B430087FDC4 /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */,
+			);
+			name = "Model Controller";
+			sourceTree = "<group>";
+		};
+		FA5051511E3C7B520087FDC4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA2413AF1ED0F22900AF0D7C /* Subclassed Views */,
+				FA2413A21ED0F1CB00AF0D7C /* CardCollectionViewController.swift */,
+				FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */,
+				FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */,
+				FA131EEF1DD7A253000904F7 /* CalculationHistoryViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FA5051521E3C7B8D0087FDC4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA5FEC271DAC65A5009218B9 /* Info.plist */,
+				FAC33E1C1DE0DF5B00D517AB /* ScoreFormatter.swift */,
+				FA50514D1E3C7AED0087FDC4 /* CoreDataStack.swift */,
+				FA5FEC1F1DAC65A5009218B9 /* Main.storyboard */,
+				FA5051481E3C7A6E0087FDC4 /* Calculator2.xcdatamodeld */,
+				FA5FEC241DAC65A5009218B9 /* LaunchScreen.storyboard */,
+				FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		FA5FEC0F1DAC65A5009218B9 = {
 			isa = PBXGroup;
 			children = (
 				FA5FEC1A1DAC65A5009218B9 /* Calculator2 */,
 				FA5FEC2F1DAC65A5009218B9 /* Calculator2Tests */,
 				FA5FEC3A1DAC65A5009218B9 /* Calculator2UITests */,
+				FA7082861EAF050C00648686 /* EarlGreyUnitTests */,
 				FA5FEC191DAC65A5009218B9 /* Products */,
+				9BDB5FF7C9D8AF824C7215FE /* Pods */,
+				4A7E0A60AC67FD76E3A62090 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +296,8 @@
 				FA5FEC181DAC65A5009218B9 /* Calculator2.app */,
 				FA5FEC2C1DAC65A5009218B9 /* Calculator2Tests.xctest */,
 				FA5FEC371DAC65A5009218B9 /* Calculator2UITests.xctest */,
+				FA7082851EAF050B00648686 /* EarlGreyUnitTests.xctest */,
+				EF82A289EE799212B587E42F /* EarlGrey.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,17 +305,15 @@
 		FA5FEC1A1DAC65A5009218B9 /* Calculator2 */ = {
 			isa = PBXGroup;
 			children = (
-				FA5FEC4B1DAC7D83009218B9 /* Calculator.swift */,
-				FA5FEC4D1DAC7E71009218B9 /* CalculatorController.swift */,
-				FA5FEC4F1DAC9A11009218B9 /* CalculatorViewController.swift */,
-				FA131EEF1DD7A253000904F7 /* CalculationHistoryViewController.swift */,
+				FA2413AC1ED0F20500AF0D7C /* Layout */,
+				FA2413A11ED0F16500AF0D7C /* Transition Controller */,
+				FA2413A01ED0F15A00AF0D7C /* Animation Controller */,
+				FA24139F1ED0F13800AF0D7C /* Navigation Controller */,
 				FA5FEC1B1DAC65A5009218B9 /* AppDelegate.swift */,
-				FAC33E1C1DE0DF5B00D517AB /* ScoreFormatter.swift */,
-				FA5FEC1F1DAC65A5009218B9 /* Main.storyboard */,
-				FAC33E1A1DE0BA8600D517AB /* ButtonFontSize.swift */,
-				FA5FEC241DAC65A5009218B9 /* LaunchScreen.storyboard */,
-				FAD5D64B1DD42362005DA6A3 /* Assets.xcassets */,
-				FA5FEC271DAC65A5009218B9 /* Info.plist */,
+				FA50514F1E3C7B370087FDC4 /* Model */,
+				FA5051501E3C7B430087FDC4 /* Model Controller */,
+				FA5051511E3C7B520087FDC4 /* View Controllers */,
+				FA5051521E3C7B8D0087FDC4 /* Resources */,
 			);
 			path = Calculator2;
 			sourceTree = "<group>";
@@ -140,6 +336,17 @@
 			path = Calculator2UITests;
 			sourceTree = "<group>";
 		};
+		FA7082861EAF050C00648686 /* EarlGreyUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA70828F1EAF0E8500648686 /* MyFirstEarlGreyTest.swift */,
+				FA7082871EAF050C00648686 /* EarlGreyUnitTests.swift */,
+				FA7082891EAF050C00648686 /* Info.plist */,
+				002EFC87CC9D65CDBAFB3875 /* EarlGrey.swift */,
+			);
+			path = EarlGreyUnitTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +354,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA5FEC401DAC65A5009218B9 /* Build configuration list for PBXNativeTarget "Calculator2" */;
 			buildPhases = (
+				32AC2F7369958486C14B590B /* [CP] Check Pods Manifest.lock */,
 				FA5FEC141DAC65A5009218B9 /* Sources */,
 				FA5FEC151DAC65A5009218B9 /* Frameworks */,
 				FA5FEC161DAC65A5009218B9 /* Resources */,
+				00523A224FB04B2B521CED0D /* [CP] Embed Pods Frameworks */,
+				15131994F44A14B6439C2497 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +374,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA5FEC431DAC65A5009218B9 /* Build configuration list for PBXNativeTarget "Calculator2Tests" */;
 			buildPhases = (
+				4C5F1497B9000FFD326C023F /* [CP] Check Pods Manifest.lock */,
 				FA5FEC281DAC65A5009218B9 /* Sources */,
 				FA5FEC291DAC65A5009218B9 /* Frameworks */,
 				FA5FEC2A1DAC65A5009218B9 /* Resources */,
+				B40D64733356EB0D7EC43645 /* [CP] Embed Pods Frameworks */,
+				02928750A854556DB78F8104 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +395,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA5FEC461DAC65A5009218B9 /* Build configuration list for PBXNativeTarget "Calculator2UITests" */;
 			buildPhases = (
+				5A84CD9C5CBE66ABDC9D2262 /* [CP] Check Pods Manifest.lock */,
 				FA5FEC331DAC65A5009218B9 /* Sources */,
 				FA5FEC341DAC65A5009218B9 /* Frameworks */,
 				FA5FEC351DAC65A5009218B9 /* Resources */,
+				78C7A1092D6753C6BB3C129B /* [CP] Embed Pods Frameworks */,
+				CA8B99978275E687FEB8687C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,13 +412,35 @@
 			productReference = FA5FEC371DAC65A5009218B9 /* Calculator2UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		FA7082841EAF050B00648686 /* EarlGreyUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA70828E1EAF050C00648686 /* Build configuration list for PBXNativeTarget "EarlGreyUnitTests" */;
+			buildPhases = (
+				C89DB0EB1EEB202FA142655C /* [CP] Check Pods Manifest.lock */,
+				FA7082811EAF050B00648686 /* Sources */,
+				FA7082821EAF050B00648686 /* Frameworks */,
+				FA7082831EAF050B00648686 /* Resources */,
+				B93980CA2923550FBDA953D0 /* EarlGrey Copy Files */,
+				59507E5BC78727CB5F4AFD9E /* [CP] Embed Pods Frameworks */,
+				E41E38B4A415AD76885463BA /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA70828B1EAF050C00648686 /* PBXTargetDependency */,
+			);
+			name = EarlGreyUnitTests;
+			productName = EarlGreyUnitTests;
+			productReference = FA7082851EAF050B00648686 /* EarlGreyUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		FA5FEC101DAC65A5009218B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Nonsense;
 				TargetAttributes = {
@@ -219,6 +457,12 @@
 					};
 					FA5FEC361DAC65A5009218B9 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 6775TVLNZK;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FA5FEC171DAC65A5009218B9;
+					};
+					FA7082841EAF050B00648686 = {
+						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 6775TVLNZK;
 						ProvisioningStyle = Automatic;
 						TestTargetID = FA5FEC171DAC65A5009218B9;
@@ -241,6 +485,7 @@
 				FA5FEC171DAC65A5009218B9 /* Calculator2 */,
 				FA5FEC2B1DAC65A5009218B9 /* Calculator2Tests */,
 				FA5FEC361DAC65A5009218B9 /* Calculator2UITests */,
+				FA7082841EAF050B00648686 /* EarlGreyUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -270,20 +515,221 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA7082831EAF050B00648686 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00523A224FB04B2B521CED0D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calculator2/Pods-Calculator2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		02928750A854556DB78F8104 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calculator2Tests/Pods-Calculator2Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		15131994F44A14B6439C2497 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calculator2/Pods-Calculator2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32AC2F7369958486C14B590B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4C5F1497B9000FFD326C023F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		59507E5BC78727CB5F4AFD9E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarlGreyUnitTests/Pods-EarlGreyUnitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A84CD9C5CBE66ABDC9D2262 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		78C7A1092D6753C6BB3C129B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calculator2UITests/Pods-Calculator2UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B40D64733356EB0D7EC43645 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calculator2Tests/Pods-Calculator2Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C89DB0EB1EEB202FA142655C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CA8B99978275E687FEB8687C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Calculator2UITests/Pods-Calculator2UITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E41E38B4A415AD76885463BA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EarlGreyUnitTests/Pods-EarlGreyUnitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA5FEC141DAC65A5009218B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA50514C1E3C7AD10087FDC4 /* History+Convenience.swift in Sources */,
+				FA2413B11ED0F24A00AF0D7C /* TransparentNavigationBar.swift in Sources */,
 				FA5FEC501DAC9A11009218B9 /* CalculatorViewController.swift in Sources */,
 				FA5FEC1C1DAC65A5009218B9 /* AppDelegate.swift in Sources */,
+				FA2413AE1ED0F21100AF0D7C /* CardLayout.swift in Sources */,
+				FA2413AB1ED0F1F500AF0D7C /* NavigationViewController.swift in Sources */,
 				FAC33E1D1DE0DF5B00D517AB /* ScoreFormatter.swift in Sources */,
+				FA2413A71ED0F1E300AF0D7C /* CardToDetailViewAnimator.swift in Sources */,
 				FA131EF01DD7A253000904F7 /* CalculationHistoryViewController.swift in Sources */,
+				FA50514E1E3C7AED0087FDC4 /* CoreDataStack.swift in Sources */,
+				FA2413A51ED0F1D600AF0D7C /* NavigationTransitionController.swift in Sources */,
+				FA50514A1E3C7A6E0087FDC4 /* Calculator2.xcdatamodeld in Sources */,
+				FA2413A91ED0F1EA00AF0D7C /* DetailViewToCardAnimator.swift in Sources */,
 				FAC33E1B1DE0BA8600D517AB /* ButtonFontSize.swift in Sources */,
 				FA5FEC4C1DAC7D83009218B9 /* Calculator.swift in Sources */,
 				FA5FEC4E1DAC7E71009218B9 /* CalculatorController.swift in Sources */,
+				FA2413B31ED0F25200AF0D7C /* CardCollectionViewCell.swift in Sources */,
+				FA2413A31ED0F1CB00AF0D7C /* CardCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +749,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA7082811EAF050B00648686 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA7082881EAF050C00648686 /* EarlGreyUnitTests.swift in Sources */,
+				FBA5AB9440A27FA6DDD1F34A /* EarlGrey.swift in Sources */,
+				FA7082901EAF0E8500648686 /* MyFirstEarlGreyTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -315,6 +771,11 @@
 			isa = PBXTargetDependency;
 			target = FA5FEC171DAC65A5009218B9 /* Calculator2 */;
 			targetProxy = FA5FEC381DAC65A5009218B9 /* PBXContainerItemProxy */;
+		};
+		FA70828B1EAF050C00648686 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA5FEC171DAC65A5009218B9 /* Calculator2 */;
+			targetProxy = FA70828A1EAF050C00648686 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -433,11 +894,12 @@
 		};
 		FA5FEC411DAC65A5009218B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08372D0FB3F2F895C237135D /* Pods-Calculator2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6775TVLNZK;
 				INFOPLIST_FILE = Calculator2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Nonsense.Calculator2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,11 +909,12 @@
 		};
 		FA5FEC421DAC65A5009218B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 319D51D8612D6056EED605A2 /* Pods-Calculator2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6775TVLNZK;
 				INFOPLIST_FILE = Calculator2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Nonsense.Calculator2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -461,6 +924,7 @@
 		};
 		FA5FEC441DAC65A5009218B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B904B0ADA88580A438BF767C /* Pods-Calculator2Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -476,6 +940,7 @@
 		};
 		FA5FEC451DAC65A5009218B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A7C965B909E60414BFCCD9E /* Pods-Calculator2Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +956,7 @@
 		};
 		FA5FEC471DAC65A5009218B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 954F709435EFBF4A7E1CC96B /* Pods-Calculator2UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 6775TVLNZK;
@@ -505,6 +971,7 @@
 		};
 		FA5FEC481DAC65A5009218B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3489CDDA62D990740A578FAC /* Pods-Calculator2UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 6775TVLNZK;
@@ -514,6 +981,38 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Calculator2;
+			};
+			name = Release;
+		};
+		FA70828C1EAF050C00648686 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62F2989CEBC26A5DBED72C59 /* Pods-EarlGreyUnitTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6775TVLNZK;
+				INFOPLIST_FILE = EarlGreyUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LovatoApps.EarlGreyUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator2.app/Calculator2";
+			};
+			name = Debug;
+		};
+		FA70828D1EAF050C00648686 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDA2EBC0685ADD2E6BDB1F71 /* Pods-EarlGreyUnitTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6775TVLNZK;
+				INFOPLIST_FILE = EarlGreyUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LovatoApps.EarlGreyUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator2.app/Calculator2";
 			};
 			name = Release;
 		};
@@ -556,7 +1055,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		FA70828E1EAF050C00648686 /* Build configuration list for PBXNativeTarget "EarlGreyUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA70828C1EAF050C00648686 /* Debug */,
+				FA70828D1EAF050C00648686 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA5051481E3C7A6E0087FDC4 /* Calculator2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA5051491E3C7A6E0087FDC4 /* Calculator2.xcdatamodel */,
+			);
+			currentVersion = FA5051491E3C7A6E0087FDC4 /* Calculator2.xcdatamodel */;
+			path = Calculator2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA5FEC101DAC65A5009218B9 /* Project object */;
 }

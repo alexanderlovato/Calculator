@@ -31,6 +31,8 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CalculatorController.sharedController.history.count
     }
@@ -38,8 +40,17 @@ class CalculationHistoryViewController: UIViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalculatorCell", for: indexPath)
         let history = CalculatorController.sharedController.history[indexPath.row]
-        cell.textLabel?.text = history.historyStack!.replacingOccurrences(of: ".0", with: "")
-        return cell
+        let data = history.historyStack!.replacingOccurrences(of: ".0", with: "")
+        
+        if data.contains(find: "÷") || data.contains(find: "x") || data.contains(find: "-") || data.contains(find: "+") {
+            cell.textLabel?.text = data
+            return cell
+        } else {
+            cell.textLabel?.text = ScoreFormatter.formattedScore(data)
+            return cell
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

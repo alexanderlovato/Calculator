@@ -13,7 +13,7 @@ struct ScoreFormatter {
     static fileprivate var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
         return formatter
     }
     
@@ -35,6 +35,8 @@ struct ScoreFormatter {
     
     static func formattedScore(_ scoreString: String?) -> String? {
         guard let scoreString = scoreString, let score = numberFormatter.number(from: scoreString) else { return nil }
+        // Removed the numberFormatter call and just set formatterScore to be a String
+        //TODO: - Add "\(score)" back after troubleshooting
         let formattedScore = numberFormatter.string(from: score)
         return formattedScore
     }
