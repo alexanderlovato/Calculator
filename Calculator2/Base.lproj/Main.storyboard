@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZET-ld-ogh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZET-ld-ogh">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -125,7 +125,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fBg-DO-ULA" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ccc-QV-6Zh" customClass="TransparentNavigationBar" customModule="Calculator2" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ccc-QV-6Zh" customClass="TransparentNavigationBar" customModule="Calculator2" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -542,7 +542,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1SX-H5-LpE" customClass="NavigationViewController" customModule="Calculator2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HRI-KB-cE9" customClass="TransparentNavigationBar" customModule="Calculator2" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HRI-KB-cE9" customClass="TransparentNavigationBar" customModule="Calculator2" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

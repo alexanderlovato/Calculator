@@ -48,7 +48,6 @@ class CalculatorController {
     // Loads stored objects from persistent storage
     func loadFromUserDefaults() {
         guard let calculatorDictionariesFromDefaults = UserDefaults.standard.object(forKey: kCalcuators) as? [[String : Any]] else { return }
-        // TODO: - Figure out how to not force unwrap the below closure
         self.calculators = calculatorDictionariesFromDefaults.map({Calculator(dictionary: $0)!})
     }
     
@@ -71,12 +70,13 @@ class CalculatorController {
     
     // DELETE
     
-    func removeCalculator(historyEntry: History) {
+    //
+    func remove(historyEntry: History) {
         historyEntry.managedObjectContext?.delete(historyEntry)
             saveToHistoryStorage()
     }
     
-    func deleteCalculator(calculator: Calculator) {
+    func delete(calculator: Calculator) {
         if let calculatorIndex = calculators.index(of: calculator) {
             calculators.remove(at: calculatorIndex)
             saveToPersistentStorage()
