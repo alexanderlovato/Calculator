@@ -38,7 +38,7 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
         let value = resultTextLabel.text ?? "0"
         let returnValue = ScoreFormatter.unformattedNumber(value)
         guard let returnDouble = returnValue else { return 0 }
-        return Double(returnDouble)
+        return returnDouble.doubleValue
     }
     
     // Take and return screenshot of current view
@@ -185,8 +185,8 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
             calculator.currentNumber = "0"
             calculator.currentlyTypingNumber = false
         } else {
-            let resultText = resultTextLabel.text ?? "0"
-            let truncated = resultText.substring(to: resultText.index(before: resultText.endIndex))
+            let resultText = ScoreFormatter.unformattedNumberString(resultTextLabel.text ?? "0") ?? "0"
+            let truncated = String(resultText.dropLast())
             resultTextLabel.text! = ScoreFormatter.formattedScore(truncated) ?? "0"
             calculator.currentNumber = truncated
         }

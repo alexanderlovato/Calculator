@@ -125,7 +125,7 @@ class CardCollectionViewController: UICollectionViewController {
     // MARK: - Delete Cell Functions
     
     // Enables the ability to swipe up to delete a cell
-    func swipeToDelete(sender: UISwipeGestureRecognizer) {
+    @objc func swipeToDelete(sender: UISwipeGestureRecognizer) {
         if CalculatorController.sharedController.calculators.count != 1 {
             collectionView?.performBatchUpdates({
                 guard let indexPath = self.centeredIndexPath() else { return }
