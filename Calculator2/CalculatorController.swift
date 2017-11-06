@@ -34,7 +34,7 @@ class CalculatorController {
     
     // Appends a new Calculator instance to calculators and saves to UserDefaults
     func saveCalculatorTab(calculatorTab: Calculator) {
-        calculators.append(calculatorTab)
+        self.calculators.append(calculatorTab)
         self.saveToPersistentStorage()
     }
     

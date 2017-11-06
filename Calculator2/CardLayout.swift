@@ -29,7 +29,8 @@ class CardLayout: UICollectionViewFlowLayout {
         self.scrollDirection = .horizontal
         self.minimumLineSpacing = 0
         self.minimumInteritemSpacing = 0
-        self.itemSize = CGSize(width: 282, height: 428)
+        self.itemSize = CGSize(width: 282, height: 500)
+        // Original hight is 428
     }
     
     

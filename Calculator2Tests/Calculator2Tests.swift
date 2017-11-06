@@ -45,6 +45,7 @@ class Calculator2Tests: XCTestCase {
     func testConvertToDecimalNumber() {
         let numberString = "5000"
         let answer = "5000."
+        viewController.loadViewIfNeeded()
         viewController.calculator.currentlyTypingNumber = true
         let returnedValue = viewController.convertToDecimalNumber(number: numberString)
         print(returnedValue)

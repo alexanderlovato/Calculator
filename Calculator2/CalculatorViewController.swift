@@ -24,6 +24,10 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     }
     
     // MARK: - Outlets
+//    override func loadViewIfNeeded() {
+//        super.loadViewIfNeeded()
+//    }
+    
     @IBOutlet weak var wallpaperImageView: UIImageView!
     @IBOutlet weak var resultTextLabel: UILabel!
     
@@ -248,8 +252,10 @@ class CalculatorViewController: UIViewController, DestinationViewControllerDeleg
     
     // Add a decimal to the result text label
     func convertToDecimalNumber(number: String) -> String {
+                
+        guard let resultText = resultTextLabel?.text else { return "0" }
         
-        if resultTextLabel.text?.contains(find: ".") == false {
+        if resultText.contains(find: ".") == false {
             if calculator.currentlyTypingNumber == false {
                 calculator.currentNumber = "."
                 return "."
